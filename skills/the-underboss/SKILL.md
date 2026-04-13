@@ -98,7 +98,7 @@ artifacts:
 <What has been done, what remains, any blockers>
 ```
 
-Save to: `docs/gangsta/specs/<heist-name>/checkpoint-<phase>.md`
+Save to: `docs/gangsta/<heist-name>/checkpoints/YYYY-MM-DD-checkpoint-<phase>.md`
 
 ## Omerta Compliance
 - [ ] Introduction Rule: All Soldier communication mediated through Capos
