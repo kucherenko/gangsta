@@ -76,10 +76,9 @@ Remove operational artifacts:
 - Draft/intermediate checkpoint files (keep only the final state)
 
 Do NOT remove:
-- The Contract
-- The War Plan
-- The Grilling Transcript
-- The Reconnaissance Dossier
+- The Contract (`docs/gangsta/<heist-name>/specs/YYYY-MM-DD-contract.md`)
+- The War Plan (`docs/gangsta/<heist-name>/plans/YYYY-MM-DD-war-plan.md`)
+- The Reconnaissance Dossier (`docs/gangsta/<heist-name>/recon/YYYY-MM-DD-recon-dossier.md`)
 - These are permanent records of the Heist
 
 ### Step 6: Ledger Update
@@ -123,10 +122,9 @@ status: completed
 timestamp: <ISO 8601>
 next-action: Heist complete. Merge to main or archive.
 artifacts:
-  - docs/gangsta/specs/<heist-name>/contract.md
-  - docs/gangsta/specs/<heist-name>/war-plan.md
-  - docs/gangsta/specs/<heist-name>/grilling-transcript.md
-  - docs/gangsta/specs/<heist-name>/recon-dossier.md
+  - docs/gangsta/<heist-name>/specs/YYYY-MM-DD-contract.md
+  - docs/gangsta/<heist-name>/plans/YYYY-MM-DD-war-plan.md
+  - docs/gangsta/<heist-name>/recon/YYYY-MM-DD-recon-dossier.md
   - <all code files created/modified>
 ---
 ```
