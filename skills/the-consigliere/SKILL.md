@@ -18,6 +18,7 @@ The Consigliere does NOT write code. It does NOT execute tasks. It thinks, revie
 - When security or architectural concerns arise — audit authority
 - During Laundering — final architectural review of integrated code
 - Whenever the Don wants a second opinion — impartial advisory
+- When systematic debugging is needed — route to `gangsta:interrogation-debugging` first, consult Consigliere if architectural concerns emerge
 
 ## The Consigliere's Process
 
