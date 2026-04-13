@@ -82,9 +82,9 @@ Tell Codex:
 
 ### Gemini CLI
 
-Tell Gemini:
-
-> Fetch and follow instructions from https://raw.githubusercontent.com/kucherenko/gangsta/refs/heads/master/GEMINI.md
+```bash
+gemini extensions install https://github.com/kucherenko/gangsta
+```
 
 ## Verify Installation
 
