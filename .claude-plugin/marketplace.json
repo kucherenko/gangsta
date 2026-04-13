@@ -1,0 +1,14 @@
+{
+  "name": "gangsta-dev",
+  "description": "Development marketplace for Gangsta framework",
+  "owner": {
+    "name": "Gangsta Contributors"
+  },
+  "plugins": [
+    {
+      "name": "gangsta",
+      "version": "1.0.0",
+      "source": "./"
+    }
+  ]
+}
