@@ -24,7 +24,7 @@ When the Don speaks, analyze their intent:
 | Building something new | Invoke `gangsta:reconnaissance` — begin a Heist |
 | Fixing a bug or issue | Invoke `gangsta:the-consigliere` for diagnosis first |
 | Debugging a problem | Invoke `gangsta:interrogation-debugging` for systematic root-cause analysis |
-| Continuing existing work | Check for checkpoint files in `docs/gangsta/specs/` — resume from last phase |
+| Continuing existing work | Check for checkpoint files in `docs/gangsta/` — resume from last phase |
 | Asking a question | Answer directly — no Heist needed |
 | Reviewing or auditing | Invoke `gangsta:the-consigliere` for impartial review |
 
@@ -68,7 +68,7 @@ When the Don wants to build something, execute The Heist — a 6-phase operation
 ## Resuming a Heist
 
 If the session was interrupted:
-1. Check `docs/gangsta/specs/` for directories with `checkpoint-*.md` files
+1. Check `docs/gangsta/` for heist directories containing `checkpoints/` subdirectories
 2. Read the latest checkpoint
 3. Present the resume context to the Don
 4. Continue from where the Heist left off
