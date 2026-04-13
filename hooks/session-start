@@ -14,7 +14,7 @@ if [ ! -f "$SKILL_FILE" ]; then
 fi
 
 # Read skill content, strip YAML frontmatter
-CONTENT=$(sed '1{/^---$/,/^---$/d}' "$SKILL_FILE")
+CONTENT=$(awk 'BEGIN{fm=0} /^---$/{fm++; next} fm>=2{print}' "$SKILL_FILE")
 
 # Wrap in importance tags
 BOOTSTRAP="<EXTREMELY_IMPORTANT>
