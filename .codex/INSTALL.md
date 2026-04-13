@@ -4,7 +4,7 @@
 
 1. Clone the repository:
 ```bash
-git clone https://github.com/user/gangsta.git ~/.gangsta
+git clone https://github.com/kucherenko/gangsta.git ~/.gangsta
 ```
 
 2. Create a symlink so Codex discovers the skills:

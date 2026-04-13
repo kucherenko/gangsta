@@ -6,7 +6,7 @@ Add to your `opencode.json` configuration:
 
 ```json
 {
-  "plugin": ["gangsta@git+https://github.com/user/gangsta.git"]
+  "plugin": ["gangsta@git+https://github.com/kucherenko/gangsta.git"]
 }
 ```
 
@@ -23,7 +23,7 @@ The agent should respond by invoking the `gangsta:reconnaissance` skill to begin
 
 1. Clone the repository:
 ```bash
-git clone https://github.com/user/gangsta.git ~/.gangsta
+git clone https://github.com/kucherenko/gangsta.git ~/.gangsta
 ```
 
 2. Add to `opencode.json`:

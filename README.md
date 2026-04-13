@@ -73,14 +73,14 @@ Five non-negotiable laws govern all operations:
 Add to your `opencode.json`:
 ```json
 {
-  "plugin": ["gangsta@git+https://github.com/user/gangsta.git"]
+  "plugin": ["gangsta@git+https://github.com/kucherenko/gangsta.git"]
 }
 ```
 
 ### Claude Code
 
 ```
-/plugin marketplace add user/gangsta-marketplace
+/plugin marketplace add kucherenko/gangsta-marketplace
 /plugin install gangsta@gangsta-marketplace
 ```
 
@@ -93,14 +93,14 @@ Add to your `opencode.json`:
 ### Codex
 
 ```bash
-git clone https://github.com/user/gangsta.git ~/.gangsta
+git clone https://github.com/kucherenko/gangsta.git ~/.gangsta
 ln -sf ~/.gangsta/skills ~/.agents/skills/gangsta
 ```
 
 ### Gemini CLI
 
 ```bash
-gemini extensions install https://github.com/user/gangsta
+gemini extensions install https://github.com/kucherenko/gangsta
 ```
 
 ## Verify Installation
