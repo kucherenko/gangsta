@@ -37,7 +37,7 @@ Each Capo (invoke `gangsta:the-capo`) processes their Work Packages:
 
 ### Step 3: TDD Enforcement
 
-Every Soldier MUST follow the TDD cycle:
+Every Soldier MUST follow `gangsta:drill-tdd` — the full Red-Green-Refactor cycle:
 
 1. **Write failing test** — Based on the acceptance criteria
 2. **Run test** — Verify it fails for the right reason
