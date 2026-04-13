@@ -66,7 +66,7 @@ Compile everything into the War Plan.
 
 ## War Plan Format
 
-Save to: `docs/gangsta/specs/<heist-name>/war-plan.md`
+Save to: `docs/gangsta/<heist-name>/plans/YYYY-MM-DD-war-plan.md`
 
 ```markdown
 ---
@@ -133,7 +133,7 @@ status: completed
 timestamp: <ISO 8601>
 next-action: Proceed to The Hit (Phase 5)
 artifacts:
-  - docs/gangsta/specs/<heist-name>/war-plan.md
+  - docs/gangsta/<heist-name>/plans/YYYY-MM-DD-war-plan.md
 ---
 ```
 
