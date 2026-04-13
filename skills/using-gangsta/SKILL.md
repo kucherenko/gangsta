@@ -107,18 +107,13 @@ When multiple skills could apply, use this order:
 
 The skill itself tells you which.
 
-## Tool Mapping
-
-Skills use Claude Code tool names as the canonical reference. When tools don't match your platform, substitute equivalents:
-
-**In OpenCode:** `skill` to load skills, `task` to dispatch subagents, `todowrite` for tracking. `read`, `write`, `edit`, `bash` for file and shell operations.
-
-**In Claude Code:** `Skill` to load skills, `Task` for subagents, `TodoWrite` for tracking. `Read`, `Write`, `Edit`, `Bash` for file and shell operations.
-
-**In Cursor:** Use equivalent tools as provided by the platform.
-
-**In Gemini CLI:** `activate_skill` to load skills. Standard Gemini tools for file and shell operations.
-
 ## Platform Adaptation
 
-Skills use Claude Code tool names. If you are on a different platform, mentally substitute your native tool names when following skill instructions. The behavior is the same — only the invocation syntax differs.
+Skills use Claude Code tool names as the canonical reference. Non-Claude Code platforms: see the detailed tool mapping for your environment:
+
+- `references/opencode-tools.md` — OpenCode
+- `references/copilot-tools.md` — Copilot CLI
+- `references/codex-tools.md` — Codex
+- `references/gemini-tools.md` — Gemini CLI
+
+Gemini CLI users get the tool mapping loaded automatically via GEMINI.md. Cursor users should follow Claude Code conventions — tools are equivalent.
