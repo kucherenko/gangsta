@@ -41,7 +41,7 @@ Compile Associate reports into a structured Reconnaissance Dossier.
 
 ## Dossier Format
 
-Save to: `docs/gangsta/specs/<heist-name>/recon-dossier.md`
+Save to: `docs/gangsta/<heist-name>/recon/YYYY-MM-DD-recon-dossier.md`
 
 ```markdown
 ---
@@ -97,7 +97,7 @@ status: completed
 timestamp: <ISO 8601>
 next-action: Proceed to The Grilling (Phase 2)
 artifacts:
-  - docs/gangsta/specs/<heist-name>/recon-dossier.md
+  - docs/gangsta/<heist-name>/recon/YYYY-MM-DD-recon-dossier.md
 ---
 ```
 
