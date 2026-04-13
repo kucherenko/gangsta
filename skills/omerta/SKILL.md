@@ -24,7 +24,7 @@ No agent-to-agent interaction occurs without mediation by the Underboss or Don.
 
 All Heist state MUST be checkpointed to files. If a session is interrupted, state must be recoverable.
 
-- Checkpoint location: `docs/gangsta/specs/<heist-name>/checkpoint-<phase>.md`
+- Checkpoint location: `docs/gangsta/<heist-name>/checkpoints/YYYY-MM-DD-checkpoint-<phase>.md`
 - Checkpoint format: YAML frontmatter with phase, status, timestamp, resume instructions
 - Every phase transition writes a checkpoint BEFORE starting the next phase
 - On session resume, the Don reads the latest checkpoint and continues from that point
