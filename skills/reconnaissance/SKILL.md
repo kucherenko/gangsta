@@ -3,7 +3,7 @@ name: reconnaissance
 description: Use when beginning a new heist — deploys associates to survey the target codebase, existing tests, dependencies, documentation, and the ledger to produce a reconnaissance dossier for the don's review
 ---
 
-# Reconnaissance: Intel and Environment Mapping (Phase 1)
+# Reconnaissance: Intel and Environment Mapping
 
 ## Overview
 
@@ -82,7 +82,7 @@ status: pending-review
 ### Step 4: Present to Don
 
 Present the Dossier to the Don for review. The Don may:
-- **Approve** — Proceed to Phase 2 (The Grilling)
+- **Approve** — Proceed to The Grilling
 - **Request more intel** — Deploy additional Associates for specific areas
 - **Narrow/widen scope** — Adjust the Heist boundaries
 
@@ -95,7 +95,7 @@ heist: <heist-name>
 phase: reconnaissance
 status: completed
 timestamp: <ISO 8601>
-next-action: Proceed to The Grilling (Phase 2)
+next-action: Proceed to The Grilling
 artifacts:
   - docs/gangsta/<heist-name>/recon/YYYY-MM-DD-recon-dossier.md
 ---

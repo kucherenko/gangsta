@@ -19,7 +19,7 @@ Random fixes waste time and create new bugs. Quick patches let the real rat walk
 NO FIXES WITHOUT ROOT CAUSE INVESTIGATION FIRST
 ```
 
-If you haven't completed Phase 1, you cannot propose fixes. This is Omerta.
+If you haven't completed The Brief, you cannot propose fixes. This is Omerta.
 
 ## When to Use
 
@@ -47,7 +47,7 @@ Use for ANY technical issue:
 
 You MUST complete each phase before proceeding to the next.
 
-### Phase 1: Crime Scene Investigation
+### The Brief
 
 **BEFORE attempting ANY fix:**
 
@@ -94,7 +94,7 @@ You MUST complete each phase before proceeding to the next.
    - Keep tracing backward until you find the source
    - Fix at source, not at symptom
 
-### Phase 2: Cross-Examination
+### Cross-Examination
 
 **Find the pattern before fixing:**
 
@@ -117,7 +117,7 @@ You MUST complete each phase before proceeding to the next.
    - What settings, config, environment?
    - What assumptions does it make?
 
-### Phase 3: The Theory
+### The Theory
 
 **Scientific method:**
 
@@ -132,7 +132,7 @@ You MUST complete each phase before proceeding to the next.
    - Don't fix multiple things at once
 
 3. **Verify Before Continuing**
-   - Did it work? Yes → Phase 4
+   - Did it work? Yes → The Hit
    - Didn't work? Form NEW hypothesis
    - DON'T add more fixes on top
 
@@ -141,7 +141,7 @@ You MUST complete each phase before proceeding to the next.
    - Don't pretend to know
    - Ask for help or research more
 
-### Phase 4: The Hit
+### The Hit
 
 **Fix the root cause, not the symptom:**
 
@@ -167,7 +167,7 @@ You MUST complete each phase before proceeding to the next.
 4. **If Fix Doesn't Work**
    - STOP
    - Count: How many fixes have you tried?
-   - If < 3: Return to Phase 1, re-analyze with new information
+   - If < 3: Return to The Brief, re-analyze with new information
    - **If ≥ 3: STOP and escalate (Step 5 below)**
    - DON'T attempt Fix #4 without architectural discussion
 
@@ -194,16 +194,16 @@ If you catch yourself thinking:
 | Thought | Reality |
 |---------|---------|
 | "Quick fix for now, investigate later" | Investigate NOW. Quick fixes compound. |
-| "Just try changing X and see" | That's guessing, not debugging. Phase 1. |
+| "Just try changing X and see" | That's guessing, not debugging. The Brief. |
 | "Add multiple changes, run tests" | Can't isolate what worked. One at a time. |
 | "Skip the test, I'll manually verify" | Manual verification is not evidence. |
 | "It's probably X, let me fix that" | "Probably" means you haven't investigated. |
-| "I don't fully understand but this might work" | Might = guessing. Phase 1. |
+| "I don't fully understand but this might work" | Might = guessing. The Brief. |
 | "One more fix attempt" (after 2+) | 3 failures = architectural problem. Escalate. |
 | "Here are the main problems: [list]" | Listing without investigating = stronzate. |
 | Proposing solutions before tracing data flow | STOP. Trace first, propose second. |
 
-**ALL of these mean: STOP. Return to Phase 1.**
+**ALL of these mean: STOP. Return to The Brief.**
 
 ## The Don's Signals You're Doing It Wrong
 
@@ -214,7 +214,7 @@ Watch for these redirections:
 - "Think harder" — Question fundamentals, not just symptoms
 - "We're stuck?" (frustrated) — Your approach isn't working
 
-**When you see these:** STOP. Return to Phase 1.
+**When you see these:** STOP. Return to The Brief.
 
 ## Common Rationalizations
 
@@ -233,10 +233,10 @@ Watch for these redirections:
 
 | Phase | Key Activities | Success Criteria |
 |-------|---------------|------------------|
-| **1. Crime Scene** | Read errors, reproduce, check changes, gather evidence | Understand WHAT and WHY |
-| **2. Cross-Examination** | Find working examples, compare | Identify differences |
-| **3. The Theory** | Form hypothesis, test minimally | Confirmed or new hypothesis |
-| **4. The Hit** | Create test, fix, verify | Bug resolved, tests pass |
+| **The Brief** | Read errors, reproduce, check changes, gather evidence | Understand WHAT and WHY |
+| **Cross-Examination** | Find working examples, compare | Identify differences |
+| **The Theory** | Form hypothesis, test minimally | Confirmed or new hypothesis |
+| **The Hit** | Create test, fix, verify | Bug resolved, tests pass |
 
 ## When Investigation Reveals No Root Cause
 
@@ -251,7 +251,7 @@ If systematic investigation reveals the issue is truly environmental, timing-dep
 
 ## Related Skills
 
-- **gangsta:drill-tdd** — For creating failing test case (Phase 4, Step 1)
+- **gangsta:drill-tdd** — For creating failing test case (The Hit, Step 1)
 - **gangsta:sweep-verification** — Verify fix worked before claiming success
 
 ## Omerta Compliance

@@ -3,7 +3,7 @@ name: the-sit-down
 description: Use when the grilling consensus is approved and it is time to draft the formal contract specification — strictly prohibits code generation, produces the binding spec document that governs all subsequent phases
 ---
 
-# The Sit-Down: Planning and Spec Drafting (Phase 3)
+# The Sit-Down: Planning and Spec Drafting
 
 ## Overview
 
@@ -11,7 +11,7 @@ The Sit-Down is where the Don, Consigliere, and Underboss finalize the Contract 
 
 ## Trigger
 
-Invoked after the Don approves the Grilling consensus (Phase 2 complete).
+Invoked after the Don approves the Grilling consensus (The Grilling complete).
 
 ## The Absolute Rule
 
@@ -19,7 +19,7 @@ Invoked after the Don approves the Grilling consensus (Phase 2 complete).
 
 Not pseudocode. Not "example snippets." Not "draft implementations." NOTHING that looks like code. If you catch yourself writing code, STOP. You are violating Omerta Law 5.
 
-The Contract describes WHAT and WHY. Implementation details (HOW) belong in the Work Packages created during Resource Development (Phase 4).
+The Contract describes WHAT and WHY. Implementation details (HOW) belong in the Work Packages created during Resource Development.
 
 ## Process
 
@@ -28,8 +28,8 @@ The Contract describes WHAT and WHY. Implementation details (HOW) belong in the 
 The Underboss synthesizes all inputs into a formal specification:
 
 **Inputs:**
-- Reconnaissance Dossier (Phase 1)
-- Grilling Consensus or Best Available Consensus (Phase 2)
+- Reconnaissance Dossier
+- Grilling Consensus or Best Available Consensus
 - Project Constitution (Commandments and Negative Constraints)
 - Relevant Ledger Entries
 
@@ -107,7 +107,7 @@ Present the Contract to the Don:
 > "The Contract for Heist '<name>' is ready for your review. The Consigliere's verdict: [verdict]. [If concerns, list them.] Do you approve?"
 
 The Don may:
-- **Sign** — Contract is binding. Proceed to Phase 4.
+- **Sign** — Contract is binding. Proceed to Resource Development.
 - **Request changes** — Underboss revises. Back to Step 2.
 - **Kill the Heist** — Abort. No further phases.
 
@@ -129,7 +129,7 @@ heist: <heist-name>
 phase: the-sit-down
 status: completed
 timestamp: <ISO 8601>
-next-action: Proceed to Resource Development (Phase 4)
+next-action: Proceed to Resource Development
 artifacts:
   - docs/gangsta/<heist-name>/specs/YYYY-MM-DD-contract.md
 ---

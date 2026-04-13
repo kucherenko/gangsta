@@ -3,7 +3,7 @@ name: the-grilling
 description: Use when adversarial brainstorming is needed after reconnaissance — runs a multi-agent debate with proposer, devils-advocate, and synthesizer subagents, with the don participating each round, bounded by hard round limits to prevent infinite loops
 ---
 
-# The Grilling: Adversarial Brainstorming (Phase 2)
+# The Grilling: Adversarial Brainstorming
 
 ## Overview
 
@@ -11,7 +11,7 @@ The Grilling is a structured Multi-Agent Debate (MAD) protocol. Before any plan 
 
 ## Trigger
 
-Invoked after the Don approves the Reconnaissance Dossier (Phase 1 complete).
+Invoked after the Don approves the Reconnaissance Dossier (Reconnaissance complete).
 
 ## Round Limits (HARD RULES)
 
@@ -151,7 +151,7 @@ heist: <heist-name>
 phase: the-grilling
 status: completed
 timestamp: <ISO 8601>
-next-action: Proceed to The Sit-Down (Phase 3)
+next-action: Proceed to The Sit-Down
 artifacts: []
 note: Grilling Conclusions passed in-context to The Sit-Down for inclusion in the Contract
 ---

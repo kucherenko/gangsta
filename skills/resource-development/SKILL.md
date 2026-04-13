@@ -3,7 +3,7 @@ name: resource-development
 description: Use when the contract is signed and work packages need to be created — decomposes the contract into bite-sized tasks, sets up git isolation, allocates territories and token budgets, producing the war plan
 ---
 
-# Resource Development: Infrastructure and Tooling (Phase 4)
+# Resource Development: Infrastructure and Tooling
 
 ## Overview
 
@@ -11,7 +11,7 @@ The Underboss decomposes the signed Contract into Work Packages, sets up infrast
 
 ## Trigger
 
-Invoked after the Don signs the Contract (Phase 3 complete).
+Invoked after the Don signs the Contract (The Sit-Down complete).
 
 ## Process
 
@@ -131,7 +131,7 @@ heist: <heist-name>
 phase: resource-development
 status: completed
 timestamp: <ISO 8601>
-next-action: Proceed to The Hit (Phase 5)
+next-action: Proceed to The Hit
 artifacts:
   - docs/gangsta/<heist-name>/plans/YYYY-MM-DD-war-plan.md
 ---

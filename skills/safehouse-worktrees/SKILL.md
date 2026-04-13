@@ -183,7 +183,7 @@ Ready for operations.
 ## Integration
 
 **Called by:**
-- **Resource Development (Phase 4)** — When isolation is needed for implementation
+- **Resource Development** — When isolation is needed for implementation
 - Any skill needing an isolated workspace
 
 **Pairs with:**

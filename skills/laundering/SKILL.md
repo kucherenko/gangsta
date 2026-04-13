@@ -3,7 +3,7 @@ name: laundering
 description: Use when all territories report completion after the hit — handles integration, verification, consigliere final review, cleanup, and ledger updates to produce clean production-ready code
 ---
 
-# Laundering: Verification and Integration (Phase 6)
+# Laundering: Verification and Integration
 
 ## Overview
 
@@ -11,7 +11,7 @@ A successful Heist is only complete when the "loot" is refined into its final, l
 
 ## Trigger
 
-Invoked after all Capos report territory completion and the Don approves (Phase 5 complete).
+Invoked after all Capos report territory completion and the Don approves (The Hit complete).
 
 ## Process
 

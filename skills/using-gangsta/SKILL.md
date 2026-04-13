@@ -175,7 +175,7 @@ After any significant exchange — inside or outside a Heist — assess whether 
 2. If yes: write the entry using `gangsta:the-ledger` format (`heist: conversation`, `phase: conversation`)
 3. If no: drop it — never ask again for the same topic in the same session
 4. Never write a Ledger entry without explicit Don approval
-5. During a Heist: Laundering handles Ledger updates — skip this protocol, it runs at Phase 6
+5. During a Heist: Laundering handles Ledger updates — skip this protocol, it runs during Laundering
 
 ## Resuming a Heist
 
@@ -195,12 +195,12 @@ If the session was interrupted:
 - `gangsta:omerta` — Governance guardrails (always active)
 
 ### Heist Phases
-- `gangsta:reconnaissance` — Phase 1: Intel gathering
-- `gangsta:the-grilling` — Phase 2: Adversarial brainstorming
-- `gangsta:the-sit-down` — Phase 3: Spec drafting
-- `gangsta:resource-development` — Phase 4: Infrastructure prep
-- `gangsta:the-hit` — Phase 5: Parallel execution
-- `gangsta:laundering` — Phase 6: Verification & integration
+- `gangsta:reconnaissance` — Reconnaissance: Intel gathering
+- `gangsta:the-grilling` — The Grilling: Adversarial brainstorming
+- `gangsta:the-sit-down` — The Sit-Down: Spec drafting
+- `gangsta:resource-development` — Resource Development: Infrastructure prep
+- `gangsta:the-hit` — The Hit: Parallel execution
+- `gangsta:laundering` — Laundering: Verification & integration
 
 ### Software Development
 - `gangsta:interrogation-debugging` — Systematic root-cause debugging

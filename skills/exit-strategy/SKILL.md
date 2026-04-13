@@ -193,7 +193,7 @@ git worktree remove <worktree-path>
 ## Integration
 
 **Called by:**
-- **Laundering (Phase 6)** — After final verification
+- **Laundering** — After final verification
 - Any skill completing branch-based work
 
 **Pairs with:**

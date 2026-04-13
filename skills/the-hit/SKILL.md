@@ -3,7 +3,7 @@ name: the-hit
 description: Use when the war plan is approved and it is time for parallel execution — dispatches soldiers through capos to implement work packages with TDD enforcement, tribute collection, and escalation protocols
 ---
 
-# The Hit: Execution and Parallel Coding (Phase 5)
+# The Hit: Execution and Parallel Coding
 
 ## Overview
 
@@ -11,7 +11,7 @@ Soldiers and Capos implement the Work Packages defined in the War Plan. Crews wo
 
 ## Trigger
 
-Invoked after the Don approves the War Plan (Phase 4 complete).
+Invoked after the Don approves the War Plan (Resource Development complete).
 
 ## Process
 

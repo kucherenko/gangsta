@@ -79,8 +79,8 @@ Use the Task tool to dispatch the `the-inspector` agent. Fill the template at `t
 
 ## Integration with Heist Pipeline
 
-- **The Hit (Phase 5):** Audit after each Capo's territory completion
-- **Laundering (Phase 6):** Final audit before the Don's approval
+- **The Hit:** Audit after each Capo's territory completion
+- **Laundering:** Final audit before the Don's approval
 - **Ad-hoc work:** Audit before merge
 
 ## Red Flags

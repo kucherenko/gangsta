@@ -109,19 +109,19 @@ After writing, update `docs/gangsta/constitution.md`:
 
 ## Reading the Ledger
 
-### During Reconnaissance (Phase 1)
+### During Reconnaissance
 Search insights/ and fails/ for entries with tags matching the current Heist topic. Present relevant entries in the Reconnaissance Dossier.
 
-### During The Grilling (Phase 2)
+### During The Grilling
 The Devils-Advocate MUST check all Negative Constraints before accepting any proposal. If a proposal violates a Negative Constraint, it is automatically rejected.
 
-### During The Sit-Down (Phase 3)
+### During The Sit-Down
 The Underboss references Commandments when drafting the Contract. Every relevant Commandment must be cited in the Contract.
 
-### During The Hit (Phase 5)
+### During The Hit
 Soldiers check Negative Constraints before implementation. If a Work Package would violate a constraint, the Soldier escalates to the Capo.
 
-### During Laundering (Phase 6)
+### During Laundering
 New insights and fails from the Heist are written. The Constitution is updated.
 
 ## Omerta Compliance
