@@ -2,11 +2,11 @@
 set -euo pipefail
 
 # Gangsta session-start hook
-# Reads the-don skill and injects it as bootstrap context
+# Reads using-gangsta skill and injects it as bootstrap context
 
 SCRIPT_DIR="$(cd "$(dirname "$0")" && pwd)"
 ROOT_DIR="$(cd "$SCRIPT_DIR/.." && pwd)"
-SKILL_FILE="$ROOT_DIR/skills/the-don/SKILL.md"
+SKILL_FILE="$ROOT_DIR/skills/using-gangsta/SKILL.md"
 
 if [ ! -f "$SKILL_FILE" ]; then
   echo '{}' 
@@ -19,13 +19,6 @@ CONTENT=$(awk 'BEGIN{fm=0} /^---$/{fm++; next} fm>=2{print}' "$SKILL_FILE")
 # Wrap in importance tags
 BOOTSTRAP="<EXTREMELY_IMPORTANT>
 ${CONTENT}
-
-**Tool Mapping:**
-When skills reference tools you don't have, substitute your platform's equivalents:
-- TodoWrite / todowrite → your task tracking tool
-- Task / task → your subagent dispatch tool
-- Skill / skill → your skill loading tool
-- Read, Write, Edit, Bash → your native tools
 </EXTREMELY_IMPORTANT>"
 
 # Escape for JSON

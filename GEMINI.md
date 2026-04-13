@@ -1,1 +1,1 @@
-@./skills/the-don/SKILL.md
+@./skills/using-gangsta/SKILL.md

@@ -7,18 +7,11 @@ const ROOT = join(__dirname, "../..");
 const SKILLS_DIR = join(ROOT, "skills");
 
 function readBootstrap() {
-  const raw = readFileSync(join(SKILLS_DIR, "the-don/SKILL.md"), "utf-8");
+  const raw = readFileSync(join(SKILLS_DIR, "using-gangsta/SKILL.md"), "utf-8");
   const body = raw.replace(/^---[\s\S]*?---\n/, "");
   return [
     "<EXTREMELY_IMPORTANT>",
     body,
-    "",
-    "**Tool Mapping for OpenCode:**",
-    "When skills reference tools you don't have, substitute OpenCode equivalents:",
-    "- `TodoWrite` → `todowrite`",
-    "- `Task` tool with subagents → Use OpenCode's subagent system",
-    "- `Skill` tool → OpenCode's native `skill` tool",
-    "- `Read`, `Write`, `Edit`, `Bash` → Your native tools",
     "",
     "Use OpenCode's native `skill` tool to list and load skills.",
     "</EXTREMELY_IMPORTANT>",
