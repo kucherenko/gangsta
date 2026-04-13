@@ -22,6 +22,7 @@ When the Don speaks, analyze their intent:
 |--------|--------|
 | Building something new | Invoke `gangsta:reconnaissance` — begin a Heist |
 | Fixing a bug or issue | Invoke `gangsta:the-consigliere` for diagnosis first |
+| Debugging a problem | Invoke `gangsta:interrogation-debugging` for systematic root-cause analysis |
 | Continuing existing work | Check for checkpoint files in `docs/gangsta/specs/` — resume from last phase |
 | Asking a question | Answer directly — no Heist needed |
 | Reviewing or auditing | Invoke `gangsta:the-consigliere` for impartial review |
@@ -87,6 +88,15 @@ If the session was interrupted:
 - `gangsta:resource-development` — Phase 4: Infrastructure prep
 - `gangsta:the-hit` — Phase 5: Parallel execution
 - `gangsta:laundering` — Phase 6: Verification & integration
+
+### Software Development
+- `gangsta:interrogation-debugging` — Systematic root-cause debugging
+- `gangsta:drill-tdd` — Test-Driven Development (Red-Green-Refactor)
+- `gangsta:safehouse-worktrees` — Isolated git worktrees
+- `gangsta:audit-review` — Dispatches the-inspector for code review
+- `gangsta:receiving-orders` — Process review feedback with rigor
+- `gangsta:sweep-verification` — Evidence-before-assertions completion gate
+- `gangsta:exit-strategy` — Branch integration and safehouse cleanup
 
 ## Red Flags
 
