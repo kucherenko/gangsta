@@ -74,23 +74,11 @@ Tell OpenCode:
 
 > Fetch and follow instructions from https://raw.githubusercontent.com/kucherenko/gangsta/refs/heads/master/.opencode/INSTALL.md
 
-### Claude Code
-
-Tell Claude Code:
-
-> Fetch and follow instructions from https://raw.githubusercontent.com/kucherenko/gangsta/refs/heads/master/.claude-plugin/INSTALL.md
-
 ### Codex
 
 Tell Codex:
 
 > Fetch and follow instructions from https://raw.githubusercontent.com/kucherenko/gangsta/refs/heads/master/.codex/INSTALL.md
-
-### Cursor
-
-Tell Cursor:
-
-> Fetch and follow instructions from https://raw.githubusercontent.com/kucherenko/gangsta/refs/heads/master/.cursor-plugin/INSTALL.md
 
 ### Gemini CLI
 

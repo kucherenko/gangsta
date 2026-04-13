@@ -2,7 +2,8 @@
   "name": "gangsta-dev",
   "description": "Development marketplace for Gangsta framework",
   "owner": {
-    "name": "Gangsta Contributors"
+    "name": "Andrey Kucherenko",
+    "email": "kucherenko.andrey@gmail.com"
   },
   "plugins": [
     {

@@ -4,6 +4,7 @@
   "description": "AI agentic skills framework for spec-driven development",
   "type": "module",
   "main": ".opencode/plugins/gangsta.js",
+  "author": "Andrey Kucherenko <kucherenko.andrey@gmail.com>",
   "license": "MIT",
   "repository": {
     "type": "git",
