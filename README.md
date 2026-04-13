@@ -70,42 +70,38 @@ Five non-negotiable laws govern all operations:
 
 ### OpenCode
 
-Add to your `opencode.json`:
-```json
-{
-  "plugin": ["gangsta@git+https://github.com/kucherenko/gangsta.git"]
-}
-```
+Tell OpenCode:
+
+> Fetch and follow instructions from https://raw.githubusercontent.com/kucherenko/gangsta/refs/heads/master/.opencode/INSTALL.md
 
 ### Claude Code
 
-```
-/plugin marketplace add kucherenko/gangsta-marketplace
-/plugin install gangsta@gangsta-marketplace
-```
+Tell Claude Code:
 
-### Cursor
-
-```
-/add-plugin gangsta
-```
+> Fetch and follow instructions from https://raw.githubusercontent.com/kucherenko/gangsta/refs/heads/master/.claude-plugin/INSTALL.md
 
 ### Codex
 
-```bash
-git clone https://github.com/kucherenko/gangsta.git ~/.gangsta
-ln -sf ~/.gangsta/skills ~/.agents/skills/gangsta
-```
+Tell Codex:
+
+> Fetch and follow instructions from https://raw.githubusercontent.com/kucherenko/gangsta/refs/heads/master/.codex/INSTALL.md
+
+### Cursor
+
+Tell Cursor:
+
+> Fetch and follow instructions from https://raw.githubusercontent.com/kucherenko/gangsta/refs/heads/master/.cursor-plugin/INSTALL.md
 
 ### Gemini CLI
 
-```bash
-gemini extensions install https://github.com/kucherenko/gangsta
-```
+Tell Gemini:
+
+> Fetch and follow instructions from https://raw.githubusercontent.com/kucherenko/gangsta/refs/heads/master/GEMINI.md
 
 ## Verify Installation
 
 Start a new session and say:
+
 > "I want to build a new feature"
 
 The agent should invoke Gangsta skills automatically, starting with Reconnaissance.
