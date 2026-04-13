@@ -1,6 +1,6 @@
 # Gangsta
 
-An AI agentic skills framework for spec-driven development, built on the organizational model of La Cosa Nostra.
+An AI agentic skills framework for spec-driven development, built on the organizational model of mafia.
 
 ## Philosophy
 
@@ -42,6 +42,20 @@ The Borgata maintains institutional memory:
 - **Insights** — Successful reasoning pathways and creative solutions
 - **Fails** — Documented failures with cognitive diagnoses and negative constraints
 - **Constitution** — Accumulated commandments and prohibitions
+
+### Software Development Skills
+
+The Borgata provides battle-tested development disciplines:
+
+| Skill | Purpose |
+|-------|---------|
+| **Interrogation** | Systematic debugging — find the rat before applying fixes |
+| **The Drill** | TDD enforcement — no code without a failing test |
+| **Safehouse** | Git worktrees — isolated operational bases |
+| **The Audit** | Code review — the-inspector checks the work |
+| **Receiving Orders** | Process feedback with rigor, not blind agreement |
+| **The Sweep** | Verification — evidence before completion claims |
+| **Exit Strategy** | Branch integration and cleanup |
 
 ### Omerta: Governance
 
