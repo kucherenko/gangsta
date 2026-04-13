@@ -1,0 +1,47 @@
+#!/usr/bin/env bash
+set -euo pipefail
+
+# Gangsta session-start hook
+# Reads the-don skill and injects it as bootstrap context
+
+SCRIPT_DIR="$(cd "$(dirname "$0")" && pwd)"
+ROOT_DIR="$(cd "$SCRIPT_DIR/.." && pwd)"
+SKILL_FILE="$ROOT_DIR/skills/the-don/SKILL.md"
+
+if [ ! -f "$SKILL_FILE" ]; then
+  echo '{}' 
+  exit 0
+fi
+
+# Read skill content, strip YAML frontmatter
+CONTENT=$(sed '1{/^---$/,/^---$/d}' "$SKILL_FILE")
+
+# Wrap in importance tags
+BOOTSTRAP="<EXTREMELY_IMPORTANT>
+${CONTENT}
+
+**Tool Mapping:**
+When skills reference tools you don't have, substitute your platform's equivalents:
+- TodoWrite / todowrite → your task tracking tool
+- Task / task → your subagent dispatch tool
+- Skill / skill → your skill loading tool
+- Read, Write, Edit, Bash → your native tools
+</EXTREMELY_IMPORTANT>"
+
+# Escape for JSON
+ESCAPED=$(printf '%s' "$BOOTSTRAP" | python3 -c 'import sys,json; print(json.dumps(sys.stdin.read()))')
+
+# Detect platform and output in correct format
+if [ -n "${CLAUDE_PLUGIN_ROOT:-}" ]; then
+  # Claude Code
+  printf '{"hookSpecificOutput":{"additionalContext":%s}}' "$ESCAPED"
+elif [ -n "${CURSOR_PLUGIN_ROOT:-}" ]; then
+  # Cursor
+  printf '{"additional_context":%s}' "$ESCAPED"
+elif [ -n "${COPILOT_CLI:-}" ]; then
+  # GitHub Copilot CLI
+  printf '{"additionalContext":%s}' "$ESCAPED"
+else
+  # Generic fallback
+  printf '{"additionalContext":%s}' "$ESCAPED"
+fi
