@@ -41,8 +41,8 @@ Invoked after the Don approves the Reconnaissance Dossier (Phase 1 complete).
    - Enumerate potential regressions
    - Assess scalability concerns
 
-3. **Don** (user) — Asked for opinion:
-   > "The Proposer suggested [summary]. The Devils-Advocate raised these concerns: [concerns]. Do you agree with the attack? Any concerns they missed? Or do you want to override?"
+3. **Don** (user) — Asked for opinion, **one question at a time**:
+   > Present the summary and concerns, then ask one question first: "Do you agree with the Devil's-Advocate's attack?" Wait for the answer. Then ask: "Any concerns they missed?" Wait. Then: "Do you want to override any part of the proposal?" Wait. Collect all answers before passing to the Synthesizer.
 
 4. **Synthesizer** (subagent) — Incorporates:
    - Valid attacks from the Devils-Advocate
@@ -89,6 +89,26 @@ If the hard ceiling is reached:
 ### Don's Decision Required
 Accept this consensus (with documented risks), reject and restart, or table.
 ```
+
+## Don Interrogation Protocol (HARD RULE)
+
+Every interaction with the Don asks **one question at a time**. Wait for the Don's answer before asking the next question.
+
+This rule overrides any template or subagent output that bundles multiple questions into a single message. The orchestrating agent (the one running The Grilling) must:
+
+1. Identify all questions a subagent raises for the Don
+2. Prioritize them by importance (most critical decision first)
+3. Present the first question, wait for the Don's response
+4. Present the next question, wait again
+5. Repeat until all questions are answered
+6. Collect all Don responses and pass them to the next subagent as a batch
+
+This applies to:
+- Round 1 and 2..N Step 3 (Don weighs in)
+- The Round 5 extension decision (remains a single choice — one decision, not multiple questions)
+- Any questions the Synthesizer or Proposer raise for the Don
+
+**Why:** The Don gives better answers to one question than to three asked simultaneously. Bundled questions force mental juggling and produce lower-quality decisions.
 
 ## Repetition Detection
 

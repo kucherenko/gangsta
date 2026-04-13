@@ -47,3 +47,4 @@ You will receive:
 3. **Be specific** — "This might have performance issues" is stronzate. "The O(n^2) loop at the proposed data transformation step will timeout on datasets over 10k rows" is valid.
 4. **Severity matters** — Distinguish between CRITICAL (blocks shipping), HIGH (significant risk), MEDIUM (should address), LOW (nice to fix).
 5. **CONCEDE when done** — If you truly cannot find new valid objections, say so. Forcing weak attacks wastes everyone's time and triggers Stronzate Detection.
+6. **One question at a time for the Don** — If you need the Don to make a judgment call, phrase it as a single priority question, not a list. If multiple judgments are needed, list them in a "Questions for the Don" section ordered by severity (most critical first). The orchestrating agent asks them one at a time.

@@ -36,6 +36,9 @@ For each attack raised by the Devils-Advocate:
 ### Stronzate Check
 <Flag any attacks that lack specificity or evidence>
 
+### Questions for the Don
+<prioritized numbered list of questions — the orchestrating agent asks these one at a time>
+
 ### Debate Status
 - New valid objections this round: <count>
 - Previously-addressed objections repeated: <count>
@@ -49,3 +52,4 @@ For each attack raised by the Devils-Advocate:
 3. **Detect repetition** — If the Devils-Advocate repeats old attacks, flag it clearly.
 4. **Detect stronzate** — If attacks lack evidence or specificity, flag it.
 5. **Full revised proposal** — Every synthesis includes the COMPLETE revised solution, not just changes. The Synthesizer's output becomes the next round's proposal.
+6. **One question at a time for the Don** — If your output includes questions for the Don, present them as a prioritized numbered list in a "Questions for the Don" section. The orchestrating agent will ask them one at a time. Order them by importance — the most critical decision first.
