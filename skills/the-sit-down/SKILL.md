@@ -61,6 +61,16 @@ signatories: []
 ## Architectural Decisions
 <Key decisions from the Grilling consensus, with rationale>
 
+## Grilling Conclusions
+### Key Decisions
+- <Decision>: <rationale>
+
+### Rejected Alternatives
+- <Alternative>: <why rejected>
+
+### Unresolved Objections
+- <Objection> — Risk: HIGH/MEDIUM/LOW — Mitigation: <if any>
+
 ## Applicable Constitution Rules
 ### Commandments
 - <Commandment text> — Source: insights/<file>
@@ -109,7 +119,7 @@ signatories: [Don, Consigliere, Underboss]
 
 ## Output
 
-Save to: `docs/gangsta/specs/<heist-name>/contract.md`
+Save to: `docs/gangsta/<heist-name>/specs/YYYY-MM-DD-contract.md`
 
 ## Checkpoint
 
@@ -121,7 +131,7 @@ status: completed
 timestamp: <ISO 8601>
 next-action: Proceed to Resource Development (Phase 4)
 artifacts:
-  - docs/gangsta/specs/<heist-name>/contract.md
+  - docs/gangsta/<heist-name>/specs/YYYY-MM-DD-contract.md
 ---
 ```
 
