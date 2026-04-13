@@ -46,6 +46,8 @@ Run the full verification suite:
 2. The responsible Capo dispatches a Soldier to fix it
 3. Re-run verification
 
+Use `gangsta:sweep-verification` — every claim of passing must be backed by fresh command output.
+
 ### Step 3: Consigliere Final Review
 
 Invoke `gangsta:the-consigliere` for an architectural audit of the integrated code:
@@ -57,6 +59,8 @@ Invoke `gangsta:the-consigliere` for an architectural audit of the integrated co
 If the Consigliere raises CRITICAL concerns: fix before proceeding.
 If CONCERNS: present to Don for decision.
 If APPROVE: proceed.
+
+For an independent code-level review alongside the Consigliere's architectural assessment, dispatch `gangsta:audit-review`.
 
 ### Step 4: Automated Cleanup
 
