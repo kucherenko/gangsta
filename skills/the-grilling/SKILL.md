@@ -133,12 +133,15 @@ The Proposer, Devils-Advocate, and Synthesizer are dispatched as subagents using
 
 ## Output
 
-Save to: `docs/gangsta/specs/<heist-name>/grilling-transcript.md`
+The Grilling does NOT produce a standalone transcript file. Instead, the orchestrating agent produces a **Grilling Conclusions** summary at the end of the debate. This summary is passed directly to the next phase (The Sit-Down) for inclusion in the Contract.
 
-The transcript includes:
-- Each round's proposal, attacks, Don's input, and synthesis
-- The final consensus (or Best Available Consensus)
-- Termination reason (Nash Equilibrium / Don declared / Round limit)
+The Grilling Conclusions must contain:
+- **Key Decisions:** Each architectural/design decision reached, with rationale
+- **Rejected Alternatives:** Each option that was considered and discarded, with the reason
+- **Unresolved Objections:** Any risks acknowledged but accepted (from Best Available Consensus)
+- **Termination Reason:** Nash Equilibrium / Don declared / Round limit
+
+The orchestrating agent holds this summary in context — it is NOT saved as a separate file.
 
 ## Checkpoint
 
@@ -149,8 +152,8 @@ phase: the-grilling
 status: completed
 timestamp: <ISO 8601>
 next-action: Proceed to The Sit-Down (Phase 3)
-artifacts:
-  - docs/gangsta/specs/<heist-name>/grilling-transcript.md
+artifacts: []
+note: Grilling Conclusions passed in-context to The Sit-Down for inclusion in the Contract
 ---
 ```
 
