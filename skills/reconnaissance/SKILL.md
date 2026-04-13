@@ -11,7 +11,7 @@ Every Heist begins with gathering intel. The Underboss deploys Associates to per
 
 ## Trigger
 
-Invoked by `gangsta:the-don` when the user expresses building/creative intent.
+Invoked when the Don expresses building or creative intent.
 
 ## Process
 
