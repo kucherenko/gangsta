@@ -1,0 +1,20 @@
+{
+  "name": "gangsta",
+  "version": "1.0.0",
+  "description": "AI agentic skills framework for spec-driven development",
+  "type": "module",
+  "main": ".opencode/plugins/gangsta.js",
+  "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/user/gangsta.git"
+  },
+  "keywords": [
+    "ai",
+    "agents",
+    "skills",
+    "spec-driven-development",
+    "sdd",
+    "framework"
+  ]
+}
