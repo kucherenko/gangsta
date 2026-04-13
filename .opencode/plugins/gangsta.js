@@ -19,23 +19,21 @@ function readBootstrap() {
 }
 
 export default {
-  name: "gangsta",
-  version: "1.0.0",
+  id: "gangsta",
 
-  config(cfg) {
-    cfg.skills = cfg.skills || {};
-    cfg.skills.paths = cfg.skills.paths || [];
-    cfg.skills.paths.push(SKILLS_DIR);
-    return cfg;
-  },
+  server: async (_input, _options) => {
+    return {
+      config: async (cfg) => {
+        cfg.skills = cfg.skills || {};
+        cfg.skills.paths = cfg.skills.paths || [];
+        cfg.skills.paths.push(SKILLS_DIR);
+      },
 
-  "experimental.chat.messages.transform"(messages) {
-    if (!messages.length) return messages;
-    const bootstrap = readBootstrap();
-    const first = messages[0];
-    if (Array.isArray(first.content)) {
-      first.content.unshift({ type: "text", text: bootstrap });
-    }
-    return messages;
+      "experimental.chat.messages.transform": async (_input, output) => {
+        if (!output.messages.length) return;
+        const bootstrap = readBootstrap();
+        output.messages[0].parts.unshift({ type: "text", text: bootstrap });
+      },
+    };
   },
 };
