@@ -1,0 +1,63 @@
+name: CI
+
+on:
+  pull_request:
+    branches:
+      - master
+
+jobs:
+  commitlint:
+    name: Validate PR Title
+    runs-on: ubuntu-latest
+    steps:
+      - name: Check PR title follows Conventional Commits
+        uses: amannn/action-semantic-pull-request@v5
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        with:
+          types: |
+            feat
+            fix
+            docs
+            refactor
+            perf
+            test
+            chore
+            build
+            ci
+          requireScope: false
+
+  skill-check:
+    name: Validate Skill Structure
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Check every skill directory has SKILL.md
+        run: |
+          failed=0
+          for dir in skills/*/; do
+            if [ ! -f "${dir}SKILL.md" ]; then
+              echo "ERROR: Missing SKILL.md in ${dir}"
+              failed=1
+            fi
+          done
+          if [ $failed -eq 1 ]; then
+            echo "One or more skill directories are missing SKILL.md"
+            exit 1
+          fi
+          echo "All skill directories have SKILL.md ✓"
+
+  changelog-check:
+    name: Changelog Present
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Verify CHANGELOG.md exists and is non-empty
+        run: |
+          if [ ! -s CHANGELOG.md ]; then
+            echo "ERROR: CHANGELOG.md is missing or empty"
+            exit 1
+          fi
+          echo "CHANGELOG.md present ✓"

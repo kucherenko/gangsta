@@ -1,0 +1,17 @@
+---
+heist: changelog-cicd
+phase: implementation
+status: completed
+timestamp: 2026-04-14T00:00:00Z
+next-action: Don reviews and pushes tags + commits
+artifacts:
+  - CHANGELOG.md
+  - release-please-config.json
+  - .release-please-manifest.json
+  - .github/workflows/release-please.yml
+  - .github/workflows/ci.yml
+  - git tag v0.1.0 at c3d3fd23
+  - git tag v0.2.0 at bbb06fc1
+  - git tag v0.3.0 at 64bb26bb
+  - git tag v1.0.0 at 7bb54562 (HEAD)
+---
