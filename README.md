@@ -16,14 +16,18 @@ When you start a session, the framework bootstraps The Don — an orchestrator t
 
 ### The Heist Pipeline
 
-1. **Reconnaissance** — Intel gathering on codebase and requirements
-2. **The Grilling** — Adversarial brainstorming via Multi-Agent Debate (Proposer vs Devils-Advocate, with you weighing in each round)
-3. **The Sit-Down** — Formal spec drafting. No code allowed.
-4. **Resource Development** — Task decomposition into Work Packages
-5. **The Hit** — Parallel execution by Soldier subagents with TDD enforcement
-6. **Laundering** — Verification, integration, and Ledger update
+| Phase | What Happens |
+|-------|-------------|
+| 1. **Reconnaissance** | Intel gathering on codebase and requirements |
+| 2. **The Grilling** | Adversarial brainstorming via Multi-Agent Debate (Proposer vs Devils-Advocate, with you weighing in each round) |
+| 3. **The Sit-Down** | Formal spec drafting. No code allowed. |
+| 4. **Resource Development** | Task decomposition into Work Packages |
+| 5. **The Hit** | Parallel execution by Soldier subagents with TDD enforcement |
+| 6. **Laundering** | Verification, integration, and Ledger update |
 
 Every phase gate requires your approval. You are the Don.
+
+→ [Full Heist Pipeline documentation](docs/heist-pipeline.md)
 
 ### The Borgata Hierarchy
 
@@ -36,16 +40,18 @@ Every phase gate requires your approval. You are the Don.
 | **Soldier** | Stateless code executor. TDD enforced. |
 | **Associate** | External tool/API proxy. |
 
+→ [Full Hierarchy documentation](docs/hierarchy.md)
+
 ### The Family Ledger
 
-The Borgata maintains institutional memory:
+The Borgata maintains institutional memory across all Heists:
 - **Insights** — Successful reasoning pathways and creative solutions
 - **Fails** — Documented failures with cognitive diagnoses and negative constraints
 - **Constitution** — Accumulated commandments and prohibitions
 
-### Software Development Skills
+→ [Full Ledger documentation](docs/ledger.md)
 
-The Borgata provides battle-tested development disciplines:
+### Software Development Skills
 
 | Skill | Purpose |
 |-------|---------|
@@ -57,14 +63,19 @@ The Borgata provides battle-tested development disciplines:
 | **The Sweep** | Verification — evidence before completion claims |
 | **Exit Strategy** | Branch integration and cleanup |
 
+→ [Full Dev Skills documentation](docs/dev-skills.md)
+
 ### Omerta: Governance
 
 Five non-negotiable laws govern all operations:
+
 1. **Introduction Rule** — No agent-to-agent communication without hierarchy mediation
 2. **Rule of Availability** — All state checkpointed to files
 3. **Rule of Truth** — Every claim cites its source. No stronzate.
 4. **Rule of Tribute** — Resource budgets tracked and enforced
 5. **Spec is Law** — Code contradicts spec → spec is revised first
+
+→ [Full Omerta documentation](docs/omerta.md)
 
 ## Installation
 
