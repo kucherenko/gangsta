@@ -17,5 +17,8 @@
     "spec-driven-development",
     "sdd",
     "framework"
-  ]
+  ],
+  "scripts": {
+    "validate": "bash scripts/validate.sh"
+  }
 }
