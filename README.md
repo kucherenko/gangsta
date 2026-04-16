@@ -79,6 +79,13 @@ Five non-negotiable laws govern all operations:
 
 ## Installation
 
+### Claude Code
+
+```bash
+/plugin marketplace add kucherenko/gangsta
+/plugin install gangsta@gangsta
+```
+
 ### OpenCode
 
 Tell OpenCode:
