@@ -4,6 +4,20 @@ All notable changes to Gangsta are documented here.
 
 This project adheres to [Keep a Changelog](https://keepachangelog.com/en/1.1.0/) and [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
+## [1.1.1](https://github.com/kucherenko/gangsta/compare/gangsta-v1.1.0...gangsta-v1.1.1) (2026-04-16)
+
+
+### ### Fixed
+
+* update Copilot plugin install command to use gangsta-marketplace registry ([b064328](https://github.com/kucherenko/gangsta/commit/b0643284de8be287646ae267bc8b3fc243e00012))
+
+
+### ### Documentation
+
+* add Claude Code installation instructions ([761f831](https://github.com/kucherenko/gangsta/commit/761f8317651ebe69a4aa424c76f5f1d1358f1537))
+* add GitHub Copilot installation instructions ([e755c25](https://github.com/kucherenko/gangsta/commit/e755c2590c1a8038e57e463882061034259d6791))
+* add logo to top of README ([578a3c5](https://github.com/kucherenko/gangsta/commit/578a3c5e4d09728ca7a94bfe3eb0f980b7ce9ed0))
+
 ## [1.1.0](https://github.com/kucherenko/gangsta/compare/gangsta-v1.0.0...gangsta-v1.1.0) (2026-04-14)
 
 
