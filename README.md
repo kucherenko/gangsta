@@ -94,7 +94,7 @@ Five non-negotiable laws govern all operations:
 
 ```bash
 copilot plugin marketplace add kucherenko/gangsta
-copilot plugin install gangsta@gangsta
+copilot plugin install gangsta@gangsta-marketplace
 ```
 
 ### OpenCode
