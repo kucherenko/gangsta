@@ -86,6 +86,13 @@ Five non-negotiable laws govern all operations:
 /plugin install gangsta@gangsta
 ```
 
+### GitHub Copilot
+
+```bash
+copilot plugin marketplace add kucherenko/gangsta
+copilot plugin install gangsta@gangsta
+```
+
 ### OpenCode
 
 Tell OpenCode:
