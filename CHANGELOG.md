@@ -4,6 +4,43 @@ All notable changes to Gangsta are documented here.
 
 This project adheres to [Keep a Changelog](https://keepachangelog.com/en/1.1.0/) and [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
+## [1.1.0](https://github.com/kucherenko/gangsta/compare/gangsta-v1.0.0...gangsta-v1.1.0) (2026-04-14)
+
+
+### ### Added
+
+* add gangsta framework design spec and implementation plan ([5e45e32](https://github.com/kucherenko/gangsta/commit/5e45e324ec6bb88429400d82c5d6eaec892cb426))
+* add laundering skill — Phase 6 verification, integration, and ledger update ([b0f6820](https://github.com/kucherenko/gangsta/commit/b0f68200371ead1f707321ad80742efcfaf893f6))
+* add local validation script and restructure docs ([#1](https://github.com/kucherenko/gangsta/issues/1)) ([1f3a282](https://github.com/kucherenko/gangsta/commit/1f3a2820713980434bb1063491efae08287016d8))
+* add named agent definitions — soldier, devils-advocate, proposer, synthesizer, associate ([c3d3fd2](https://github.com/kucherenko/gangsta/commit/c3d3fd23fae48ff84d7c3abac8c98f810a2506bc))
+* add omerta skill — governance foundation for all gangsta operations ([3ba6a98](https://github.com/kucherenko/gangsta/commit/3ba6a98a6f04fcb66f9a44c7f85fdbf3ae929970))
+* add OpenCode plugin and cross-platform bootstrap hooks ([db69d2b](https://github.com/kucherenko/gangsta/commit/db69d2ba599fa42850245c019bb8b96077c6cbf7))
+* add platform manifests for Claude Code, Cursor, Codex, and Gemini ([65ab164](https://github.com/kucherenko/gangsta/commit/65ab164cc919724d37ebd130b2ba57d92656548d))
+* add README and contributor guidelines ([d45aa28](https://github.com/kucherenko/gangsta/commit/d45aa2861756e6af199bf4e26a586fd541898db9))
+* add reconnaissance skill — Phase 1 intel gathering ([8a0353b](https://github.com/kucherenko/gangsta/commit/8a0353bf4e8407a415d24e02fb0c99335aef3844))
+* add resource-development skill — Phase 4 task decomposition and war planning ([42e2207](https://github.com/kucherenko/gangsta/commit/42e2207ad356f44d8c4ef3d6ba2b8308d2bab086))
+* add the-capo skill — domain territory commander template ([18ce5ce](https://github.com/kucherenko/gangsta/commit/18ce5ce0c2c39e62b9a2e0fde5ae33241a07e1db))
+* add the-consigliere skill — impartial architectural advisor ([604e6e3](https://github.com/kucherenko/gangsta/commit/604e6e319e310ef45197d48c48985b5d5a47cb5f))
+* add the-don skill — bootstrap orchestrator for the Borgata ([a9808a1](https://github.com/kucherenko/gangsta/commit/a9808a1058e94a428e99d92775075b5d3bebcc6a))
+* add the-grilling skill — adversarial MAD protocol with round limits ([227e007](https://github.com/kucherenko/gangsta/commit/227e0075a37cc390aa17d322cc224f61e895db31))
+* add the-hit skill — Phase 5 parallel execution with TDD enforcement ([9f92053](https://github.com/kucherenko/gangsta/commit/9f92053f4616ac180b5bc3cf10633546ef91535c))
+* add the-ledger skill — institutional memory for insights and fails ([2d7049b](https://github.com/kucherenko/gangsta/commit/2d7049b7ff05d34d17a087910fc147ad6071faf7))
+* add the-sit-down skill — Phase 3 contract drafting with code prohibition ([4ffc1f4](https://github.com/kucherenko/gangsta/commit/4ffc1f4be90a4eace1685a4c303021e6b886516f))
+* add the-underboss skill — task decomposition and resource management ([732a3a2](https://github.com/kucherenko/gangsta/commit/732a3a28fa786ff3dff426fa94da0a318372418c))
+* **the-grilling:** enforce one-question-at-a-time for Don interactions ([277a105](https://github.com/kucherenko/gangsta/commit/277a105050e127ba76112c1ede9ffc0598b01f84))
+
+
+### ### Fixed
+
+* update repository URLs from placeholder to kucherenko/gangsta ([0e75b91](https://github.com/kucherenko/gangsta/commit/0e75b91efb43ae061a9b87f6ec08dae4af7da535))
+* use awk for POSIX-compatible YAML frontmatter stripping in session-start hook ([bbb06fc](https://github.com/kucherenko/gangsta/commit/bbb06fc15992c43a71bfc90846e408ad377ba0ce))
+
+
+### ### Changed
+
+* merge the-don into using-gangsta, add proactive memory capture ([97e5a2c](https://github.com/kucherenko/gangsta/commit/97e5a2ccc254d278da4d4a49c6fc02c7666c02a7))
+* replace phase number labels with phase names across all skills ([7bb5456](https://github.com/kucherenko/gangsta/commit/7bb54562ebf7c94073a013748187c75032824fc8))
+
 ## [Unreleased]
 
 ## [1.0.0] - 2026-04-13 — Framework Maturity
