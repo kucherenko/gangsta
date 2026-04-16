@@ -1,7 +1,7 @@
 {
   "name": "gangsta",
   "description": "AI agentic skills framework for spec-driven development — mafia-syndicate hierarchy with adversarial brainstorming, institutional memory, and governance guardrails",
-  "version": "1.0.0",
+  "version": "1.1.0",
   "author": {
     "name": "Andrey Kucherenko",
     "email": "kucherenko.andrey@gmail.com"
