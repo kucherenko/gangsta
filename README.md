@@ -1,3 +1,7 @@
+<div align="center">
+  <img src="logo.svg" alt="Gangsta" width="200" />
+</div>
+
 # Gangsta
 
 An AI agentic skills framework for spec-driven development, built on the organizational model of mafia.
