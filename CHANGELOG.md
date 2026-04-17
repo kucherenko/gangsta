@@ -4,6 +4,13 @@ All notable changes to Gangsta are documented here.
 
 This project adheres to [Keep a Changelog](https://keepachangelog.com/en/1.1.0/) and [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
+## [1.1.3](https://github.com/kucherenko/gangsta/compare/gangsta-v1.1.2...gangsta-v1.1.3) (2026-04-17)
+
+
+### ### Documentation
+
+* make OpenCode and Codex install instructions copyable ([a51dbb9](https://github.com/kucherenko/gangsta/commit/a51dbb94b72a838b53ec9b047023a9eb40f36495))
+
 ## [1.1.2](https://github.com/kucherenko/gangsta/compare/gangsta-v1.1.1...gangsta-v1.1.2) (2026-04-17)
 
 
