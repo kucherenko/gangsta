@@ -29,10 +29,9 @@ export default {
         cfg.skills.paths.push(SKILLS_DIR);
       },
 
-      "experimental.chat.messages.transform": async (_input, output) => {
-        if (!output.messages.length) return;
+      "experimental.chat.system.transform": async (_input, output) => {
         const bootstrap = readBootstrap();
-        output.messages[0].parts.unshift({ type: "text", text: bootstrap });
+        output.system.unshift(bootstrap);
       },
     };
   },
