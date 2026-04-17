@@ -101,13 +101,17 @@ copilot plugin install gangsta@gangsta-marketplace
 
 Tell OpenCode:
 
-> Fetch and follow instructions from https://raw.githubusercontent.com/kucherenko/gangsta/refs/heads/master/.opencode/INSTALL.md
+```
+Fetch and follow instructions from https://raw.githubusercontent.com/kucherenko/gangsta/refs/heads/master/.opencode/INSTALL.md
+```
 
 ### Codex
 
 Tell Codex:
 
-> Fetch and follow instructions from https://raw.githubusercontent.com/kucherenko/gangsta/refs/heads/master/.codex/INSTALL.md
+```
+Fetch and follow instructions from https://raw.githubusercontent.com/kucherenko/gangsta/refs/heads/master/.codex/INSTALL.md
+```
 
 ### Gemini CLI
 
