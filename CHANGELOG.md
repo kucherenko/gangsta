@@ -4,6 +4,13 @@ All notable changes to Gangsta are documented here.
 
 This project adheres to [Keep a Changelog](https://keepachangelog.com/en/1.1.0/) and [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
+## [1.1.2](https://github.com/kucherenko/gangsta/compare/gangsta-v1.1.1...gangsta-v1.1.2) (2026-04-17)
+
+
+### ### Fixed
+
+* inject bootstrap via system.transform instead of messages.transform ([53a0924](https://github.com/kucherenko/gangsta/commit/53a092453e3d37ab947ac2c372bab24f97cde805))
+
 ## [1.1.1](https://github.com/kucherenko/gangsta/compare/gangsta-v1.1.0...gangsta-v1.1.1) (2026-04-16)
 
 

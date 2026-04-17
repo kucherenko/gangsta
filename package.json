@@ -1,6 +1,6 @@
 {
   "name": "gangsta",
-  "version": "1.1.1",
+  "version": "1.1.2",
   "description": "AI agentic skills framework for spec-driven development",
   "type": "module",
   "main": ".opencode/plugins/gangsta.js",
