@@ -4,6 +4,13 @@ All notable changes to Gangsta are documented here.
 
 This project adheres to [Keep a Changelog](https://keepachangelog.com/en/1.1.0/) and [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
+## [1.2.0](https://github.com/kucherenko/gangsta/compare/gangsta-v1.1.3...gangsta-v1.2.0) (2026-04-18)
+
+
+### ### Added
+
+* add initial idea critique to devils-advocate in Round 1 ([b28e2d5](https://github.com/kucherenko/gangsta/commit/b28e2d5b163d6c5663b0271de3164e512b5e0ae3))
+
 ## [1.1.3](https://github.com/kucherenko/gangsta/compare/gangsta-v1.1.2...gangsta-v1.1.3) (2026-04-17)
 
 
