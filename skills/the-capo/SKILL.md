@@ -35,7 +35,7 @@ For each Work Package assigned to this territory:
    - Relevant Negative Constraints from the Constitution
    - The Contract clause being implemented
 
-2. **Dispatch Soldier** — Launch a subagent with the Soldier brief. Multiple Soldiers can run in parallel on independent Work Packages.
+2. **Dispatch Soldier** — Launch a subagent with `subagent_type: "general"` (do NOT use `"general-purpose"` — it is not valid and will fail) and the Soldier brief. Multiple Soldiers can run in parallel on independent Work Packages.
 
 3. **Receive Tribute** — Each Soldier returns:
    ```markdown

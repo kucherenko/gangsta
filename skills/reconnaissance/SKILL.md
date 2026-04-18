@@ -24,7 +24,9 @@ The Underboss parses the Don's request to identify:
 
 ### Step 2: Deploy Associates
 
-Dispatch Associate subagents in parallel to gather intel:
+Dispatch Associate subagents in parallel to gather intel.
+
+**Subagent type:** Use `subagent_type: "general"` for all Associate dispatches. Do NOT use `"general-purpose"` — it is not a valid type and will fail.
 
 | Associate Task | What to Survey |
 |---------------|---------------|

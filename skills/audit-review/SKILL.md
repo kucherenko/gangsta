@@ -34,7 +34,9 @@ HEAD_SHA=$(git rev-parse HEAD)
 
 ### 2. Dispatch the-inspector
 
-Use the Task tool to dispatch the `the-inspector` agent. Fill the template at `the-inspector-prompt.md` in this skill directory with the following placeholders:
+Use the Task tool to dispatch the `the-inspector` agent with `subagent_type: "general"`. Do NOT use `"general-purpose"` — it is not a valid type and will fail.
+
+Fill the template at `the-inspector-prompt.md` in this skill directory with the following placeholders:
 
 - `{WHAT_WAS_IMPLEMENTED}` — What you just built
 - `{PLAN_OR_REQUIREMENTS}` — What it should do (Contract clause, spec section)
