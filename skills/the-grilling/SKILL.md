@@ -34,12 +34,9 @@ Invoked after the Don approves the Reconnaissance Dossier (Reconnaissance comple
    - File structure changes
    - Potential risks (Inverse Reasoning requirement)
 
-2. **Devils-Advocate** (subagent) — Attacks the proposal:
-   - Find architectural flaws
-   - Identify security gaps
-   - Check against Constitution Negative Constraints
-   - Enumerate potential regressions
-   - Assess scalability concerns
+2. **Devils-Advocate** (subagent) — Attacks in two layers:
+   - **Initial Idea Critique** — Challenge the Don's objective itself: problem framing, hidden assumptions, simpler alternatives, scope concerns. Renders an Idea Verdict before touching the proposal.
+   - **Proposal Attack** — Find architectural flaws, identify security gaps, check against Constitution Negative Constraints, enumerate potential regressions, assess scalability concerns.
 
 3. **Don** (user) — Asked for opinion, **one question at a time**:
    > Present the summary and concerns, then ask one question first: "Do you agree with the Devil's-Advocate's attack?" Wait for the answer. Then ask: "Any concerns they missed?" Wait. Then: "Do you want to override any part of the proposal?" Wait. Collect all answers before passing to the Synthesizer.
