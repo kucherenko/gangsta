@@ -100,6 +100,26 @@ This rule overrides any template or subagent output that bundles multiple questi
 5. Repeat until all questions are answered
 6. Collect all Don responses and pass them to the next subagent as a batch
 
+### Question Tool Schema (HARD RULE)
+
+When using the `question` tool to ask the Don, every option MUST have both fields as non-null strings:
+
+```
+label: string       — concise display text, 1-5 words
+description: string — explanation of what choosing this option means
+```
+
+**`description` is NEVER null, undefined, or omitted.** Even for obvious choices like "Yes" or "No", provide a description:
+
+```
+Bad:  { label: "Yes" }
+Bad:  { label: "Yes", description: null }
+Good: { label: "Yes", description: "I agree with the Devil's-Advocate's attack" }
+Good: { label: "No",  description: "I reject the attack — the proposal stands" }
+```
+
+Violating this schema causes the tool call to fail with a validation error.
+
 This applies to:
 - Round 1 and 2..N Step 3 (Don weighs in)
 - The Round 5 extension decision (remains a single choice — one decision, not multiple questions)
@@ -127,6 +147,17 @@ The Proposer, Devils-Advocate, and Synthesizer are dispatched as subagents using
 - `proposer-prompt.md` — Prompt template for the Proposer
 - `devils-advocate-prompt.md` — Prompt template for the Devils-Advocate
 - `synthesizer-prompt.md` — Prompt template for the Synthesizer
+
+### Dispatch Instructions
+
+When calling the Task tool to dispatch each subagent:
+
+1. Read the prompt file for that agent from the skill's directory
+2. Fill in template placeholders (dossier content, previous round output, Don's responses, etc.)
+3. Set `subagent_type` to `"general"` — these agents need to read files and perform complex multi-step analysis
+4. Include the full filled prompt as the `prompt` parameter
+
+**CRITICAL — Platform agent types:** Valid `subagent_type` values in OpenCode are `"general"` (full tool access) and `"explore"` (read-only search). **Never use `"general-purpose"`, `"Task"`, `"oracle"`, `"fixer"`, `"explorer"`, or `"council"` — these are invalid and will fail.** See `using-gangsta/references/opencode-tools.md` for the complete platform mapping.
 
 ## Output
 

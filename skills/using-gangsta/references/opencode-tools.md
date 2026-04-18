@@ -19,16 +19,16 @@ Skills use Claude Code tool names as the canonical reference. When you encounter
 
 ## Agent types
 
-OpenCode's `task` tool accepts a `subagent_type` parameter:
+OpenCode's `task` tool accepts a `subagent_type` parameter. The built-in subagents are:
 
-| Claude Code agent | OpenCode equivalent |
-|-------------------|---------------------|
-| General-purpose | `"fixer"` — fast implementation specialist |
-| Explore / research | `"explorer"` — codebase search and pattern matching |
-| Code review | `"oracle"` — strategic advisor, code review |
-| Architecture / design | `"oracle"` — architecture decisions, engineering guidance |
-| Multi-model council | `"council"` — synthesizes responses from multiple models |
-| Named plugin agents (e.g. `gangsta:soldier`) | Use `"fixer"` with the agent's prompt content included in the task prompt |
+| Subagent | When to use |
+|----------|-------------|
+| `"general"` | Complex research, multi-step tasks, analysis, synthesis — has full tool access (except todo) |
+| `"explore"` | Fast, read-only codebase search — finding files, searching keywords, answering questions about code |
+
+**Do not use `"fixer"`, `"explorer"`, `"oracle"`, or `"council"` — these are not valid OpenCode agent types and will fail.**
+
+Custom agents defined in `~/.config/opencode/agents/` or `.opencode/agents/` are also valid — use their filename (without `.md`) as the `subagent_type`.
 
 ## Named agent dispatch
 
@@ -39,7 +39,7 @@ When a skill says to dispatch a named agent type:
 1. Find the agent's prompt file (e.g., `agents/soldier.md`)
 2. Read the prompt content
 3. Fill any template placeholders
-4. Dispatch a `fixer` (for execution tasks) or `explorer` (for research tasks) with the filled content as the prompt
+4. Dispatch a `general` subagent with the filled content as the prompt
 
 ## Background tasks
 
@@ -52,6 +52,26 @@ OpenCode supports background task execution for parallel work:
 | `background_cancel` | Cancel running background tasks |
 
 Use these for skills like `gangsta:the-hit` that dispatch parallel Soldier work.
+
+## Question tool schema
+
+When using the `question` tool to ask the Don, every option object MUST have both fields as non-null strings:
+
+| Field | Type | Notes |
+|-------|------|-------|
+| `label` | string | Concise display text, 1-5 words |
+| `description` | string | Explanation of what this choice means — **NEVER null** |
+
+**`description` is required and must be a non-null string**, even for obvious choices:
+
+```
+Bad:  { label: "Yes" }
+Bad:  { label: "Yes", description: null }
+Good: { label: "Yes", description: "I agree with this proposal" }
+Good: { label: "No",  description: "I reject this — do not proceed" }
+```
+
+Omitting or nulling `description` causes a schema validation error at runtime.
 
 ## Additional OpenCode tools
 
