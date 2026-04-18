@@ -4,6 +4,13 @@ All notable changes to Gangsta are documented here.
 
 This project adheres to [Keep a Changelog](https://keepachangelog.com/en/1.1.0/) and [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
+## [1.2.1](https://github.com/kucherenko/gangsta/compare/gangsta-v1.2.0...gangsta-v1.2.1) (2026-04-18)
+
+
+### ### Fixed
+
+* correct OpenCode subagent types and question tool schema in the-grilling ([1de3560](https://github.com/kucherenko/gangsta/commit/1de3560539213e3f1d4871fcc3397c47e2e6ec35))
+
 ## [1.2.0](https://github.com/kucherenko/gangsta/compare/gangsta-v1.1.3...gangsta-v1.2.0) (2026-04-18)
 
 
