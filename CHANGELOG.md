@@ -4,6 +4,13 @@ All notable changes to Gangsta are documented here.
 
 This project adheres to [Keep a Changelog](https://keepachangelog.com/en/1.1.0/) and [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
+## [1.2.2](https://github.com/kucherenko/gangsta/compare/gangsta-v1.2.1...gangsta-v1.2.2) (2026-04-18)
+
+
+### ### Fixed
+
+* specify correct subagent_type in all dispatch-capable skills ([16fa741](https://github.com/kucherenko/gangsta/commit/16fa741e4b06fa917ba2dfd6d060e22f38e4a59a))
+
 ## [1.2.1](https://github.com/kucherenko/gangsta/compare/gangsta-v1.2.0...gangsta-v1.2.1) (2026-04-18)
 
 
