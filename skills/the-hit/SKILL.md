@@ -27,7 +27,7 @@ For each territory, the Underboss sends the Capo:
 
 Each Capo (invoke `gangsta:the-capo`) processes their Work Packages:
 
-1. For each independent Work Package, dispatch a Soldier subagent with `subagent_type: "general"` (do NOT use `"general-purpose"` — it is not valid and will fail), providing:
+1. For each independent Work Package, dispatch a Soldier subagent with `subagent_type: "soldier"` (do NOT use `"general"` or `"general-purpose"` — these are not valid in a Gangsta installation), providing:
    - The Work Package brief
    - The Contract clause being implemented
    - Applicable Negative Constraints

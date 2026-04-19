@@ -154,10 +154,10 @@ When calling the Task tool to dispatch each subagent:
 
 1. Read the prompt file for that agent from the skill's directory
 2. Fill in template placeholders (dossier content, previous round output, Don's responses, etc.)
-3. Set `subagent_type` to `"general"` — these agents need to read files and perform complex multi-step analysis
+3. Set `subagent_type` to the named Gangsta agent — `"proposer"`, `"devils-advocate"`, or `"synthesizer"` as appropriate. Do NOT use `"general"` or `"general-purpose"` — these are not valid in a Gangsta installation.
 4. Include the full filled prompt as the `prompt` parameter
 
-**CRITICAL — Platform agent types:** Valid `subagent_type` values in OpenCode are `"general"` (full tool access) and `"explore"` (read-only search). **Never use `"general-purpose"`, `"Task"`, `"oracle"`, `"fixer"`, `"explorer"`, or `"council"` — these are invalid and will fail.** See `using-gangsta/references/opencode-tools.md` for the complete platform mapping.
+**CRITICAL — Platform agent types:** Valid `subagent_type` values in a Gangsta installation are the named custom agents: `"associate"`, `"soldier"`, `"the-inspector"`, `"proposer"`, `"devils-advocate"`, `"synthesizer"`. The built-in `"general"` and `"explore"` agents are disabled. **Never use `"general-purpose"`, `"Task"`, `"oracle"`, `"fixer"`, `"explorer"`, or `"council"` — these are never valid.** See `using-gangsta/references/opencode-tools.md` for the complete platform mapping.
 
 ## Output
 

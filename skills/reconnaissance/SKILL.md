@@ -26,7 +26,7 @@ The Underboss parses the Don's request to identify:
 
 Dispatch Associate subagents in parallel to gather intel.
 
-**Subagent type:** Use `subagent_type: "general"` for all Associate dispatches. Do NOT use `"general-purpose"` — it is not a valid type and will fail.
+**Subagent type:** Use `subagent_type: "associate"` for all Associate dispatches. Do NOT use `"general"` or `"general-purpose"` — these are not valid in a Gangsta installation.
 
 | Associate Task | What to Survey |
 |---------------|---------------|

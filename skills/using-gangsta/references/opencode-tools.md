@@ -19,27 +19,26 @@ Skills use Claude Code tool names as the canonical reference. When you encounter
 
 ## Agent types
 
-OpenCode's `task` tool accepts a `subagent_type` parameter. The built-in subagents are:
+OpenCode's `task` tool accepts a `subagent_type` parameter. The value must exactly match a registered agent name — either a built-in or a custom agent defined in `~/.config/opencode/agents/` or `.opencode/agents/`.
 
-| Subagent | When to use |
-|----------|-------------|
-| `"general"` | Complex research, multi-step tasks, analysis, synthesis — has full tool access (except todo) |
-| `"explore"` | Fast, read-only codebase search — finding files, searching keywords, answering questions about code |
+### Gangsta custom agents
 
-**Do not use `"fixer"`, `"explorer"`, `"oracle"`, or `"council"` — these are not valid OpenCode agent types and will fail.**
+The Gangsta framework ships with named agents. **Always use these specific names** when dispatching within Gangsta skills:
 
-Custom agents defined in `~/.config/opencode/agents/` or `.opencode/agents/` are also valid — use their filename (without `.md`) as the `subagent_type`.
+| `subagent_type` | When to use |
+|-----------------|-------------|
+| `"associate"` | Reconnaissance intel work — codebase scanning, dependency audits, documentation retrieval |
+| `"soldier"` | Stateless code execution — implementing a single work package with TDD |
+| `"the-inspector"` | Independent code review — reviewing diffs against requirements |
+| `"proposer"` | The Grilling — proposes architectural solutions |
+| `"devils-advocate"` | The Grilling — attacks proposals and identifies flaws |
+| `"synthesizer"` | The Grilling — mediates and produces revised solutions |
 
-## Named agent dispatch
+### Built-in OpenCode agents
 
-Gangsta skills reference named agent types like `gangsta:soldier` or `gangsta:devils-advocate`. OpenCode does not have a named agent registry — `task` creates agents from built-in types.
+OpenCode also ships with `"general"` (full tool access) and `"explore"` (read-only search). These are valid **only if not disabled** in the project's `opencode.json`. Gangsta installations typically disable them in favor of the named agents above.
 
-When a skill says to dispatch a named agent type:
-
-1. Find the agent's prompt file (e.g., `agents/soldier.md`)
-2. Read the prompt content
-3. Fill any template placeholders
-4. Dispatch a `general` subagent with the filled content as the prompt
+**Never use `"general-purpose"`, `"fixer"`, `"explorer"`, `"oracle"`, or `"council"` — these are never valid and will always fail.**
 
 ## Background tasks
 
