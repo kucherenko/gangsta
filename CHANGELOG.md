@@ -4,6 +4,14 @@ All notable changes to Gangsta are documented here.
 
 This project adheres to [Keep a Changelog](https://keepachangelog.com/en/1.1.0/) and [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
+## [1.2.4](https://github.com/kucherenko/gangsta/compare/gangsta-v1.2.3...gangsta-v1.2.4) (2026-04-19)
+
+
+### ### Documentation
+
+* align linked docs with updated Gangsta Agents terminology ([6b17ce3](https://github.com/kucherenko/gangsta/commit/6b17ce30601365fc4b0dc0915210aa122791bdc6))
+* update README to use Gangsta Agents terminology throughout ([175b182](https://github.com/kucherenko/gangsta/commit/175b18212d2a40ca8658d5578a0b648044bce930))
+
 ## [1.2.3](https://github.com/kucherenko/gangsta/compare/gangsta-v1.2.2...gangsta-v1.2.3) (2026-04-19)
 
 
