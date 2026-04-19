@@ -4,6 +4,13 @@ All notable changes to Gangsta are documented here.
 
 This project adheres to [Keep a Changelog](https://keepachangelog.com/en/1.1.0/) and [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
+## [1.2.5](https://github.com/kucherenko/gangsta/compare/gangsta-v1.2.4...gangsta-v1.2.5) (2026-04-19)
+
+
+### ### Documentation
+
+* align README pipeline table with site — Execution, The Delivery, add skills and gates ([67b5a0a](https://github.com/kucherenko/gangsta/commit/67b5a0a412cfa461c9e4294ec2b34bf62523c131))
+
 ## [1.2.4](https://github.com/kucherenko/gangsta/compare/gangsta-v1.2.3...gangsta-v1.2.4) (2026-04-19)
 
 
