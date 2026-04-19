@@ -20,14 +20,14 @@ When you start a session, the framework bootstraps The Don — an orchestrator t
 
 ### The Heist Pipeline
 
-| Phase | What Happens |
-|-------|-------------|
-| 1. **Reconnaissance** | Intel gathering on codebase and requirements |
-| 2. **The Grilling** | Adversarial brainstorming via Multi-Agent Debate (Proposer vs Devils-Advocate, with you weighing in each round) |
-| 3. **The Sit-Down** | Formal spec drafting. No code allowed. |
-| 4. **Resource Development** | Task decomposition into Work Packages |
-| 5. **The Hit** | Parallel execution by Worker subagents with TDD enforcement |
-| 6. **Laundering** | Verification, integration, and Ledger update |
+| Phase | Skill | What Happens | Gate |
+|-------|-------|-------------|------|
+| 1. **Reconnaissance** | `gangsta:reconnaissance` | Intel gathering on codebase and requirements | Dossier |
+| 2. **The Grilling** | `gangsta:the-grilling` | Adversarial brainstorming via Multi-Agent Debate (Proposer vs Devils-Advocate, with you weighing in each round) | Consensus |
+| 3. **The Sit-Down** | `gangsta:the-sit-down` | Formal spec drafting. No code allowed. | Contract |
+| 4. **Resource Development** | `gangsta:resource-development` | Task decomposition into Work Packages and Execution Plan | Execution Plan |
+| 5. **Execution** | `gangsta:the-hit` | Parallel execution by Worker subagents with TDD enforcement | Completion |
+| 6. **The Delivery** | `gangsta:laundering` | Verification, integration, and Ledger update | Ledger |
 
 Every phase gate requires your approval. You are the Don.
 
