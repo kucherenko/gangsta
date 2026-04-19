@@ -1,4 +1,4 @@
-# The Borgata Hierarchy
+# The Gangsta Agents Family Hierarchy
 
 Every operation flows through a strict chain of command. Agents do not coordinate laterally — all communication is mediated upward.
 
@@ -9,8 +9,8 @@ Don (You) — Supreme authority. Approves all phase gates.
   │
   ├── Underboss — COO. Task decomposition, phase tracking, escalation.
   │   │
-  │   ├── Capo — Domain crew lead. Manages Soldiers per territory.
-  │   │   └── Soldiers — Stateless code executors. TDD enforced.
+  │   ├── Crew Lead — Domain crew lead. Manages Workers per territory.
+  │   │   └── Workers — Stateless code executors. TDD enforced.
   │   │
   │   └── Associates — External tools, API proxies, recon agents.
   │
@@ -24,28 +24,28 @@ Don (You) — Supreme authority. Approves all phase gates.
 | **Don** | _(you)_ | Approves all phase gates. Supreme authority. |
 | **Consigliere** | `the-consigliere` | Spec integrity review, security audit, truth checks. Does NOT write code. |
 | **Underboss** | `the-underboss` | Decomposes Contract into Work Packages. Allocates territories. Tracks phases. Handles escalations. |
-| **Capo** | `the-capo` | Commands a territory. Dispatches Soldiers. Reviews Tributes. Reports to Underboss. |
-| **Soldier** | _(subagent)_ | Stateless implementation. One Work Package. TDD enforced. Returns a Tribute. |
+| **Crew Lead** | `the-capo` | Commands a territory. Dispatches Workers. Reviews Reports. Reports to Underboss. |
+| **Worker** | _(subagent)_ | Stateless implementation. One Work Package. TDD enforced. Returns a Report. |
 | **Associate** | _(subagent)_ | Recon, external APIs, specialized tooling. |
 
 ## How Agents Interact
 
 1. Don issues intent → Underboss parses it into tasks
-2. Underboss assigns Work Packages to Capos by territory
-3. Capos dispatch Soldiers in parallel within their territory
-4. Soldiers return **Tributes** (status + test output + changed files) to their Capo
-5. Capos accept/reject Tributes, escalate failures to Underboss
+2. Underboss assigns Work Packages to Crew Leads by territory
+3. Crew Leads dispatch Workers in parallel within their territory
+4. Workers return **Reports** (status + test output + changed files) to their Crew Lead
+5. Crew Leads accept/reject Reports, escalate failures to Underboss
 6. Underboss synthesizes all territory reports for the Don
 
-Soldiers never communicate directly with each other or with Soldiers in other territories. The Consigliere never executes tasks — it reviews and advises only.
+Workers never communicate directly with each other or with Workers in other territories. The Consigliere never executes tasks — it reviews and advises only.
 
 ## The Consigliere
 
-The Consigliere operates outside the chain of command. Neither the Underboss nor Capos can override or skip its assessments. It has standing authority to invoke a Truth Check (Omerta Law 3) at any point.
+The Consigliere operates outside the chain of command. Neither the Underboss nor Crew Leads can override or skip its assessments. It has standing authority to invoke a Truth Check (Omerta Law 3) at any point.
 
 **When to consult:**
 - Before signing a Contract (spec integrity review)
-- When a Soldier escalation reaches the Don (independent assessment)
+- When a Worker escalation reaches the Don (independent assessment)
 - When security or architectural concerns arise
 - During Laundering (final architectural review)
 - Any time the Don wants a second opinion
@@ -73,17 +73,17 @@ The Underboss is the COO — the operational buffer between the Don and the crew
 
 **Responsibilities:**
 1. Decompose the Contract into bite-sized Work Packages (2–5 minutes each)
-2. Assign Work Packages to Capo territories by domain (file paths, concerns)
+2. Assign Work Packages to Crew Lead territories by domain (file paths, concerns)
 3. Allocate token budgets per territory, track consumption
 4. Write checkpoints at every phase transition (Omerta Law 2)
-5. Collect Tributes from Capos, synthesize status for the Don
+5. Collect Reports from Crew Leads, synthesize status for the Don
 6. Handle escalations: retry → mini-Grilling → escalate to Don
 
 **Work Package format:**
 ```markdown
 ## Work Package: <WP-ID>
 
-**Territory:** <Capo domain name>
+**Territory:** <Crew Lead domain name>
 **Contract Clause:** <Reference to the specific Contract section>
 
 ### Files
@@ -102,21 +102,21 @@ The Underboss is the COO — the operational buffer between the Don and the crew
 ```
 
 **Escalation protocol:**
-1. Retry once — same Work Package, fresh Soldier
+1. Retry once — same Work Package, fresh Worker
 2. Analyze failure — ambiguous Contract? Work Package too large?
 3. Mini-Grilling — single-round Devils-Advocate + Synthesizer if Contract needs revision
 4. Escalate to Don — if beyond operational scope
 
-## The Capo
+## The Crew Lead
 
-A Capo owns a bounded territory of the codebase (e.g., frontend, API layer, database). It operates only within its territory.
+A Crew Lead owns a bounded territory of the codebase (e.g., frontend, API layer, database). It operates only within its territory.
 
 **Per Work Package:**
-1. Prepare Soldier Brief (files, acceptance criteria, verification command, Negative Constraints, Contract clause)
-2. Dispatch Soldier subagent
-3. Receive Tribute (status, changes, test output, notes)
+1. Prepare Worker Brief (files, acceptance criteria, verification command, Negative Constraints, Contract clause)
+2. Dispatch Worker subagent
+3. Receive Report (status, changes, test output, notes)
 4. Review against Contract: acceptance criteria met? tests pass? conventions followed? Omerta violations?
-5. Accept, reject with feedback (fresh Soldier), or escalate to Underboss
+5. Accept, reject with feedback (fresh Worker), or escalate to Underboss
 
 **Status report to Underboss:**
 ```markdown

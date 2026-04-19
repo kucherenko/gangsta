@@ -7,8 +7,8 @@ When the Don wants to build something, The Heist begins — a 6-phase operationa
 | 1. Reconnaissance | `reconnaissance` | Don expresses building intent | Recon Dossier | Don approves dossier |
 | 2. The Grilling | `the-grilling` | Dossier approved | Grilling Conclusions (in-context) | Don declares consensus |
 | 3. The Sit-Down | `the-sit-down` | Grilling consensus approved | Signed Contract | Don signs Contract |
-| 4. Resource Development | `resource-development` | Contract signed | War Plan | Don approves War Plan |
-| 5. The Hit | `the-hit` | War Plan approved | Implemented code + Tributes | Don approves completion |
+| 4. Resource Development | `resource-development` | Contract signed | Execution Plan | Don approves Execution Plan |
+| 5. The Hit | `the-hit` | Execution Plan approved | Implemented code + Reports | Don approves completion |
 | 6. Laundering | `laundering` | Hit complete | Clean, verified code | Don declares Heist complete |
 
 ---
@@ -180,13 +180,13 @@ Don signs Contract → proceed to Resource Development
 
 **Skill:** `resource-development` | **Trigger:** Don signs the Contract
 
-The Underboss decomposes the Contract into Work Packages and produces the War Plan governing The Hit.
+The Underboss decomposes the Contract into Work Packages and produces the Execution Plan governing The Hit.
 
 ### Steps
 
 1. **Decompose Contract** — For each requirement, identify affected files, territory ownership, acceptance criteria, verification command, and token budget. Each Work Package must be **independent**, **verifiable**, **bite-sized** (2–5 min), and **traceable** to a Contract clause.
 
-2. **Define Territories** — Group Work Packages by domain. Each territory has a Capo, glob patterns for owned files, Soldier count, and token budget.
+2. **Define Territories** — Group Work Packages by domain. Each territory has a Crew Lead, glob patterns for owned files, Worker count, and token budget.
 
 3. **Set up isolation** — Create a Heist branch (`heist/<heist-name>`). Optionally create worktrees per territory using `safehouse-worktrees`.
 
@@ -196,11 +196,11 @@ The Underboss decomposes the Contract into Work Packages and produces the War Pl
    - File paths valid
    - No merge conflicts
 
-5. **Produce War Plan** — Compile territories, Work Packages, execution order (parallelizable vs. dependent), and baseline verification.
+5. **Produce Execution Plan** — Compile territories, Work Packages, execution order (parallelizable vs. dependent), and baseline verification.
 
 ### Artifact
 
-`docs/gangsta/<heist-name>/plans/YYYY-MM-DD-war-plan.md`
+`docs/gangsta/<heist-name>/plans/YYYY-MM-DD-execution-plan.md`
 
 ```markdown
 ---
@@ -210,13 +210,13 @@ total-work-packages: <N>
 territories: <N>
 ---
 
-# War Plan: <Heist Name>
+# Execution Plan: <Heist Name>
 
 ## Territories
 ### Territory: <Name>
-**Capo Domain:** <description>
+**Crew Lead Domain:** <description>
 **Files:** <globs>
-**Soldiers:** <N parallel>
+**Workers:** <N parallel>
 **Budget:** <tokens>
 
 ## Work Packages
@@ -244,32 +244,32 @@ territories: <N>
 
 ### Gate
 
-Don approves War Plan → proceed to The Hit
+Don approves Execution Plan → proceed to The Hit
 
 ---
 
 ## Phase 5: The Hit
 
-**Skill:** `the-hit` | **Trigger:** Don approves the War Plan
+**Skill:** `the-hit` | **Trigger:** Don approves the Execution Plan
 
-Soldiers implement Work Packages in parallel. TDD is enforced — no implementation without a failing test first.
+Workers implement Work Packages in parallel. TDD is enforced — no implementation without a failing test first.
 
 ### Steps
 
-1. **Underboss distributes** — Sends each Capo their territory definition, Work Packages, relevant Contract sections, and Constitution rules.
+1. **Underboss distributes** — Sends each Crew Lead their territory definition, Work Packages, relevant Contract sections, and Constitution rules.
 
-2. **Capos dispatch Soldiers** — Each independent Work Package gets a Soldier subagent. Multiple Soldiers run in parallel within a territory.
+2. **Crew Leads dispatch Workers** — Each independent Work Package gets a Worker subagent. Multiple Workers run in parallel within a territory.
 
-3. **TDD enforcement** — Every Soldier follows `drill-tdd` (Red-Green-Refactor):
+3. **TDD enforcement** — Every Worker follows `drill-tdd` (Red-Green-Refactor):
    - Write failing test based on acceptance criteria
    - Run test — verify it fails for the right reason
    - Write minimal implementation to pass
    - Run test — verify it passes
-   - A Soldier that writes implementation before tests has its Tribute rejected
+   - A Worker that writes implementation before tests has its Report rejected
 
-4. **Tribute collection** — Each Soldier returns:
+4. **Report collection** — Each Worker returns:
    ```markdown
-   ## Tribute: <WP-ID>
+   ## Report: <WP-ID>
    **Status:** success | failure | blocked
    **TDD Cycle:**
    - Test written: YES/NO
@@ -281,13 +281,13 @@ Soldiers implement Work Packages in parallel. TDD is enforced — no implementat
    **Notes:** <issues, deviations>
    ```
 
-5. **Capo reviews Tributes** — Verifies acceptance criteria, TDD compliance, test passage, conventions. Accepts, rejects with feedback, or escalates.
+5. **Crew Lead reviews Reports** — Verifies acceptance criteria, TDD compliance, test passage, conventions. Accepts, rejects with feedback, or escalates.
 
-6. **Status rollup** — Capos report territory status to Underboss. Underboss produces progress table for Don.
+6. **Status rollup** — Crew Leads report territory status to Underboss. Underboss produces progress table for Don.
 
-7. **Escalation handling** — Soldier failure:
-   - Capo retries with a fresh Soldier
-   - Retry fails → Capo escalates to Underboss
+7. **Escalation handling** — Worker failure:
+   - Crew Lead retries with a fresh Worker
+   - Retry fails → Crew Lead escalates to Underboss
    - Underboss runs mini-Grilling if Contract is ambiguous
    - Underboss escalates to Don if beyond operational scope
 
@@ -336,7 +336,7 @@ The loot is refined into production-ready form. Integration, verification, clean
 ### Permanent Artifacts (Never Deleted)
 
 - `docs/gangsta/<heist-name>/specs/YYYY-MM-DD-contract.md`
-- `docs/gangsta/<heist-name>/plans/YYYY-MM-DD-war-plan.md`
+- `docs/gangsta/<heist-name>/plans/YYYY-MM-DD-execution-plan.md`
 - `docs/gangsta/<heist-name>/recon/YYYY-MM-DD-recon-dossier.md`
 
 ### Gate

@@ -2,7 +2,7 @@
 
 **Skill:** `the-ledger` | **Location:** `docs/gangsta/` in the project repository
 
-The Borgata's persistent memory. Every Heist reads from and writes to the Ledger.
+The Gangsta Agents Family's persistent memory. Every Heist reads from and writes to the Ledger.
 
 ## Directory Structure
 
@@ -116,7 +116,7 @@ NEVER <constraint> — Source: fails/YYYY-MM-DD-<topic>.md
 | **Reconnaissance** | Insights and Fails with tags matching the Heist objective — presented in the Dossier |
 | **The Grilling** | Devils-Advocate checks all Negative Constraints; a proposal violating one is automatically rejected |
 | **The Sit-Down** | Underboss references Commandments when drafting the Contract; relevant ones must be cited |
-| **The Hit** | Soldiers check Negative Constraints before implementation; violation triggers escalation |
+| **The Hit** | Workers check Negative Constraints before implementation; violation triggers escalation |
 | **Laundering** | New Insights and Fails written; Constitution updated with new Commandments and Constraints |
 
 ---

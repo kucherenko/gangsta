@@ -119,7 +119,7 @@ Before attempting any fix:
 4. Verify output confirms the claim
 5. Only then make the claim
 
-Skip any step = stronzate, not verification.
+Skip any step = invalid verification.
 
 ### Common Failures
 
@@ -171,7 +171,7 @@ Dispatches `the-inspector` — a fresh subagent with no session history — to r
 
 ### Integration with the Heist
 
-- After each Capo's territory completes (The Hit)
+- After each Crew Lead's territory completes (The Hit)
 - Before the Don's final approval (Laundering)
 - Any time the Don requests a review
 
