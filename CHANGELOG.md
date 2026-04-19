@@ -4,6 +4,18 @@ All notable changes to Gangsta are documented here.
 
 This project adheres to [Keep a Changelog](https://keepachangelog.com/en/1.1.0/) and [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
+## [1.2.3](https://github.com/kucherenko/gangsta/compare/gangsta-v1.2.2...gangsta-v1.2.3) (2026-04-19)
+
+
+### ### Fixed
+
+* use named gangsta agents as subagent_type instead of built-ins ([94a09d7](https://github.com/kucherenko/gangsta/commit/94a09d7c82e7a5c23c8a79f3135499f972a3b2ea))
+
+
+### ### Changed
+
+* align skill terminology with updated glossary ([30f5b92](https://github.com/kucherenko/gangsta/commit/30f5b924be3a3911212eaec09e6f837aedc1d6f7))
+
 ## [1.2.2](https://github.com/kucherenko/gangsta/compare/gangsta-v1.2.1...gangsta-v1.2.2) (2026-04-18)
 
 
