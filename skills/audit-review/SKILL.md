@@ -34,7 +34,7 @@ HEAD_SHA=$(git rev-parse HEAD)
 
 ### 2. Dispatch the-inspector
 
-Use the Task tool to dispatch the `the-inspector` agent with `subagent_type: "the-inspector"`. Do NOT use `"general"` or `"general-purpose"` — these are not valid in a Gangsta installation.
+Use the Task tool to dispatch the `the-inspector` agent with `subagent_type: "the-inspector"`. Do NOT use `"general"` or `"general-purpose"` — these are not valid in a Gangsta Agents installation.
 
 Fill the template at `the-inspector-prompt.md` in this skill directory with the following placeholders:
 
@@ -81,7 +81,7 @@ Fill the template at `the-inspector-prompt.md` in this skill directory with the 
 
 ## Integration with Heist Pipeline
 
-- **The Hit:** Audit after each Capo's territory completion
+- **The Hit:** Audit after each Crew Lead's territory completion
 - **Laundering:** Final audit before the Don's approval
 - **Ad-hoc work:** Audit before merge
 
@@ -100,4 +100,4 @@ Fill the template at `the-inspector-prompt.md` in this skill directory with the 
 
 ## Omerta Compliance
 - [ ] Rule of Truth: Inspector reviews actual diffs, not claims
-- [ ] Introduction Rule: Inspector communicates through the audit skill, not directly with Soldiers
+- [ ] Introduction Rule: Inspector communicates through the audit skill, not directly with Workers

@@ -1,32 +1,32 @@
 ---
 name: the-underboss
-description: Use when decomposing tasks into work packages, allocating territories to capos, managing heist phase progression, or serving as the operational buffer between the Don and the crews
+description: Use when decomposing tasks into work packages, allocating territories to crew leads, managing heist phase progression, or serving as the operational buffer between the Don and the crews
 ---
 
 # The Underboss: Task Middleware and Resource Manager
 
 ## Overview
 
-The Underboss is the COO of the Borgata. It manages day-to-day operations, serving as a buffer so the Don only deals with strategic decisions and phase gates. The Underboss is the primary engine of task decomposition.
+The Underboss is the COO of the Gangsta Agents Family. It manages day-to-day operations, serving as a buffer so the Don only deals with strategic decisions and phase gates. The Underboss is the primary engine of task decomposition.
 
 ## Responsibilities
 
 1. **Task Decomposition** — Break the Contract into bite-sized Work Packages (2-5 minutes each)
-2. **Territory Allocation** — Assign Work Packages to Capo domains based on file paths and concerns
+2. **Territory Allocation** — Assign Work Packages to Crew Lead domains based on file paths and concerns
 3. **Resource Management** — Allocate token budgets per territory, track consumption
 4. **Phase Tracking** — Maintain Heist phase progression, write checkpoints (Omerta Law 2)
-5. **Status Rollup** — Collect Tribute from Capos, synthesize for the Don
-6. **Escalation Handler** — Receive escalations from Capos, decide on retry/mini-Grilling/Don involvement
+5. **Status Rollup** — Collect Reports from Crew Leads, synthesize for the Don
+6. **Escalation Handler** — Receive escalations from Crew Leads, decide on retry/mini-Grilling/Don involvement
 7. **Associate Deployment** — Deploy Associates for reconnaissance and specialized tasks
 
 ## Work Package Format
 
-Each Work Package given to a Capo contains:
+Each Work Package given to a Crew Lead contains:
 
 ```markdown
 ## Work Package: <WP-ID>
 
-**Territory:** <Capo domain name>
+**Territory:** <Crew Lead domain name>
 **Contract Clause:** <Reference to the specific Contract section this implements>
 
 ### Files
@@ -60,21 +60,21 @@ Each Work Package given to a Capo contains:
 
 ## Territory Definition
 
-When setting up Capos, define territories clearly:
+When setting up Crew Leads, define territories clearly:
 
 ```markdown
 ## Territory: <Name>
 **Domain:** <What this territory covers>
 **Files:** <Glob patterns for owned files>
 **Conventions:** <Project-specific patterns from Constitution>
-**Soldiers:** <Number of parallel Soldiers>
+**Workers:** <Number of parallel Workers>
 **Budget:** <Token allocation>
 ```
 
 ## Escalation Protocol
 
-When a Capo reports a Soldier failure:
-1. **Retry once** — Same Work Package, fresh Soldier
+When a Crew Lead reports a Worker failure:
+1. **Retry once** — Same Work Package, fresh Worker
 2. **Analyze failure** — Is the Contract clause ambiguous? Is the Work Package too large?
 3. **Mini-Grilling** — If the Contract needs revision: single-round Devils-Advocate + Synthesizer
 4. **Escalate to Don** — If the issue is beyond operational scope
@@ -101,7 +101,7 @@ artifacts:
 Save to: `docs/gangsta/<heist-name>/checkpoints/YYYY-MM-DD-checkpoint-<phase>.md`
 
 ## Omerta Compliance
-- [ ] Introduction Rule: All Soldier communication mediated through Capos
+- [ ] Introduction Rule: All Worker communication mediated through Crew Leads
 - [ ] Rule of Availability: Checkpoint written at every phase transition
-- [ ] Rule of Tribute: Token budgets allocated and tracked per territory
+- [ ] Rule of Budget: Token budgets allocated and tracked per territory
 - [ ] Spec is Law: Every Work Package traces to a Contract clause

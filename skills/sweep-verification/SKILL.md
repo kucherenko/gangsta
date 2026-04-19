@@ -1,13 +1,13 @@
 ---
 name: sweep-verification
-description: Use when about to claim work is complete, fixed, or passing — sweeps for evidence before any assertions, because unverified claims are stronzate
+description: Use when about to claim work is complete, fixed, or passing — sweeps for evidence before any assertions, because unverified claims are invalid
 ---
 
 # The Sweep: Verification Before Completion
 
 ## Overview
 
-Claiming work is complete without verification is stronzate, not efficiency.
+Claiming work is complete without verification is invalid, not efficiency.
 
 **Core principle:** Evidence before claims, always.
 
@@ -34,7 +34,7 @@ BEFORE claiming any status or expressing satisfaction:
    - If YES: State claim WITH evidence
 5. ONLY THEN: Make the claim
 
-Skip any step = stronzate, not verification
+Skip any step = invalid, not verification
 ```
 
 ## Common Failures

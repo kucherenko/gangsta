@@ -18,7 +18,7 @@ Skills use Claude Code tool names as the canonical reference. When you encounter
 
 ## No subagent support
 
-Gemini CLI has no equivalent to Claude Code's `Task` tool. Skills that rely on subagent dispatch (`gangsta:the-hit`, `gangsta:resource-development`) will fall back to single-session sequential execution. The agent should execute each Soldier's task inline rather than dispatching parallel subagents.
+Gemini CLI has no equivalent to Claude Code's `Task` tool. Skills that rely on subagent dispatch (`gangsta:the-hit`, `gangsta:resource-development`) will fall back to single-session sequential execution. The agent should execute each Worker's task inline rather than dispatching parallel subagents.
 
 ## Additional Gemini CLI tools
 

@@ -3,11 +3,11 @@ name: the-ledger
 description: Use when reading or writing institutional memory — insights from successful solutions, fails from historical mistakes, and the Project Constitution that accumulates commandments and negative constraints across heists
 ---
 
-# The Ledger: Institutional Memory of the Borgata
+# The Ledger: Institutional Memory of the Gangsta Agents Family
 
 ## Overview
 
-The Ledger is the Borgata's persistent memory. It stores successful reasoning pathways (Insights), documented failures (Fails), and accumulated governance rules (the Project Constitution). Every Heist reads from and writes to the Ledger.
+The Ledger is the Gangsta Agents Family's persistent memory. It stores successful reasoning pathways (Insights), documented failures (Fails), and accumulated governance rules (the Project Constitution). Every Heist reads from and writes to the Ledger.
 
 ## Directory Structure
 
@@ -119,7 +119,7 @@ The Devils-Advocate MUST check all Negative Constraints before accepting any pro
 The Underboss references Commandments when drafting the Contract. Every relevant Commandment must be cited in the Contract.
 
 ### During The Hit
-Soldiers check Negative Constraints before implementation. If a Work Package would violate a constraint, the Soldier escalates to the Capo.
+Workers check Negative Constraints before implementation. If a Work Package would violate a constraint, the Worker escalates to the Crew Lead.
 
 ### During Laundering
 New insights and fails from the Heist are written. The Constitution is updated.

@@ -1,58 +1,58 @@
 ---
 name: the-hit
-description: Use when the war plan is approved and it is time for parallel execution — dispatches soldiers through capos to implement work packages with TDD enforcement, tribute collection, and escalation protocols
+description: Use when the execution plan is approved and it is time for parallel execution — dispatches workers through crew leads to implement work packages with TDD enforcement, report collection, and escalation protocols
 ---
 
 # The Hit: Execution and Parallel Coding
 
 ## Overview
 
-Soldiers and Capos implement the Work Packages defined in the War Plan. Crews work simultaneously on their assigned territories, providing Tributes (status updates) to the Underboss.
+Workers and Crew Leads implement the Work Packages defined in the Execution Plan. Crews work simultaneously on their assigned territories, providing Reports (status updates) to the Underboss.
 
 ## Trigger
 
-Invoked after the Don approves the War Plan (Resource Development complete).
+Invoked after the Don approves the Execution Plan (Resource Development complete).
 
 ## Process
 
 ### Step 1: Underboss Distributes Work Packages
 
-For each territory, the Underboss sends the Capo:
+For each territory, the Underboss sends the Crew Lead:
 - The territory definition
 - The assigned Work Packages (ordered by dependency)
 - The relevant Contract sections
 - The applicable Constitution rules
 
-### Step 2: Capos Dispatch Soldiers
+### Step 2: Crew Leads Dispatch Workers
 
-Each Capo (invoke `gangsta:the-capo`) processes their Work Packages:
+Each Crew Lead (invoke `gangsta:the-capo`) processes their Work Packages:
 
-1. For each independent Work Package, dispatch a Soldier subagent with `subagent_type: "soldier"` (do NOT use `"general"` or `"general-purpose"` — these are not valid in a Gangsta installation), providing:
+1. For each independent Work Package, dispatch a Worker subagent with `subagent_type: "soldier"` (do NOT use `"general"` or `"general-purpose"` — these are not valid in a Gangsta Agents installation), providing:
    - The Work Package brief
    - The Contract clause being implemented
    - Applicable Negative Constraints
    - Territory conventions
 
-2. Soldiers work in parallel within their territory (up to the allocated Soldier count)
+2. Workers work in parallel within their territory (up to the allocated Worker count)
 
 ### Step 3: TDD Enforcement
 
-Every Soldier MUST follow `gangsta:drill-tdd` — the full Red-Green-Refactor cycle:
+Every Worker MUST follow `gangsta:drill-tdd` — the full Red-Green-Refactor cycle:
 
 1. **Write failing test** — Based on the acceptance criteria
 2. **Run test** — Verify it fails for the right reason
 3. **Write minimal implementation** — Just enough to pass the test
 4. **Run test** — Verify it passes
-5. **Report** — Return Tribute to Capo
+5. **Report** — Return Report to Crew Lead
 
-A Soldier that writes implementation before tests has its Tribute REJECTED.
+A Worker that writes implementation before tests has its Report REJECTED.
 
-### Step 4: Tribute Collection
+### Step 4: Report Collection
 
-Each Soldier returns a Tribute:
+Each Worker returns a Report:
 
 ```markdown
-## Tribute: <WP-ID>
+## Report: <WP-ID>
 **Status:** success | failure | blocked
 **TDD Cycle:**
 - Test written: YES/NO
@@ -68,9 +68,9 @@ Each Soldier returns a Tribute:
 **Notes:** <issues, concerns, deviations>
 ```
 
-### Step 5: Capo Reviews Tributes
+### Step 5: Crew Lead Reviews Reports
 
-The Capo reviews each Tribute (invoke `gangsta:the-capo`):
+The Crew Lead reviews each Report (invoke `gangsta:the-capo`):
 - Acceptance criteria met?
 - TDD cycle followed?
 - Tests passing?
@@ -80,7 +80,7 @@ Accept, reject with feedback, or escalate.
 
 ### Step 6: Status Rollup
 
-Capos report territory status to the Underboss. The Underboss synthesizes for the Don:
+Crew Leads report territory status to the Underboss. The Underboss synthesizes for the Don:
 
 ```markdown
 ## Heist Progress: <Heist Name>
@@ -96,15 +96,15 @@ Capos report territory status to the Underboss. The Underboss synthesizes for th
 
 ### Step 7: Escalation Handling
 
-When a Soldier fails:
-1. **Capo retries** — Fresh Soldier, same Work Package
-2. **Capo escalates to Underboss** — If retry fails or Contract is ambiguous
+When a Worker fails:
+1. **Crew Lead retries** — Fresh Worker, same Work Package
+2. **Crew Lead escalates to Underboss** — If retry fails or Contract is ambiguous
 3. **Underboss mini-Grilling** — Single-round: Devils-Advocate attacks the proposed fix, Don weighs in, Synthesizer produces revised Contract clause
 4. **Underboss escalates to Don** — If beyond operational scope
 
 ### Step 8: Completion
 
-When all Capos report territory completion:
+When all Crew Leads report territory completion:
 1. Underboss verifies: all Work Packages accepted, all tests passing
 2. Present to Don: "The Hit is complete. All <N> Work Packages implemented. Ready for Laundering?"
 
@@ -128,8 +128,8 @@ artifacts:
 ```
 
 ## Omerta Compliance
-- [ ] Introduction Rule: Soldiers dispatched through Capos, no direct Soldier communication
-- [ ] Rule of Truth: Tributes include actual test output, not claims
-- [ ] Rule of Tribute: Token usage tracked per Soldier dispatch
+- [ ] Introduction Rule: Workers dispatched through Crew Leads, no direct Worker communication
+- [ ] Rule of Truth: Reports include actual test output, not claims
+- [ ] Rule of Budget: Token usage tracked per Worker dispatch
 - [ ] Spec is Law: Every implementation traces to a Contract clause via Work Package
 - [ ] Rule of Availability: Checkpoint updated after each batch

@@ -33,7 +33,7 @@ For each attack raised by the Devils-Advocate:
 ### Repetition Check
 <Flag any attacks that repeat previously-addressed objections>
 
-### Stronzate Check
+### Invalid Claim Check
 <Flag any attacks that lack specificity or evidence>
 
 ### Questions for the Don
@@ -50,6 +50,6 @@ For each attack raised by the Devils-Advocate:
 1. **Be fair** — Give valid attacks full weight. Don't dismiss concerns to force consensus.
 2. **Integrate the Don** — The Don's opinion overrides agent disagreements. If the Don says "I want X," X goes in.
 3. **Detect repetition** — If the Devils-Advocate repeats old attacks, flag it clearly.
-4. **Detect stronzate** — If attacks lack evidence or specificity, flag it.
+4. **Detect invalid claims** — If attacks lack evidence or specificity, flag it.
 5. **Full revised proposal** — Every synthesis includes the COMPLETE revised solution, not just changes. The Synthesizer's output becomes the next round's proposal.
 6. **One question at a time for the Don** — If your output includes questions for the Don, present them as a prioritized numbered list in a "Questions for the Don" section. The orchestrating agent will ask them one at a time. Order them by importance — the most critical decision first.

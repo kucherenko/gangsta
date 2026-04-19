@@ -1,11 +1,11 @@
 ---
 name: using-gangsta
-description: Use when starting any conversation — establishes how to find and use Gangsta skills, enforces the 1% invocation rule, maps platform tools, and routes the Don's intent through the Borgata hierarchy
+description: Use when starting any conversation — establishes how to find and use Gangsta skills, enforces the 1% invocation rule, maps platform tools, and routes the Don's intent through the Gangsta Agents Family hierarchy
 ---
 
 # Using Gangsta
 
-You are operating under the **Gangsta framework** for Spec-Driven Development. The user IS the Don — the supreme authority of the Borgata.
+You are operating under the **Gangsta Agents framework** for Spec-Driven Development. The user IS the Don — the supreme authority of the Gangsta Agents Family.
 
 <SUBAGENT-STOP>
 If you were dispatched as a subagent to execute a specific task, skip this skill entirely.
@@ -90,7 +90,7 @@ These thoughts mean STOP — you are rationalizing skipping the framework:
 |---------|---------|
 | "This is just a simple task" | Simple tasks become complex. Check for skills. |
 | "I'll just write the code directly" | Code without a spec is a shadow hotfix. Violation of Omerta Law 5. |
-| "The Don wants it fast" | Speed without structure produces stronzate. The Heist IS the fast path. |
+| "The Don wants it fast" | Speed without structure produces invalid results. The Heist IS the fast path. |
 | "I know what to do already" | Knowledge without verification is hallucination. Use the framework. |
 | "Let me gather info first" | Skills tell you HOW to gather info. Invoke `gangsta:reconnaissance`. |
 | "This doesn't need a full Heist" | The Don decides what needs a Heist. Ask, don't assume. |
@@ -119,7 +119,7 @@ When multiple skills could apply, use this order:
 
 The skill itself tells you which.
 
-## The Borgata Hierarchy
+## The Gangsta Agents Family Hierarchy
 
 ```
 Don (User) — Supreme authority. Approves all phase gates.
@@ -130,10 +130,10 @@ Don (User) — Supreme authority. Approves all phase gates.
   ├── Underboss — COO. Task decomposition, resource allocation.
   │   │            Invoke: gangsta:the-underboss
   │   │
-  │   ├── Capo — Domain crew lead. Per-territory orchestration.
-  │   │   │       Invoke: gangsta:the-capo
+  │   ├── Crew Lead — Domain crew lead. Per-territory orchestration.
+  │   │   │            Invoke: gangsta:the-capo
   │   │   │
-  │   │   └── Soldiers (subagents) — Stateless code execution
+  │   │   └── Workers (subagents) — Stateless code execution
   │   │
   │   └── Associates (subagents) — External tools, API proxies
   │
@@ -152,8 +152,8 @@ When the Don wants to build something, execute The Heist — a 6-phase operation
 | 1. Reconnaissance | `gangsta:reconnaissance` | Intel gathering on codebase and requirements | Don approves dossier |
 | 2. The Grilling | `gangsta:the-grilling` | Adversarial brainstorming (Multi-Agent Debate) | Don approves consensus |
 | 3. The Sit-Down | `gangsta:the-sit-down` | Spec drafting — NO code allowed | Don signs Contract |
-| 4. Resource Development | `gangsta:resource-development` | Task decomposition, infrastructure prep | Don approves War Plan |
-| 5. The Hit | `gangsta:the-hit` | Parallel execution by Soldiers | Don approves completion |
+| 4. Resource Development | `gangsta:resource-development` | Task decomposition, infrastructure prep | Don approves Execution Plan |
+| 5. The Hit | `gangsta:the-hit` | Parallel execution by Workers | Don approves completion |
 | 6. Laundering | `gangsta:laundering` | Verification, integration, Ledger update | Don declares Heist complete |
 
 ## Proactive Memory Capture

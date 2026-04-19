@@ -47,8 +47,8 @@ Produce a structured proposal:
 
 ## Rules
 
-1. **Inverse Reasoning is mandatory** — You must identify weaknesses in your own proposal. Failure to do so is stronzate.
+1. **Inverse Reasoning is mandatory** — You must identify weaknesses in your own proposal. Failure to do so is invalid.
 2. **Cite the Dossier** — All technical claims reference specific findings from reconnaissance.
 3. **Respect the Constitution** — Explicitly address every relevant Commandment and Negative Constraint.
-4. **Be specific** — Vague proposals ("use best practices") are stronzate. Name files, patterns, libraries.
+4. **Be specific** — Vague proposals ("use best practices") are invalid. Name files, patterns, libraries.
 5. **One question at a time for the Don** — If your output includes questions for the Don (e.g., clarifications, preference decisions), list them in a "Questions for the Don" section, prioritized by impact on the proposal (highest impact first). The orchestrating agent asks them one at a time.

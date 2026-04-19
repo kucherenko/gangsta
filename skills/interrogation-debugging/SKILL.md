@@ -9,7 +9,7 @@ description: Use when encountering any bug, test failure, or unexpected behavior
 
 Random fixes waste time and create new bugs. Quick patches let the real rat walk free.
 
-**Core principle:** ALWAYS find the root cause before attempting fixes. Symptom fixes are stronzate.
+**Core principle:** ALWAYS find the root cause before attempting fixes. Symptom fixes are invalid.
 
 **Violating the letter of this process is violating the spirit of debugging.**
 
@@ -200,7 +200,7 @@ If you catch yourself thinking:
 | "It's probably X, let me fix that" | "Probably" means you haven't investigated. |
 | "I don't fully understand but this might work" | Might = guessing. The Brief. |
 | "One more fix attempt" (after 2+) | 3 failures = architectural problem. Escalate. |
-| "Here are the main problems: [list]" | Listing without investigating = stronzate. |
+| "Here are the main problems: [list]" | Listing without investigating = invalid. |
 | Proposing solutions before tracing data flow | STOP. Trace first, propose second. |
 
 **ALL of these mean: STOP. Return to The Brief.**

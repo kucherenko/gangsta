@@ -50,7 +50,7 @@ OpenCode supports background task execution for parallel work:
 | `background_output` | Get results from a completed background task |
 | `background_cancel` | Cancel running background tasks |
 
-Use these for skills like `gangsta:the-hit` that dispatch parallel Soldier work.
+Use these for skills like `gangsta:the-hit` that dispatch parallel Worker tasks.
 
 ## Question tool schema
 

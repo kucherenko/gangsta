@@ -1,13 +1,13 @@
 ---
 name: resource-development
-description: Use when the contract is signed and work packages need to be created — decomposes the contract into bite-sized tasks, sets up git isolation, allocates territories and token budgets, producing the war plan
+description: Use when the contract is signed and work packages need to be created — decomposes the contract into bite-sized tasks, sets up git isolation, allocates territories and token budgets, producing the execution plan
 ---
 
 # Resource Development: Infrastructure and Tooling
 
 ## Overview
 
-The Underboss decomposes the signed Contract into Work Packages, sets up infrastructure for parallel execution, and produces the War Plan — the detailed task breakdown that governs The Hit.
+The Underboss decomposes the signed Contract into Work Packages, sets up infrastructure for parallel execution, and produces the Execution Plan — the detailed task breakdown that governs The Hit.
 
 ## Trigger
 
@@ -19,7 +19,7 @@ Invoked after the Don signs the Contract (The Sit-Down complete).
 
 For each requirement in the Contract:
 1. Identify affected files (create/modify)
-2. Determine territory ownership (which Capo)
+2. Determine territory ownership (which Crew Lead)
 3. Define acceptance criteria (from Contract)
 4. Write verification command
 5. Estimate token budget
@@ -27,19 +27,19 @@ For each requirement in the Contract:
 Each Work Package must be:
 - **Independent** — Can be implemented without waiting for other Work Packages (within the same territory, order may matter)
 - **Verifiable** — Has a specific test or command that proves it works
-- **Bite-sized** — 2-5 minutes of Soldier work
+- **Bite-sized** — 2-5 minutes of Worker tasks
 - **Traceable** — References a specific Contract clause
 
 ### Step 2: Define Territories
 
-Group Work Packages by domain and define Capo territories:
+Group Work Packages by domain and define Crew Lead territories:
 
 ```markdown
 ## Territory: <Name>
 **Domain:** <Description>
 **Files:** <Glob patterns>
 **Work Packages:** WP-001, WP-003, WP-007
-**Soldiers:** <Parallel count>
+**Workers:** <Parallel count>
 **Budget:** <Token allocation>
 ```
 
@@ -60,13 +60,13 @@ Before The Hit begins:
 - [ ] File paths in Work Packages are valid
 - [ ] No merge conflicts with the base branch
 
-### Step 5: Produce War Plan
+### Step 5: Produce Execution Plan
 
-Compile everything into the War Plan.
+Compile everything into the Execution Plan.
 
-## War Plan Format
+## Execution Plan Format
 
-Save to: `docs/gangsta/<heist-name>/plans/YYYY-MM-DD-war-plan.md`
+Save to: `docs/gangsta/<heist-name>/plans/YYYY-MM-DD-execution-plan.md`
 
 ```markdown
 ---
@@ -77,14 +77,14 @@ territories: <N>
 estimated-total-budget: <tokens>
 ---
 
-# War Plan: <Heist Name>
+# Execution Plan: <Heist Name>
 
 ## Territories
 
 ### Territory: <Name 1>
-**Capo Domain:** <description>
+**Crew Lead Domain:** <description>
 **Files:** <globs>
-**Soldiers:** <N parallel>
+**Workers:** <N parallel>
 **Budget:** <tokens>
 
 ### Territory: <Name 2>
@@ -118,10 +118,10 @@ estimated-total-budget: <tokens>
 - Branch: heist/<heist-name> created from <base>
 ```
 
-### Step 6: Don Approves War Plan
+### Step 6: Don Approves Execution Plan
 
 Present to the Don:
-> "War Plan ready. <N> Work Packages across <N> territories. Estimated budget: <tokens>. Ready to execute The Hit?"
+> "Execution Plan ready. <N> Work Packages across <N> territories. Estimated budget: <tokens>. Ready to execute The Hit?"
 
 ## Checkpoint
 
@@ -133,11 +133,11 @@ status: completed
 timestamp: <ISO 8601>
 next-action: Proceed to The Hit
 artifacts:
-  - docs/gangsta/<heist-name>/plans/YYYY-MM-DD-war-plan.md
+  - docs/gangsta/<heist-name>/plans/YYYY-MM-DD-execution-plan.md
 ---
 ```
 
 ## Omerta Compliance
 - [ ] Spec is Law: Every Work Package traces to a Contract clause
-- [ ] Rule of Tribute: Token budgets allocated per territory
-- [ ] Rule of Availability: War Plan and checkpoint saved
+- [ ] Rule of Budget: Token budgets allocated per territory
+- [ ] Rule of Availability: Execution Plan and checkpoint saved

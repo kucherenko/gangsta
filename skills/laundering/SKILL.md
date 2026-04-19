@@ -11,7 +11,7 @@ A successful Heist is only complete when the "loot" is refined into its final, l
 
 ## Trigger
 
-Invoked after all Capos report territory completion and the Don approves (The Hit complete).
+Invoked after all Crew Leads report territory completion and the Don approves (The Hit complete).
 
 ## Process
 
@@ -43,7 +43,7 @@ Run the full verification suite:
 
 **All checks must pass.** If any fail:
 1. Identify which Work Package introduced the failure
-2. The responsible Capo dispatches a Soldier to fix it
+2. The responsible Crew Lead dispatches a Worker to fix it
 3. Re-run verification
 
 Use `gangsta:sweep-verification` — every claim of passing must be backed by fresh command output.
@@ -72,12 +72,12 @@ For an independent code-level review alongside the Consigliere's architectural a
 
 Remove operational artifacts:
 - Temporary files created during The Hit
-- Internal run logs from Soldier dispatches
+- Internal run logs from Worker dispatches
 - Draft/intermediate checkpoint files (keep only the final state)
 
 Do NOT remove:
 - The Contract (`docs/gangsta/<heist-name>/specs/YYYY-MM-DD-contract.md`)
-- The War Plan (`docs/gangsta/<heist-name>/plans/YYYY-MM-DD-war-plan.md`)
+- The Execution Plan (`docs/gangsta/<heist-name>/plans/YYYY-MM-DD-execution-plan.md`)
 - The Reconnaissance Dossier (`docs/gangsta/<heist-name>/recon/YYYY-MM-DD-recon-dossier.md`)
 - These are permanent records of the Heist
 
@@ -123,7 +123,7 @@ timestamp: <ISO 8601>
 next-action: Heist complete. Merge to main or archive.
 artifacts:
   - docs/gangsta/<heist-name>/specs/YYYY-MM-DD-contract.md
-  - docs/gangsta/<heist-name>/plans/YYYY-MM-DD-war-plan.md
+  - docs/gangsta/<heist-name>/plans/YYYY-MM-DD-execution-plan.md
   - docs/gangsta/<heist-name>/recon/YYYY-MM-DD-recon-dossier.md
   - <all code files created/modified>
 ---
@@ -133,4 +133,4 @@ artifacts:
 - [ ] Rule of Truth: Verification results are actual command output, not claims
 - [ ] Spec is Law: Consigliere confirms implementation matches Contract
 - [ ] Rule of Availability: Final checkpoint with complete artifact list
-- [ ] Rule of Tribute: Final resource consumption reported to Don
+- [ ] Rule of Budget: Final resource consumption reported to Don

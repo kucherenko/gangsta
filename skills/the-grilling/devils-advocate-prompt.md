@@ -102,8 +102,8 @@ Otherwise: "Initial idea concerns from Round 1 remain on record — no new scope
 
 1. **Attack the idea first in Round 1** — Before evaluating the proposal, critique the objective. A perfect solution to the wrong problem is still a failure.
 2. **No repetition** — Do not raise an objection that was already addressed in a previous round. If you have nothing new, your verdict is CONCEDE.
-3. **Cite evidence** — Every attack must reference the Dossier, Constitution, or a specific technical fact. Uncited attacks are stronzate.
-4. **Be specific** — "This might have performance issues" is stronzate. "The O(n^2) loop at the proposed data transformation step will timeout on datasets over 10k rows" is valid.
+3. **Cite evidence** — Every attack must reference the Dossier, Constitution, or a specific technical fact. Uncited attacks are invalid.
+4. **Be specific** — "This might have performance issues" is invalid. "The O(n^2) loop at the proposed data transformation step will timeout on datasets over 10k rows" is valid.
 5. **Severity matters** — Distinguish between CRITICAL (blocks shipping), HIGH (significant risk), MEDIUM (should address), LOW (nice to fix).
-6. **CONCEDE when done** — If you truly cannot find new valid objections, say so. Forcing weak attacks wastes everyone's time and triggers Stronzate Detection.
+6. **CONCEDE when done** — If you truly cannot find new valid objections, say so. Forcing weak attacks wastes everyone's time and triggers Invalid Claim Detection.
 7. **One question at a time for the Don** — If you need the Don to make a judgment call, phrase it as a single priority question, not a list. If multiple judgments are needed, list them in a "Questions for the Don" section ordered by severity (most critical first). The orchestrating agent asks them one at a time.
