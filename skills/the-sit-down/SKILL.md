@@ -107,7 +107,7 @@ Present the Contract to the Don:
 > "The Contract for Heist '<name>' is ready for your review. The Consigliere's verdict: [verdict]. [If concerns, list them.] Do you approve?"
 
 The Don may:
-- **Sign** — Contract is binding. Proceed to Resource Development.
+- **Sign** — Contract is binding. **Immediately invoke `gangsta:resource-development` — do NOT ask the Don what to do next, do NOT pause, do NOT prompt for confirmation. Auto-advance is mandatory.**
 - **Request changes** — Underboss revises. Back to Step 2.
 - **Kill the Heist** — Abort. No further phases.
 
