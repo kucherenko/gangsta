@@ -4,6 +4,13 @@ All notable changes to Gangsta are documented here.
 
 This project adheres to [Keep a Changelog](https://keepachangelog.com/en/1.1.0/) and [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
+## [1.3.0](https://github.com/kucherenko/gangsta/compare/gangsta-v1.2.5...gangsta-v1.3.0) (2026-04-23)
+
+
+### ### Added
+
+* auto-advance to resource-development on Don approval in the-sit-down ([1efc584](https://github.com/kucherenko/gangsta/commit/1efc584))
+
 ## [1.2.5](https://github.com/kucherenko/gangsta/compare/gangsta-v1.2.4...gangsta-v1.2.5) (2026-04-19)
 
 
