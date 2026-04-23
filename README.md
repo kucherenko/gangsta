@@ -19,6 +19,7 @@ Gangsta Agents replaces open-ended Agile iteration with a directive, vertical hi
 When you start a session, the framework bootstraps The Don — an orchestrator that analyzes your intent and routes to the appropriate skill. When you want to build something, it initiates a **Heist**: a 6-phase operational cycle.
 
 ### The Heist Pipeline
+<img width="1200" height="655" alt="2026-04-23 16 47 21" src="https://github.com/user-attachments/assets/ef40d708-0369-4f8b-b144-57c4e3274cb0" />
 
 | Phase | Skill | What Happens | Gate |
 |-------|-------|-------------|------|
