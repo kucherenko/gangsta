@@ -21,17 +21,71 @@ Not pseudocode. Not "example snippets." Not "draft implementations." NOTHING tha
 
 The Contract describes WHAT and WHY. Implementation details (HOW) belong in the Work Packages created during Resource Development.
 
+## Flow
+
+```dot
+digraph sit_down {
+    "Synthesize inputs\n(Dossier + Grilling + Constitution)" [shape=box];
+    "Propose 2-3 approaches" [shape=box];
+    "Don approves approach?" [shape=diamond];
+    "Draft the Contract" [shape=box];
+    "Consigliere review\n(contradiction, ambiguity, completeness)" [shape=box];
+    "Consigliere verdict?" [shape=diamond];
+    "Don signs Contract?" [shape=diamond];
+    "Invoke gangsta:resource-development" [shape=doublecircle];
+
+    "Synthesize inputs\n(Dossier + Grilling + Constitution)" -> "Propose 2-3 approaches";
+    "Propose 2-3 approaches" -> "Don approves approach?";
+    "Don approves approach?" -> "Propose 2-3 approaches" [label="revise"];
+    "Don approves approach?" -> "Draft the Contract" [label="approved"];
+    "Draft the Contract" -> "Consigliere review\n(contradiction, ambiguity, completeness)";
+    "Consigliere review\n(contradiction, ambiguity, completeness)" -> "Consigliere verdict?";
+    "Consigliere verdict?" -> "Draft the Contract" [label="REJECT"];
+    "Consigliere verdict?" -> "Don signs Contract?" [label="APPROVE"];
+    "Don signs Contract?" -> "Draft the Contract" [label="changes requested"];
+    "Don signs Contract?" -> "Invoke gangsta:resource-development" [label="signed"];
+}
+```
+
 ## Process
 
-### Step 1: Underboss Drafts the Contract
+### Step 1: Synthesize Inputs
 
-The Underboss synthesizes all inputs into a formal specification:
-
-**Inputs:**
+Gather and internalize all available intelligence:
 - Reconnaissance Dossier
 - Grilling Consensus or Best Available Consensus
 - Project Constitution (Commandments and Negative Constraints)
 - Relevant Ledger Entries
+
+### Step 2: Propose 2-3 Approaches
+
+Before writing any spec, the Underboss must present the Don with **2-3 distinct viable approaches** to the problem. Each approach must cover:
+
+```
+### Approach A: <Name>
+<One-sentence description>
+
+**Pros:** <key advantages>
+**Cons:** <key trade-offs>
+**Risk:** HIGH / MEDIUM / LOW
+**Best when:** <conditions that favour this approach>
+```
+
+Rules:
+- Approaches must be genuinely distinct — not minor variations of the same idea
+- At least one conservative/safe option and one bolder option
+- No code. No pseudocode. Architecture and rationale only.
+
+Present all approaches then ask: **"Which approach do you want to proceed with, or would you like adjustments?"**
+
+**Wait for the Don's explicit selection before writing anything.**
+
+- Don selects / approves → proceed to Step 3
+- Don requests revision → update proposals, re-present
+
+### Step 3: Underboss Drafts the Contract
+
+Using the approved approach as the architectural foundation, draft the formal specification.
 
 **The Contract must include:**
 
@@ -88,7 +142,7 @@ signatories: []
 <From the Grilling — any unresolved objections with assessed risk>
 ```
 
-### Step 2: Consigliere Reviews
+### Step 4: Consigliere Reviews
 
 Invoke `gangsta:the-consigliere` for spec integrity review:
 - Contradiction scan
@@ -101,14 +155,14 @@ The Consigliere returns a verdict: APPROVE, APPROVE WITH CONCERNS, or REJECT.
 
 If REJECTED: Underboss revises based on Consigliere feedback. Re-review.
 
-### Step 3: Don Signs the Contract
+### Step 5: Don Signs the Contract
 
 Present the Contract to the Don:
 > "The Contract for Heist '<name>' is ready for your review. The Consigliere's verdict: [verdict]. [If concerns, list them.] Do you approve?"
 
 The Don may:
 - **Sign** — Contract is binding. **Immediately invoke `gangsta:resource-development` — do NOT ask the Don what to do next, do NOT pause, do NOT prompt for confirmation. Auto-advance is mandatory.**
-- **Request changes** — Underboss revises. Back to Step 2.
+- **Request changes** — Underboss revises. Back to Step 4 (Consigliere re-reviews).
 - **Kill the Heist** — Abort. No further phases.
 
 Update the Contract frontmatter:
