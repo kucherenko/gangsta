@@ -4,6 +4,13 @@ All notable changes to Gangsta are documented here.
 
 This project adheres to [Keep a Changelog](https://keepachangelog.com/en/1.1.0/) and [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
+## [1.7.0](https://github.com/kucherenko/gangsta/compare/gangsta-v1.6.0...gangsta-v1.7.0) (2026-04-24)
+
+
+### ### Added
+
+* **the-hit:** auto-advance to laundering on completion ([#20](https://github.com/kucherenko/gangsta/issues/20)) ([4d04849](https://github.com/kucherenko/gangsta/commit/4d048497e368bbd8ab8fb818636c0c9054fd2055))
+
 ## [1.6.0](https://github.com/kucherenko/gangsta/compare/gangsta-v1.5.0...gangsta-v1.6.0) (2026-04-24)
 
 
