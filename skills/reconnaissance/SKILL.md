@@ -88,16 +88,16 @@ Present the Dossier to the Don for review. After presenting, always ask:
 ```
 How do you want to proceed?
 
-  1. Approve the dossier + skip The Grilling → Proceed directly to The Sit-Down (spec drafting)
-  2. Approve the dossier + run The Grilling → Multi-agent debate on architecture, then The Sit-Down
+  1. Approve the dossier + run The Grilling → Multi-agent debate on architecture, then The Sit-Down
+  2. Approve the dossier + skip The Grilling → Proceed directly to The Sit-Down (spec drafting)
   3. Adjust scope — Add/remove anything from the phases before we commit
   4. Request more intel — Deploy Associates to dig deeper into a specific area
 ```
 
 Wait for the Don's explicit choice before taking any action.
 
-- Choice 1 → Invoke `gangsta:the-sit-down`
-- Choice 2 → Invoke `gangsta:the-grilling`, then `gangsta:the-sit-down`
+- Choice 1 → Invoke `gangsta:the-grilling`, then `gangsta:the-sit-down`
+- Choice 2 → Invoke `gangsta:the-sit-down`
 - Choice 3 → Clarify scope changes, update the dossier, re-present
 - Choice 4 → Deploy targeted Associates, update the dossier, re-present
 
