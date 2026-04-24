@@ -4,6 +4,20 @@ All notable changes to Gangsta are documented here.
 
 This project adheres to [Keep a Changelog](https://keepachangelog.com/en/1.1.0/) and [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
+## [1.5.0](https://github.com/kucherenko/gangsta/compare/gangsta-v1.4.0...gangsta-v1.5.0) (2026-04-24)
+
+
+### ### Added
+
+* **the-sit-down:** add 2-3 approach proposals before contract drafting ([#16](https://github.com/kucherenko/gangsta/issues/16)) ([27beba4](https://github.com/kucherenko/gangsta/commit/27beba42145f7a16c27ed8cb0c50c343b12e648b))
+
+## [1.4.0](https://github.com/kucherenko/gangsta/compare/gangsta-v1.3.0...gangsta-v1.4.0) (2026-04-24)
+
+
+### ### Added
+
+* **reconnaissance:** add explicit numbered proceed menu after dossier presentation ([#14](https://github.com/kucherenko/gangsta/issues/14)) ([ada7958](https://github.com/kucherenko/gangsta/commit/ada7958cea3216db07c4f0f0ba373d9d377bcab0))
+
 ## [1.3.0](https://github.com/kucherenko/gangsta/compare/gangsta-v1.2.5...gangsta-v1.3.0) (2026-04-23)
 
 
