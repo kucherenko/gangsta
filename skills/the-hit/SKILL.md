@@ -106,7 +106,8 @@ When a Worker fails:
 
 When all Crew Leads report territory completion:
 1. Underboss verifies: all Work Packages accepted, all tests passing
-2. Present to Don: "The Hit is complete. All <N> Work Packages implemented. Ready for Laundering?"
+2. Write the final checkpoint (status: completed, next-action: Proceed to Laundering)
+3. **Immediately invoke `gangsta:laundering` — do NOT ask the Don what to do next, do NOT pause, do NOT prompt for confirmation. Auto-advance is mandatory.**
 
 ## Checkpoint
 
@@ -118,7 +119,7 @@ heist: <heist-name>
 phase: the-hit
 status: in-progress | completed
 timestamp: <ISO 8601>
-next-action: <Continue Hit | Proceed to Laundering>
+next-action: <Continue Hit | Proceed to Laundering (auto)>
 completed-wps: [WP-001, WP-002, ...]
 pending-wps: [WP-003, ...]
 failed-wps: [WP-004, ...]
