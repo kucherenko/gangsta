@@ -83,7 +83,9 @@ status: pending-review
 
 ### Step 4: Present to Don
 
-Present the Dossier to the Don for review. After presenting, always ask:
+Save the Dossier file (Step 3), then present its contents to the Don in chat.
+
+**DO NOT include the proceed menu in the dossier file.** The menu is a chat message only — output it as plain text after presenting the dossier summary:
 
 ```
 How do you want to proceed?
