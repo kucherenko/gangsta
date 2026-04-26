@@ -71,3 +71,5 @@ export const GangstaPlugin = async ({ client, directory }) => {
     },
   };
 };
+
+export default GangstaPlugin;
