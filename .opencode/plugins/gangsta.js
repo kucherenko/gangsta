@@ -34,44 +34,40 @@ Use OpenCode's native \`skill\` tool to list and load skills.`;
   return `<EXTREMELY_IMPORTANT>\n${body}\n\n${toolMapping}\n</EXTREMELY_IMPORTANT>`;
 };
 
-export default {
-  id: "gangsta",
+export const GangstaPlugin = async ({ client, directory }) => {
+  return {
+    config: async (cfg) => {
+      // Register skills path (with dedup)
+      cfg.skills = cfg.skills || {};
+      cfg.skills.paths = cfg.skills.paths || [];
+      if (!cfg.skills.paths.includes(SKILLS_DIR)) {
+        cfg.skills.paths.push(SKILLS_DIR);
+      }
 
-  server: async (_input, _options) => {
-    return {
-      config: async (cfg) => {
-        // Register skills path (with dedup)
-        cfg.skills = cfg.skills || {};
-        cfg.skills.paths = cfg.skills.paths || [];
-        if (!cfg.skills.paths.includes(SKILLS_DIR)) {
-          cfg.skills.paths.push(SKILLS_DIR);
-        }
+      // Register agents path (with dedup)
+      cfg.agents = cfg.agents || {};
+      cfg.agents.paths = cfg.agents.paths || [];
+      if (!cfg.agents.paths.includes(AGENTS_DIR)) {
+        cfg.agents.paths.push(AGENTS_DIR);
+      }
+    },
 
-        // Register agents path (with dedup)
-        cfg.agents = cfg.agents || {};
-        cfg.agents.paths = cfg.agents.paths || [];
-        if (!cfg.agents.paths.includes(AGENTS_DIR)) {
-          cfg.agents.paths.push(AGENTS_DIR);
-        }
-      },
+    // Inject bootstrap into the first user message of each session.
+    // Using a user message instead of a system message avoids:
+    //   1. Token bloat from system messages repeated every turn
+    //   2. Multiple system messages breaking certain models
+    "experimental.chat.messages.transform": async (_input, output) => {
+      const bootstrap = getBootstrap();
+      if (!bootstrap || !output.messages.length) return;
 
-      // Inject bootstrap into the first user message of each session.
-      // Using a user message instead of a system message avoids:
-      //   1. Token bloat from system messages repeated every turn
-      //   2. Multiple system messages breaking certain models
-      "experimental.chat.messages.transform": async (_input, output) => {
-        const bootstrap = getBootstrap();
-        if (!bootstrap || !output.messages.length) return;
+      const firstUser = output.messages.find((m) => m.info.role === "user");
+      if (!firstUser || !firstUser.parts.length) return;
 
-        const firstUser = output.messages.find((m) => m.info.role === "user");
-        if (!firstUser || !firstUser.parts.length) return;
+      // Only inject once per session
+      if (firstUser.parts.some((p) => p.type === "text" && p.text.includes("EXTREMELY_IMPORTANT"))) return;
 
-        // Only inject once per session
-        if (firstUser.parts.some((p) => p.type === "text" && p.text.includes("EXTREMELY_IMPORTANT"))) return;
-
-        const ref = firstUser.parts[0];
-        firstUser.parts.unshift({ ...ref, type: "text", text: bootstrap });
-      },
-    };
-  },
+      const ref = firstUser.parts[0];
+      firstUser.parts.unshift({ ...ref, type: "text", text: bootstrap });
+    },
+  };
 };

@@ -6,7 +6,7 @@
 
 ## Installation
 
-Add gangsta to the `plugin` array in your `opencode.json` (global or project-level):
+Add gangsta to `~/.config/opencode/opencode.json`:
 
 ```json
 {
@@ -14,14 +14,20 @@ Add gangsta to the `plugin` array in your `opencode.json` (global or project-lev
 }
 ```
 
-Restart OpenCode. The plugin auto-installs, registers all skills, and injects the Gangsta bootstrap into every session.
+Then install the plugin package by running:
+
+```bash
+cd ~/.config/opencode && bun add gangsta@git+https://github.com/kucherenko/gangsta.git
+```
+
+Restart OpenCode. Skills and agents will be available immediately.
 
 Verify by asking:
 > "show me all skills"
 
-You should see the full Gangsta skills list (reconnaissance, the-hit, laundering, etc.).
-
 ## Pinning a Version
+
+Update `opencode.json` and re-run `bun add` with the tag:
 
 ```json
 {
@@ -29,9 +35,19 @@ You should see the full Gangsta skills list (reconnaissance, the-hit, laundering
 }
 ```
 
+```bash
+cd ~/.config/opencode && bun add gangsta@git+https://github.com/kucherenko/gangsta.git#gangsta-v1.7.0
+```
+
 ## Updating
 
-Gangsta updates automatically on OpenCode restart. To pin a specific version, use the `#tag` syntax above.
+Re-run `bun add` to pull the latest version:
+
+```bash
+cd ~/.config/opencode && bun add gangsta@git+https://github.com/kucherenko/gangsta.git
+```
+
+Then restart OpenCode.
 
 ## Migrating from the Old Clone-Based Install
 
