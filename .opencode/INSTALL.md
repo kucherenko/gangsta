@@ -1,34 +1,94 @@
 # Installing Gangsta for OpenCode
 
-## Quick Install
+## Prerequisites
 
-Clone the repository to a stable location, then add both a `plugin` and `skills.paths` entry to your `opencode.json`:
+- [OpenCode.ai](https://opencode.ai) installed
 
-```bash
-git clone https://github.com/kucherenko/gangsta.git ~/.gangsta
-```
+## Installation
+
+Add gangsta to the `plugin` array in your `opencode.json` (global or project-level):
 
 ```json
 {
-  "plugin": ["gangsta@file:///Users/you/.gangsta"],
+  "plugin": ["gangsta@git+https://github.com/kucherenko/gangsta.git"]
+}
+```
+
+Restart OpenCode. The plugin auto-installs, registers all skills, and injects the Gangsta bootstrap into every session.
+
+Verify by asking:
+> "show me all skills"
+
+You should see the full Gangsta skills list (reconnaissance, the-hit, laundering, etc.).
+
+## Pinning a Version
+
+```json
+{
+  "plugin": ["gangsta@git+https://github.com/kucherenko/gangsta.git#gangsta-v1.7.0"]
+}
+```
+
+## Updating
+
+Gangsta updates automatically on OpenCode restart. To pin a specific version, use the `#tag` syntax above.
+
+## Migrating from the Old Clone-Based Install
+
+If you previously installed via `git clone` + manual `skills.paths`:
+
+```bash
+# Remove the cloned repo
+rm -rf ~/.gangsta
+```
+
+Remove from `opencode.json`:
+```json
+{
+  "plugin": ["gangsta@file:///Users/you/.gangsta"],   // remove
   "skills": {
-    "paths": ["~/.gangsta/skills"]
+    "paths": ["~/.gangsta/skills"]                    // remove
   }
 }
 ```
 
-Replace `/Users/you/.gangsta` with the actual clone path. The `~` shorthand works in `skills.paths`.
+Then follow the installation steps above.
 
-Restart OpenCode. The Gangsta framework will bootstrap automatically on session start.
+## Agents
 
-## Verify Installation
+Gangsta registers the following subagent roles, dispatched by skills at runtime:
 
-Start a new OpenCode session and say:
-> "show me all skills"
+| Role | `subagent_type` | Dispatched By | Purpose |
+|------|----------------|---------------|---------|
+| Associate | `associate` | Underboss (Reconnaissance) | Intel gathering — codebase survey, ledger search |
+| Soldier | `soldier` | Crew Lead (The Hit) | Work package implementation with TDD |
 
-You should see the Gangsta skills listed (the-don, reconnaissance, the-hit, etc.).
+## Tool Mapping
 
-Then say:
-> "I want to build a new feature"
+Skills are written for Claude Code as the canonical reference. When running in OpenCode, use these equivalents:
 
-The agent should invoke `gangsta:reconnaissance` to begin a Heist.
+| Claude Code | OpenCode |
+|-------------|----------|
+| `Skill` tool | Native `skill` tool |
+| `TodoWrite` | `todowrite` |
+| `Task` (subagent dispatch) | `task` with `subagent_type` |
+| `Read` / `Write` / `Edit` | Native file tools |
+| `Bash` | `bash` |
+| `Glob` / `Grep` | Native search tools |
+
+## Troubleshooting
+
+### Plugin not loading
+
+1. Check logs: `opencode run --print-logs "hello" 2>&1 | grep -i gangsta`
+2. Verify the plugin line in your `opencode.json`
+3. Make sure you're running a recent version of OpenCode
+
+### Skills not found
+
+1. Use the `skill` tool to list what's discovered
+2. Confirm the plugin is loading (see above)
+
+## Getting Help
+
+- Report issues: https://github.com/kucherenko/gangsta/issues
