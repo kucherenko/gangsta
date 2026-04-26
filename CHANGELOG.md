@@ -4,6 +4,13 @@ All notable changes to Gangsta are documented here.
 
 This project adheres to [Keep a Changelog](https://keepachangelog.com/en/1.1.0/) and [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
+## [1.7.1](https://github.com/kucherenko/gangsta/compare/gangsta-v1.7.0...gangsta-v1.7.1) (2026-04-25)
+
+
+### ### Fixed
+
+* **reconnaissance:** keep proceed menu in chat only, not in dossier file ([#22](https://github.com/kucherenko/gangsta/issues/22)) ([6bb5cda](https://github.com/kucherenko/gangsta/commit/6bb5cda69406cf404fa2de335e51502ff3f415ae))
+
 ## [1.7.0](https://github.com/kucherenko/gangsta/compare/gangsta-v1.6.0...gangsta-v1.7.0) (2026-04-24)
 
 
