@@ -71,7 +71,7 @@ Skills are written for Claude Code as the canonical reference. When running in O
 |-------------|----------|
 | `Skill` tool | Native `skill` tool |
 | `TodoWrite` | `todowrite` |
-| `Task` (subagent dispatch) | `task` with `subagent_type` |
+| `Task` (subagent dispatch) | `@mention` syntax (e.g. `@associate`, `@soldier`) |
 | `Read` / `Write` / `Edit` | Native file tools |
 | `Bash` | `bash` |
 | `Glob` / `Grep` | Native search tools |
