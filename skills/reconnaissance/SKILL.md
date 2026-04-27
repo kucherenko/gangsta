@@ -85,7 +85,15 @@ status: pending-review
 
 Save the Dossier file (Step 3), then present its contents to the Don in chat.
 
-**DO NOT include the proceed menu in the dossier file.** The menu is a chat message only — output it as plain text after presenting the dossier summary:
+**DO NOT include the proceed menu in the dossier file.** The menu is a chat message only — output it as plain text after presenting the dossier summary.
+
+**MANDATORY GATE — THE SIT-DOWN IS NON-NEGOTIABLE:**
+
+The Sit-Down (spec drafting and Contract signing) is a mandatory phase. It CANNOT be skipped under any circumstances. The Don may only choose whether The Grilling runs before it — never whether The Sit-Down runs at all.
+
+**NEVER offer, suggest, or accept a path that goes directly to The Hit or Resource Development without The Sit-Down first.** If the Don requests to skip The Sit-Down, explain that the Contract is required before any implementation work begins and re-present the menu below.
+
+The proceed menu MUST use exactly this format — do not paraphrase, abbreviate, or add options:
 
 ```
 How do you want to proceed?
@@ -102,6 +110,8 @@ Wait for the Don's explicit choice before taking any action.
 - Choice 2 → Invoke `gangsta:the-sit-down`
 - Choice 3 → Clarify scope changes, update the dossier, re-present
 - Choice 4 → Deploy targeted Associates, update the dossier, re-present
+
+There are no other valid choices. Any path not listed above is a violation of Omerta Law 5 (Spec is Law).
 
 ## Checkpoint
 
@@ -122,3 +132,5 @@ artifacts:
 - [ ] Introduction Rule: Associates dispatched by Underboss, reports collected by Underboss
 - [ ] Rule of Availability: Dossier and checkpoint saved to files
 - [ ] Rule of Truth: All dossier claims cite specific files, line numbers, or Ledger entries
+- [ ] Spec is Law: Proceed menu presented exactly as specified — no options added, removed, or paraphrased
+- [ ] Mandatory Gate: The Sit-Down is never skipped — no path leads directly to The Hit or Resource Development
