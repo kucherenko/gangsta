@@ -4,6 +4,19 @@ All notable changes to Gangsta are documented here.
 
 This project adheres to [Keep a Changelog](https://keepachangelog.com/en/1.1.0/) and [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
+## [1.7.4](https://github.com/kucherenko/gangsta/compare/gangsta-v1.7.3...gangsta-v1.7.4) (2026-04-27)
+
+
+### ### Fixed
+
+* **opencode:** add missing default export to GangstaPlugin ([ca2dfd7](https://github.com/kucherenko/gangsta/commit/ca2dfd74d384b7adfe904b0f265f8724340976fa))
+* **reconnaissance:** enforce The Sit-Down as a mandatory non-skippable gate ([#29](https://github.com/kucherenko/gangsta/issues/29)) ([fad5830](https://github.com/kucherenko/gangsta/commit/fad5830ba2f98e09d0c6699eabfe8fec5f4c26c2))
+
+
+### ### Documentation
+
+* **opencode:** remove manual bun add step — OpenCode auto-installs plugins ([ee897db](https://github.com/kucherenko/gangsta/commit/ee897dbfb1e8d72a5d2b1b41f72d5c90d4cedc5e))
+
 ## [1.7.3](https://github.com/kucherenko/gangsta/compare/gangsta-v1.7.2...gangsta-v1.7.3) (2026-04-26)
 
 
