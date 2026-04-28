@@ -94,7 +94,7 @@ estimated-total-budget: <tokens>
 
 ### WP-001: <Title>
 **Territory:** <Name>
-**Contract Clause:** FR-001
+**Contract Clause:** <FR-NNN>
 **Files:**
 - Create: `path/to/file`
 - Test: `tests/path/to/test`
@@ -122,6 +122,8 @@ estimated-total-budget: <tokens>
 
 Present to the Don:
 > "Execution Plan ready. <N> Work Packages across <N> territories. Estimated budget: <tokens>. Ready to execute The Hit?"
+
+**Autonomous Mode:** When invoked under `gangsta:autonomous-mode`, see § Per-Phase Interaction Schemas → Resource-Development in that skill. Otherwise this skill operates as written.
 
 ## Checkpoint
 
