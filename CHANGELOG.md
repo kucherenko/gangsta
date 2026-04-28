@@ -4,6 +4,13 @@ All notable changes to Gangsta are documented here.
 
 This project adheres to [Keep a Changelog](https://keepachangelog.com/en/1.1.0/) and [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
+## [1.8.1](https://github.com/kucherenko/gangsta/compare/gangsta-v1.8.0...gangsta-v1.8.1) (2026-04-28)
+
+
+### ### Fixed
+
+* **autonomous-mode:** replace vague cross-references with explicit don-proxy gates at every human question point ([#36](https://github.com/kucherenko/gangsta/issues/36)) ([7880d2d](https://github.com/kucherenko/gangsta/commit/7880d2d37e727abdeb8dc85bceb7d437f2b0c149))
+
 ## [1.8.0](https://github.com/kucherenko/gangsta/compare/gangsta-v1.7.4...gangsta-v1.8.0) (2026-04-28)
 
 
