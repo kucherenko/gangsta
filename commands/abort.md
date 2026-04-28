@@ -60,9 +60,10 @@ Subsequent reads of the ledger by `gangsta:the-ledger` and by the Reconnaissance
 
 ## Acceptance
 
-- AC-006: Aborting a pending-confirmation Heist removes it from active state without data loss.
-- AC-014: After abort, `/gangsta:status` and ledger reads behave as if the Heist never existed (excluding aborted entries).
-- AC-015: Re-running a feature with the same name after abort does not collide, due to the timestamped destination.
+- AC-014 / FR-019: Aborting a pending-confirmation Heist atomically relocates the artifact tree to `docs/gangsta/.aborted/<feature>-<ISO-8601>/` with `abort-marker.md` written, removing the Heist from active state without data loss.
+- AC-015 / FR-019: `.last-heist` is cleared if and only if it points at the aborted feature; pointers to other features are preserved.
+- FR-020: After abort, `gangsta:the-ledger` reads and Reconnaissance dossiers exclude entries whose `heist:` key resolves to a directory under `.aborted/`. Aborted files remain on disk for forensic review.
+- Re-running a feature with the same name after abort does not collide, due to the timestamped destination directory.
 
 ## References
 

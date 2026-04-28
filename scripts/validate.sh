@@ -48,12 +48,14 @@ echo ""
 echo "Checking command frontmatter..."
 for cmd in commands/*.md; do
   [ -f "$cmd" ] || continue
-  # Must start with --- and contain a name: line within the frontmatter block
-  if head -1 "$cmd" | grep -q '^---$' && awk '/^---$/{c++; next} c==1 && /^name:[[:space:]]*[^[:space:]]/{found=1; exit} END{exit !found}' "$cmd"; then
+  # Must start with --- and contain both name: and description: lines within the frontmatter block (FR-023a)
+  if head -1 "$cmd" | grep -q '^---$' \
+     && awk '/^---$/{c++; next} c==1 && /^name:[[:space:]]*[^[:space:]]/{found=1; exit} END{exit !found}' "$cmd" \
+     && awk '/^---$/{c++; next} c==1 && /^description:[[:space:]]*[^[:space:]]/{found=1; exit} END{exit !found}' "$cmd"; then
     echo "  OK:   ${cmd} frontmatter"
     PASS=$((PASS + 1))
   else
-    echo "  FAIL: ${cmd} missing valid frontmatter or name field"
+    echo "  FAIL: ${cmd} missing valid frontmatter, name, or description"
     FAIL=$((FAIL + 1))
   fi
 done
