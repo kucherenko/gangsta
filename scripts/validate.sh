@@ -20,6 +20,44 @@ for dir in skills/*/; do
   fi
 done
 
+echo ""
+echo "Checking required skills (autonomous-pipeline)..."
+for required in skills/autonomous-mode/SKILL.md skills/don-proxy/SKILL.md; do
+  if [ ! -s "$required" ]; then
+    echo "  FAIL: Missing or empty ${required}"
+    FAIL=$((FAIL + 1))
+  else
+    echo "  OK:   ${required}"
+    PASS=$((PASS + 1))
+  fi
+done
+
+echo ""
+echo "Checking required commands..."
+for cmd in commands/heist.md commands/go.md commands/abort.md; do
+  if [ ! -s "$cmd" ]; then
+    echo "  FAIL: Missing or empty ${cmd}"
+    FAIL=$((FAIL + 1))
+  else
+    echo "  OK:   ${cmd}"
+    PASS=$((PASS + 1))
+  fi
+done
+
+echo ""
+echo "Checking command frontmatter..."
+for cmd in commands/*.md; do
+  [ -f "$cmd" ] || continue
+  # Must start with --- and contain a name: line within the frontmatter block
+  if head -1 "$cmd" | grep -q '^---$' && awk '/^---$/{c++; next} c==1 && /^name:[[:space:]]*[^[:space:]]/{found=1; exit} END{exit !found}' "$cmd"; then
+    echo "  OK:   ${cmd} frontmatter"
+    PASS=$((PASS + 1))
+  else
+    echo "  FAIL: ${cmd} missing valid frontmatter or name field"
+    FAIL=$((FAIL + 1))
+  fi
+done
+
 # Check CHANGELOG
 echo ""
 echo "Checking CHANGELOG.md..."
