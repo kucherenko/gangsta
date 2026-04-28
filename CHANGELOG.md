@@ -4,6 +4,13 @@ All notable changes to Gangsta are documented here.
 
 This project adheres to [Keep a Changelog](https://keepachangelog.com/en/1.1.0/) and [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
+## [1.8.0](https://github.com/kucherenko/gangsta/compare/gangsta-v1.7.4...gangsta-v1.8.0) (2026-04-28)
+
+
+### ### Added
+
+* **skills:** autonomous-mode + don-proxy skills, constitution seed (PR1/2) ([#30](https://github.com/kucherenko/gangsta/issues/30)) ([#32](https://github.com/kucherenko/gangsta/issues/32)) ([eb694a5](https://github.com/kucherenko/gangsta/commit/eb694a53c22eaff2a35f9bc0097c9bc054b36ab0))
+
 ## [1.7.4](https://github.com/kucherenko/gangsta/compare/gangsta-v1.7.3...gangsta-v1.7.4) (2026-04-27)
 
 
