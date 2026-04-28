@@ -83,7 +83,9 @@ status: pending-review
 
 ### Step 4: Present to Don
 
-**Autonomous Mode:** When invoked under `gangsta:autonomous-mode`, see § Per-Phase Interaction Schemas → Reconnaissance in that skill. Otherwise this skill operates as written.
+**Autonomous Mode:** Do NOT present the proceed menu below and do NOT wait for human input. Invoke `gangsta:don-proxy` to review the Dossier. On APPROVE: auto-advance directly to the-Grilling (The Grilling is mandatory in autonomous mode — there is no skip-Grilling path). On REJECT: abort; write the verdict to `autonomous-log.md` and leave the heist directory in place. The proceed menu is for the default (gated) Heist only.
+
+Otherwise (default Heist):
 
 Save the Dossier file (Step 3), then present its contents to the Don in chat.
 
