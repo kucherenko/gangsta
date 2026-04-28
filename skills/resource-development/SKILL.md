@@ -120,10 +120,10 @@ estimated-total-budget: <tokens>
 
 ### Step 6: Don Approves Execution Plan
 
-Present to the Don:
-> "Execution Plan ready. <N> Work Packages across <N> territories. Estimated budget: <tokens>. Ready to execute The Hit?"
+**Autonomous Mode:** Do NOT ask the human Don. Invoke `gangsta:don-proxy` to review the Execution Plan for Constitutional-Floor violations (Work Package scope, territory allocation, budget assumptions). On APPROVE: `/gangsta:heist` writes `docs/gangsta/.last-heist` and exits — The Hit does NOT auto-start; the real Don must invoke `/gangsta:go`. On REJECT: abort; write the verdict to `autonomous-log.md`. Do not present the Plan to the human Don.
 
-**Autonomous Mode:** When invoked under `gangsta:autonomous-mode`, see § Per-Phase Interaction Schemas → Resource-Development in that skill. Otherwise this skill operates as written.
+Otherwise (default Heist): Present to the Don:
+> "Execution Plan ready. <N> Work Packages across <N> territories. Estimated budget: <tokens>. Ready to execute The Hit?"
 
 ## Checkpoint
 
