@@ -155,6 +155,8 @@ The Consigliere returns a verdict: APPROVE, APPROVE WITH CONCERNS, or REJECT.
 
 If REJECTED: Underboss revises based on Consigliere feedback. Re-review.
 
+**Autonomous Mode:** When invoked under `gangsta:autonomous-mode`, see § Per-Phase Interaction Schemas → the-Sit-Down in that skill. Otherwise this skill operates as written.
+
 ### Step 5: Don Signs the Contract
 
 Present the Contract to the Don:
@@ -164,6 +166,8 @@ The Don may:
 - **Sign** — Contract is binding. **Immediately invoke `gangsta:resource-development` — do NOT ask the Don what to do next, do NOT pause, do NOT prompt for confirmation. Auto-advance is mandatory.**
 - **Request changes** — Underboss revises. Back to Step 4 (Consigliere re-reviews).
 - **Kill the Heist** — Abort. No further phases.
+
+**Autonomous Mode auto-advance:** Under `gangsta:autonomous-mode`, this auto-advance fires when don-proxy SIGNS and Consigliere returns non-REJECT. Either REJECT is terminal (Dual-Veto, FR-007).
 
 Update the Contract frontmatter:
 ```yaml
