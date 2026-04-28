@@ -40,8 +40,11 @@ Invoked after the Don approves the Reconnaissance Dossier (Reconnaissance comple
    - **Initial Idea Critique** — Challenge the Don's objective itself: problem framing, hidden assumptions, simpler alternatives, scope concerns. Renders an Idea Verdict before touching the proposal.
    - **Proposal Attack** — Find architectural flaws, identify security gaps, check against Constitution Negative Constraints, enumerate potential regressions, assess scalability concerns.
 
-3. **Don** (user) — Asked for opinion, **one question at a time**:
-   > Present the summary and concerns, then ask one question first: "Do you agree with the Devil's-Advocate's attack?" Wait for the answer. Then ask: "Any concerns they missed?" Wait. Then: "Do you want to override any part of the proposal?" Wait. Collect all answers before passing to the Synthesizer.
+3. **Don** — Asked for opinion, **one question at a time**:
+
+   **Autonomous Mode:** Do NOT ask the human Don. Invoke `gangsta:don-proxy` to provide the per-round position statement (agrees/disagrees with the attack, any additional concerns, any override of the proposal). Pass don-proxy's response to the Synthesizer as the Don's input for this round.
+
+   Otherwise (default Heist): Present the summary and concerns, then ask one question first: "Do you agree with the Devil's-Advocate's attack?" Wait for the answer. Then ask: "Any concerns they missed?" Wait. Then: "Do you want to override any part of the proposal?" Wait. Collect all answers before passing to the Synthesizer.
 
 4. **Synthesizer** (subagent) — Incorporates:
    - Valid attacks from the Devils-Advocate
@@ -63,7 +66,9 @@ The Grilling ends when ANY of these is true:
 
 ### At Round 5 (Default Maximum)
 
-Ask the Don:
+**Autonomous Mode:** Do NOT ask the human Don. Invoke `gangsta:don-proxy` to decide: accept current consensus (auto-advance to the-Sit-Down), extend the debate up to 2 more rounds (bounded by the `--rounds` flag from `/gangsta:heist`), or reject the proposal (abort). Proceed based on don-proxy's decision without pausing for human input.
+
+Otherwise (default Heist): Ask the Don:
 > "We've completed 5 rounds of The Grilling. [Summarize current state]. Do you want to:
 > 1. Accept the current consensus and proceed
 > 2. Extend the debate (up to 2 more rounds)
