@@ -141,7 +141,13 @@ Don (User) — Supreme authority. Approves all phase gates.
                     Invoke: gangsta:the-ledger
 ```
 
-**Every phase gate requires Don approval.** Never skip a phase. Never auto-advance.
+**Every phase gate requires Don approval.** Never skip a phase. **Never auto-advance** — except at three explicitly authorized sites:
+
+1. `skills/the-sit-down/SKILL.md` line 164 — after the Don signs the Contract, the default Heist auto-advances into Resource-Development.
+2. `skills/the-hit/SKILL.md` line 110 — after all Work Packages report complete, the default Heist auto-advances into Laundering.
+3. `gangsta:autonomous-mode` per its **Per-Phase Interaction Schemas** — only when `autonomous-mode` is the active orchestrator, additional carve-outs apply.
+
+Under `autonomous-mode`, terminal authority remains with the human Don at all times: `/gangsta:go` (resume), `/gangsta:abort` (halt), and the Consigliere terminal veto / Dual-Veto in the Sit-Down bound every auto-advance. The original rule — pause-and-prompt at each phase gate — remains the default for every Heist not running under `autonomous-mode`.
 
 ## The Heist Pipeline
 

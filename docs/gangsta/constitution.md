@@ -1,0 +1,19 @@
+# Project Constitution
+
+This file is the Gangsta framework's institutional Constitution. It accumulates **Commandments** (positive rules the framework must uphold) and **Negative Constraints** (things the framework must never do) across Heists. Entries are written exclusively by the Laundering phase at the close of a Heist, with the Don's explicit confirmation. The Constitution is read by every skill that requires invariant rules — particularly `gangsta:don-proxy` when operating in autonomous mode — to ensure cross-Heist invariants are honored.
+
+The Constitution is layered ON TOP of Omerta. See [`skills/omerta/SKILL.md`](../../skills/omerta/SKILL.md) for foundational laws (Authority, Checkpoints, Truth, Resources, Spec Supremacy). Omerta laws are non-negotiable and apply to every operation; the Constitution captures Heist-specific invariants discovered during execution. Where the Constitution and Omerta overlap, Omerta prevails. The Constitution may strengthen Omerta but never weaken it.
+
+## Commandments
+
+Future Heists' Laundering phases append entries here. Format: `- <ID>: <one-line rule> — Source: <heist name>`
+
+## Negative Constraints
+
+Future Heists' Laundering phases append entries here. Format: `- <ID>: <one-line prohibition> — Source: <heist name>`
+
+- NC-001: NEVER weaken or bypass Omerta Law 2 (checkpoints non-negotiable) in any autonomous-mode pathway — Source: autonomous-pipeline-commands Heist (Recon Dossier)
+
+## How Entries Are Added
+
+Entries are added ONLY via `gangsta:laundering` at the close of a Heist, and ONLY with the Don's explicit confirmation. The Constitution is never silently amended, never edited by ad-hoc commits, and never modified outside the Laundering phase. Every entry must cite its source Heist so the provenance of each rule is auditable.

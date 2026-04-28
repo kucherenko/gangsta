@@ -13,6 +13,8 @@ The Grilling is a structured Multi-Agent Debate (MAD) protocol. Before any plan 
 
 Invoked after the Don approves the Reconnaissance Dossier (Reconnaissance complete).
 
+**Autonomous Mode:** When invoked under `gangsta:autonomous-mode`, see § Per-Phase Interaction Schemas → the-Grilling in that skill. Otherwise this skill operates as written.
+
 ## Round Limits (HARD RULES)
 
 | Limit | Value | Rule |
