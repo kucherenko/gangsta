@@ -55,19 +55,26 @@ The Don declared the Heist **complete** with branches kept local. PR push and PR
 ## Audit Records
 
 - Inspector PR1: task `ses_22bdc6f70ffexkHCzAccfrv2mX` — Ready: Yes (3 Minor deferred)
-- Inspector PR2: task `ses_22bdc1b47ffeKpYxmGrVi9XFPb` — Ready: Yes (3 Minor; 2 fixed in 992c6bb, 1 deferred)
+- Inspector PR2: task `ses_22bdc1b47ffeKpYxmGrVi9XFPb` — Ready: Yes (3 Minor; 2 fixed in original 992c6bb / rebased 812fdb7, 1 deferred)
 - Consigliere: APPROVE WITH CONCERNS (recorded in this checkpoint)
+- Post-Heist defect (cross-Heist coupling): the Don identified that framework code (skills/, commands/) cited Heist-specific FR/AD/AC numbers, coupling the framework to this one Contract. Citations were stripped from skills/ on PR1 and from commands/ on PR2 in fix-up commits; PR2 was rebased onto the new PR1 tip. SHA migration table below.
 
 ## Branches at Completion
 
-- `heist/autonomous-pipeline-commands-pr1` @ a1fefa3 (3 commits, +1763 LOC, 20 files)
-- `heist/autonomous-pipeline-commands-pr2` @ 7cfe1c7 stacking on PR1, +PR2 commits below
+- `heist/autonomous-pipeline-commands-pr1` @ cec03ac (4 commits, +1763 LOC + citation-strip fix-up)
+- `heist/autonomous-pipeline-commands-pr2` @ 23f4fcc stacking on PR1 (6 commits including citation-strip fix-up; checkpoint-amend SHA captured at amend time)
 
-PR2 commit list (post-Hit-final):
-- da7ea33 — feat(commands): add heist, go, abort
-- 474e9b7 — feat(plugin,validate): register commands + validate frontmatter
-- 992c6bb — fix(commands,validate): Inspector audit Minor items
-- 7cfe1c7 — docs: final Hit checkpoint
+PR2 commit list at this checkpoint's amend:
+- fb19e23 — feat(commands): add heist, go, abort (was da7ea33)
+- 7f3439d — feat(plugin,validate): register commands + validate frontmatter (was 474e9b7)
+- 812fdb7 — fix(commands,validate): Inspector audit Minor items (was 992c6bb)
+- 36962c9 — docs: final Hit checkpoint (was 7cfe1c7)
+- 51f304d — docs: final laundering checkpoint (was d13204f)
+- 23f4fcc → 62c53bd (after amend) — fix(commands): strip Heist-specific Contract citations + checkpoint SHA migration
+
+PR1 SHA migration:
+- db26918, caea00c, a1fefa3 — unchanged
+- cec03ac — new fix(skills) citation-strip commit on top of a1fefa3
 
 ## Pending Outside the Heist
 

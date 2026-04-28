@@ -59,7 +59,7 @@ Phases 5 (the Hit) and 6 (Laundering) execute on `/gangsta:go`.
 
 ## Termination Conditions
 
-- **Constitutional Floor abort (FR-016):** universal-phase guardrail — if the Consigliere or don-proxy issues REJECT for a Constitutional Floor violation at ANY phase, execution aborts immediately and no further phases run. This is non-overridable, even with `--best-effort true`.
+- **Constitutional Floor abort:** universal-phase guardrail — if the Consigliere or don-proxy issues REJECT for a Constitutional Floor violation at ANY phase, execution aborts immediately and no further phases run. This is non-overridable, even with `--best-effort true`.
 - **Don-proxy REJECT** at a phase gate aborts the pipeline.
 - **Retry exhaustion** — any phase that exceeds `--retries` attempts triggers ESCALATE and aborts.
 - **On abort:** all work produced so far remains under `docs/gangsta/<feature>/` with `pending-don-confirmation` status visible in the Contract/Plan headers, and `docs/gangsta/.last-heist` is still written so the Don can inspect or resume.

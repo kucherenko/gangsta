@@ -20,7 +20,7 @@ flags:
 
 The human-Don signing event. Flips a Heist out of `pending-don-confirmation` purgatory into `confirmed` state, then runs the Hit + Laundering phases under `gangsta:autonomous-mode`. Phases 1-4 (Reconnaissance, Grilling, Sit-Down, Resource-Development) are NOT re-run.
 
-## Resolution Algorithm (FR-017, AD-004)
+## Resolution Algorithm
 
 Resolve the target Heist directory under `docs/gangsta/<feature>/`:
 
@@ -29,7 +29,7 @@ Resolve the target Heist directory under `docs/gangsta/<feature>/`:
 
 On any resolution failure: emit a hard error and abort. Do not prompt. Do not guess.
 
-## Signing Event (FR-018, FR-024)
+## Signing Event
 
 Once the Heist directory is resolved, perform the signing flips atomically before executing any phase:
 
@@ -38,7 +38,7 @@ Once the Heist directory is resolved, perform the signing flips atomically befor
    - `status: pending-don-confirmation` → remove `status: pending-don-confirmation`
    - Add `confirmed: <ISO-8601 UTC timestamp>` (e.g. `2026-04-28T14:38:00Z`)
 
-2. **Ledger entry flip (FR-018)** — scan the ledger for entries whose `heist:` key matches the resolved feature slug. For each matched entry, rewrite the same fields:
+2. **Ledger entry flip** — scan the ledger for entries whose `heist:` key matches the resolved feature slug. For each matched entry, rewrite the same fields:
    - `signed-by: don-proxy` → `signed-by: don`
    - `status: pending-don-confirmation` → removed
    - Add `confirmed: <ISO-8601 UTC timestamp>` (same timestamp as the Contract flip)
@@ -56,7 +56,7 @@ Under `gangsta:autonomous-mode`, in order:
 
 Phases 1-4 are NOT re-run. The Plan and Contract are read-only inputs at this point.
 
-## Termination Conditions (AC-006, AC-011, AC-012, AC-013)
+## Termination Conditions
 
 Abort the run on any of:
 

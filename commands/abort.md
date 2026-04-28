@@ -20,7 +20,7 @@ Rejects a Heist that is awaiting Don confirmation by relocating its working dire
   - `docs/gangsta/<feature>/` already resides under `docs/gangsta/.aborted/`.
   - `feature` resolves to a path containing `..` or otherwise escaping `docs/gangsta/`.
 
-## Move Semantics (FR-019)
+## Move Semantics
 
 - **Source:** `docs/gangsta/<feature>/`
 - **Destination:** `docs/gangsta/.aborted/<feature>-<ISO-8601-timestamp>/`
@@ -46,11 +46,11 @@ Marker body is free-text and may document the reason for the abort. The body MAY
 
 ## State Cleanup
 
-- If `docs/gangsta/.last-heist` exists and its contents resolve to the aborted feature, clear `docs/gangsta/.last-heist` (FR-019). Clearing means truncating the file to empty or removing it; either is acceptable, but the chosen behavior must be deterministic.
+- If `docs/gangsta/.last-heist` exists and its contents resolve to the aborted feature, clear `docs/gangsta/.last-heist`. Clearing means truncating the file to empty or removing it; either is acceptable, but the chosen behavior must be deterministic.
 - If `docs/gangsta/.last-heist` points at a different feature, leave it untouched.
 - Ledger entries (`insights/`, `fails/`) keyed to this Heist remain physically present on disk. They are NOT deleted, NOT moved, and NOT rewritten. Their effective invisibility is enforced at read time — see § Ledger Exclusion below.
 
-## Ledger Exclusion (FR-020)
+## Ledger Exclusion
 
 Subsequent reads of the ledger by `gangsta:the-ledger` and by the Reconnaissance phase of any future Heist MUST exclude entries whose `heist:` frontmatter key resolves to a directory currently under `docs/gangsta/.aborted/`.
 
@@ -60,9 +60,9 @@ Subsequent reads of the ledger by `gangsta:the-ledger` and by the Reconnaissance
 
 ## Acceptance
 
-- AC-014 / FR-019: Aborting a pending-confirmation Heist atomically relocates the artifact tree to `docs/gangsta/.aborted/<feature>-<ISO-8601>/` with `abort-marker.md` written, removing the Heist from active state without data loss.
-- AC-015 / FR-019: `.last-heist` is cleared if and only if it points at the aborted feature; pointers to other features are preserved.
-- FR-020: After abort, `gangsta:the-ledger` reads and Reconnaissance dossiers exclude entries whose `heist:` key resolves to a directory under `.aborted/`. Aborted files remain on disk for forensic review.
+- Aborting a pending-confirmation Heist atomically relocates the artifact tree to `docs/gangsta/.aborted/<feature>-<ISO-8601>/` with `abort-marker.md` written, removing the Heist from active state without data loss.
+- `.last-heist` is cleared if and only if it points at the aborted feature; pointers to other features are preserved.
+- After abort, `gangsta:the-ledger` reads and Reconnaissance dossiers exclude entries whose `heist:` key resolves to a directory under `.aborted/`. Aborted files remain on disk for forensic review.
 - Re-running a feature with the same name after abort does not collide, due to the timestamped destination directory.
 
 ## References

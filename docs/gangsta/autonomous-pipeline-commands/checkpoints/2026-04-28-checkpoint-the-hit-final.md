@@ -15,14 +15,19 @@ status: complete
 | 1 | WP-001, 002, 010, 011 | pr1 | committed (db26918) |
 | 2 | WP-003..009 | pr1 | committed (caea00c) |
 | 2.5 | docs (recon/grilling/sit-down/resource-dev/checkpoints + pressure-test-plan) | pr1 | committed (a1fefa3) |
-| 3 | WP-012, 013, 014 | pr2 | committed (da7ea33) |
-| 4 | WP-015, 016, 017 | pr2 | committed (474e9b7) |
-| 5 | WP-018 + Inspector fixes | pr2 | committed (992c6bb) |
+| 3 | WP-012, 013, 014 | pr2 | committed (originally da7ea33; rebased to fb19e23) |
+| 4 | WP-015, 016, 017 | pr2 | committed (originally 474e9b7; rebased to 7f3439d) |
+| 5 | WP-018 + Inspector fixes | pr2 | committed (originally 992c6bb; rebased to 812fdb7) |
 
 ## Branches
 
+At Hit-final time of writing:
 - `heist/autonomous-pipeline-commands-pr1` @ a1fefa3 (3 commits, 1763 lines added across 20 files)
 - `heist/autonomous-pipeline-commands-pr2` @ 992c6bb (3 commits, 286 lines added across 6 files; stacks on PR1)
+
+After post-Heist citation-strip + rebase:
+- `heist/autonomous-pipeline-commands-pr1` @ cec03ac (4 commits)
+- `heist/autonomous-pipeline-commands-pr2` @ stacking on PR1 with 6 commits including the citation-strip fix-up; see `2026-04-28-checkpoint-laundering.md` for the full SHA migration table.
 
 ## Acceptance Criteria
 
