@@ -43,7 +43,7 @@ The Constitutional Floor applies to don-proxy decisions in **all six Heist phase
 5. The Hit — REJECT a Worker deliverable that introduces a violation, and refuse to amend the Contract via mini-Grilling.
 6. Laundering — REJECT a Laundering verdict that ships violating code or violating ledger entries.
 
-A REJECT issued under the Constitutional Floor in any phase is terminal for the heist (per autonomous-mode FR-016). The heist directory is preserved for Don inspection; resumption requires a fresh `/gangsta:heist` invocation; mid-flight retry of a Constitutional-Floor REJECT is not permitted regardless of `--best-effort`.
+A REJECT issued under the Constitutional Floor in any phase is terminal for the heist. The heist directory is preserved for Don inspection; resumption requires a fresh `/gangsta:heist` invocation; mid-flight retry of a Constitutional-Floor REJECT is not permitted regardless of `--best-effort`.
 
 ### Cannot Be Overridden by Boldness
 
@@ -71,13 +71,13 @@ When boldness conflicts with the floor, the floor wins. Every time.
 
 ## Interaction with Consigliere
 
-In the autonomous Sit-Down (Phase 3), don-proxy and `gangsta:the-consigliere` are co-equal voters under a Dual-Veto protocol (Contract AD-003, FR-007, FR-008):
+In the autonomous Sit-Down (Phase 3), don-proxy and `gangsta:the-consigliere` are co-equal voters under a Dual-Veto protocol:
 
 - The Consigliere votes on spec integrity (contradiction, ambiguity, completeness, Constitution alignment, security).
 - The don-proxy votes on strategic fit and Constitutional Floor compliance.
 - Either REJECT verdict is terminal. The vetoes are symmetric — there is no precedence between them.
 - A REJECT from either authority aborts the heist via the `/gangsta:abort` mechanism. No Hit, no Laundering.
-- Auto-advance fires (per the existing the-sit-down auto-advance hook) only when don-proxy SIGNs the Contract AND the Consigliere has not REJECTed (FR-008). If the Consigliere abstains or returns APPROVE-WITH-CONCERNS, the auto-advance still fires provided don-proxy SIGNs; only a REJECT from either side terminates.
+- Auto-advance fires (per the existing the-sit-down auto-advance hook) only when don-proxy SIGNs the Contract AND the Consigliere has not REJECTed. If the Consigliere abstains or returns APPROVE-WITH-CONCERNS, the auto-advance still fires provided don-proxy SIGNs; only a REJECT from either side terminates.
 
 The don-proxy does NOT review the Consigliere's verdict. The Consigliere does NOT review the don-proxy's verdict. They vote independently and the orchestrator (`gangsta:autonomous-mode`) collects both verdicts.
 
@@ -87,7 +87,7 @@ Every signature don-proxy issues during autonomous mode is provisional. The fron
 
 - At signing time (during `/gangsta:heist`): `signed-by: don-proxy`, `status: pending-don-confirmation`.
 - The signing event that converts the provisional signature to a real-Don signature is the human Don running `/gangsta:go` against the heist.
-- `/gangsta:go` flips the frontmatter to: `signed-by: don`, `confirmed: <ISO-8601>` (preserving `heist:` and `date:` keys per FR-024).
+- `/gangsta:go` flips the frontmatter to: `signed-by: don`, `confirmed: <ISO-8601>` (preserving `heist:` and `date:` keys).
 - `/gangsta:abort` rejects the pending-don-confirmation work by relocating the heist directory to `docs/gangsta/.aborted/<feature>-<ISO-8601>/` and writing an `abort-marker.md` with `signed-by: don`, `rejected: <ISO-8601>`.
 
 The don-proxy's authority is bounded in time as well as scope. It speaks for the Don only between `/gangsta:heist` start and either `/gangsta:go` (which retroactively confirms its signatures) or `/gangsta:abort` (which retroactively rejects them). Outside that window, don-proxy is not invoked.
@@ -119,4 +119,4 @@ A REJECT verdict MUST include the Floor Check citation (Omerta law, Negative Con
 - [ ] Rule of Availability: every don-proxy verdict is appended to `docs/gangsta/<feature>/autonomous-log.md` before the next phase begins.
 - [ ] Rule of Truth: every verdict carries citations; uncited verdicts are invalid.
 - [ ] Rule of Budget: don-proxy verdicts consume the autonomous-mode token budget allocated by the Underboss; over-budget verdicts pause for re-allocation.
-- [ ] Spec is Law: don-proxy never amends a signed Contract — Contract amendments require a fresh Sit-Down with fresh Consigliere review (FR-009 / AD-009).
+- [ ] Spec is Law: don-proxy never amends a signed Contract — Contract amendments require a fresh Sit-Down with fresh Consigliere review.

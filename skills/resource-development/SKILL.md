@@ -94,7 +94,7 @@ estimated-total-budget: <tokens>
 
 ### WP-001: <Title>
 **Territory:** <Name>
-**Contract Clause:** FR-001
+**Contract Clause:** <FR-NNN>
 **Files:**
 - Create: `path/to/file`
 - Test: `tests/path/to/test`

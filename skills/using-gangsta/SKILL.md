@@ -147,7 +147,7 @@ Don (User) — Supreme authority. Approves all phase gates.
 2. `skills/the-hit/SKILL.md` line 110 — after all Work Packages report complete, the default Heist auto-advances into Laundering.
 3. `gangsta:autonomous-mode` per its **Per-Phase Interaction Schemas** — only when `autonomous-mode` is the active orchestrator, additional carve-outs apply.
 
-Under `autonomous-mode`, terminal authority remains with the human Don at all times: `/gangsta:go` (resume), `/gangsta:abort` (halt), and the Consigliere terminal veto / Dual-Veto in the Sit-Down (FR-007) bound every auto-advance. The original rule — pause-and-prompt at each phase gate — remains the default for every Heist not running under `autonomous-mode`.
+Under `autonomous-mode`, terminal authority remains with the human Don at all times: `/gangsta:go` (resume), `/gangsta:abort` (halt), and the Consigliere terminal veto / Dual-Veto in the Sit-Down bound every auto-advance. The original rule — pause-and-prompt at each phase gate — remains the default for every Heist not running under `autonomous-mode`.
 
 ## The Heist Pipeline
 

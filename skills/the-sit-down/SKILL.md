@@ -167,7 +167,7 @@ The Don may:
 - **Request changes** — Underboss revises. Back to Step 4 (Consigliere re-reviews).
 - **Kill the Heist** — Abort. No further phases.
 
-**Autonomous Mode auto-advance:** Under `gangsta:autonomous-mode`, this auto-advance fires when don-proxy SIGNS and Consigliere returns non-REJECT. Either REJECT is terminal (Dual-Veto, FR-007).
+**Autonomous Mode auto-advance:** Under `gangsta:autonomous-mode`, this auto-advance fires when don-proxy SIGNS and Consigliere returns non-REJECT. Either REJECT is terminal (Dual-Veto).
 
 Update the Contract frontmatter:
 ```yaml

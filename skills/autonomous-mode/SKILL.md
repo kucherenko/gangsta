@@ -59,7 +59,7 @@ Each subsection below defines, for one host skill: when don-proxy is invoked, wh
 
 **REJECT triggers:**
 - A Grilling consensus that endorses an approach violating Omerta or a Negative Constraint (Constitutional Floor).
-- A Grilling that converges below the round floor without addressing required adversarial pressure (e.g. mandatory adversarial review skipped in spirit). The mandatory-Grilling rule (no `--no-grilling` flag, per AD-007) is non-negotiable.
+- A Grilling that converges below the round floor without addressing required adversarial pressure (e.g. mandatory adversarial review skipped in spirit). The mandatory-Grilling rule (no flag exists to bypass adversarial brainstorming) is non-negotiable.
 
 **Artifacts produced:** Grilling conclusions document (host skill output) + appended `autonomous-log.md` entries per round and at consensus.
 
@@ -86,7 +86,7 @@ Each subsection below defines, for one host skill: when don-proxy is invoked, wh
 
 **Artifacts produced:** Signed Contract written with frontmatter `signed-by: don-proxy`, `status: pending-don-confirmation`, `signatories: [don-proxy, Consigliere, Underboss]`. Consigliere verdict and don-proxy verdict appended to `autonomous-log.md`.
 
-**Auto-advance (FR-008):** The host-skill auto-advance at `skills/the-sit-down/SKILL.md:164` fires in autonomous mode when don-proxy SIGN AND Consigliere non-REJECT. It does NOT fire if either authority REJECTs.
+**Auto-advance:** The host-skill auto-advance at `skills/the-sit-down/SKILL.md:164` fires in autonomous mode when don-proxy SIGN AND Consigliere non-REJECT. It does NOT fire if either authority REJECTs.
 
 **Preserved unchanged:** The Absolute Rule (no code generation in the Contract), the 2–3 approaches requirement, the Consigliere review pass, the Contract structure (Objective, Requirements, Architectural Decisions, Grilling Conclusions, Applicable Constitution Rules, Acceptance Criteria, Out of Scope, Open Risks).
 
@@ -119,7 +119,7 @@ Each subsection below defines, for one host skill: when don-proxy is invoked, wh
 
 **don-proxy invocation:** When a Worker failure escalates from Crew Lead to Underboss and triggers the mini-Grilling at the host-skill escalation chain, don-proxy participates as the Don substitute in that single-round mini-Grilling.
 
-**Mini-Grilling Constraint (FR-009):** Under autonomous mode, the mini-Grilling produces a **deviation report only** and SHALL NOT mutate the signed Contract on disk. The signed Contract is byte-identical before and after the mini-Grilling. If the deviation report concludes that a Contract amendment is required, the Hit halts and `/gangsta:go` surfaces a fresh-Sit-Down requirement to the real Don. Mid-Hit Contract revision by don-proxy is forbidden — that backdoor would let don-proxy edit a Consigliere-reviewed Contract without Consigliere oversight.
+**Mini-Grilling Constraint:** Under autonomous mode, the mini-Grilling produces a **deviation report only** and SHALL NOT mutate the signed Contract on disk. The signed Contract is byte-identical before and after the mini-Grilling. If the deviation report concludes that a Contract amendment is required, the Hit halts and `/gangsta:go` surfaces a fresh-Sit-Down requirement to the real Don. Mid-Hit Contract revision by don-proxy is forbidden — that backdoor would let don-proxy edit a Consigliere-reviewed Contract without Consigliere oversight.
 
 **REJECT triggers:**
 - Deviation report endorses an amendment that violates Omerta or a Negative Constraint (Constitutional Floor).
@@ -139,7 +139,7 @@ Each subsection below defines, for one host skill: when don-proxy is invoked, wh
 
 **don-proxy invocation:** Once, at the final-declaration step. don-proxy reviews the integration verdict, sweep results, and ledger entries proposed by Laundering.
 
-**Ledger Frontmatter Protocol (FR-024):** Ledger entries (insights, fails, constitution updates) written by `gangsta:laundering` under autonomous mode SHALL include frontmatter:
+**Ledger Frontmatter Protocol:** Ledger entries (insights, fails, constitution updates) written by `gangsta:laundering` under autonomous mode SHALL include frontmatter:
 
 - `signed-by: don-proxy`
 - `status: pending-don-confirmation`
@@ -150,7 +150,7 @@ Three lifecycle states for autonomous-mode ledger entries:
 
 1. **pending-don-confirmation** — written by Laundering during `/gangsta:go`. Visible to active ledger reads but flagged as unconfirmed.
 2. **confirmed** — flipped by `/gangsta:go` at signing time: `signed-by: don`, `confirmed: <ISO-8601>` replaces the pending fields. `heist:` and `date:` preserved.
-3. **rejected** — relocated by `/gangsta:abort` together with the heist directory to `docs/gangsta/.aborted/<feature>-<ISO-8601>/`. Subsequent ledger reads exclude `.aborted/` per FR-020.
+3. **rejected** — relocated by `/gangsta:abort` together with the heist directory to `docs/gangsta/.aborted/<feature>-<ISO-8601>/`. Subsequent ledger reads exclude entries whose `heist:` resolves under `.aborted/`.
 
 **REJECT triggers:**
 - Integration verdict conceals a Sweep failure (Omerta Rule of Truth).
@@ -181,7 +181,7 @@ Baseline + change scenario document required for skill changes per `AGENTS.md:18
 
 ## Cost Profile
 
-Autonomous mode is positioned as a **structured fast path**, not as a token-cost reduction. The mandatory Grilling (no `--no-grilling` flag, per AD-007) means a default `/gangsta:heist` dispatches multiple subagents per round and may exceed gated-mode token spend on small heists.
+Autonomous mode is positioned as a **structured fast path**, not as a token-cost reduction. The mandatory Grilling (no flag exists to bypass adversarial brainstorming) means a default `/gangsta:heist` dispatches multiple subagents per round and may exceed gated-mode token spend on small heists.
 
 - **`--rounds=1` floor:** the minimum-cost configuration. Single Grilling round, single proposer / devil's-advocate / synthesizer pass.
 - **`--rounds=3` default:** matches the `gangsta:the-grilling` ceiling band (1–7). Default is chosen for adversarial robustness.
@@ -191,7 +191,7 @@ The fast-path framing replaces any "speed" claim. Speed without structure produc
 
 ## Concurrent `/gangsta:heist` — Out of Scope
 
-Two simultaneous `/gangsta:heist` invocations on the same repository are UNDEFINED and OUT OF SCOPE for this Heist (per FR-025, single-Don assumption). No lock file, no concurrency guard, no atomic-write protocol is delivered. A future PR may introduce concurrency control if observed in practice; until then, callers MUST serialize their `/gangsta:heist` invocations.
+Two simultaneous `/gangsta:heist` invocations on the same repository are UNDEFINED behavior under the single-Don assumption. No lock file, no concurrency guard, no atomic-write protocol is delivered. A future change may introduce concurrency control if observed in practice; until then, callers MUST serialize their `/gangsta:heist` invocations.
 
 ## Omerta Compliance
 
