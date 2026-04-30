@@ -32,6 +32,7 @@ Each Crew Lead (invoke `gangsta:the-capo`) processes their Work Packages:
    - The Contract clause being implemented
    - Applicable Negative Constraints
    - Territory conventions
+   - Prevention reminder: Workers MUST NOT reproduce Gangsta-internal spec identifiers (FR-xxx, NFR-xxx, WP-xxx, where xxx is one or more digits) in source code, tests, comments, or documentation. This is prevention guidance, not a gate.
 
 2. Workers work in parallel within their territory (up to the allocated Worker count)
 

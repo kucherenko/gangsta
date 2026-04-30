@@ -8,11 +8,14 @@ The Constitution is layered ON TOP of Omerta. See [`skills/omerta/SKILL.md`](../
 
 Future Heists' Laundering phases append entries here. Format: `- <ID>: <one-line rule> — Source: <heist name>`
 
+- C-001: When running the identifier scan on the gangsta repo itself, pre-document the 7 standing framework template files as scan exceptions before executing the scan — their matches are inherent to the framework's own template language and require no per-Heist justification — Source: spec-id-leakage Heist (insights/2026-04-30-gangsta-on-gangsta-scan-exceptions.md)
+
 ## Negative Constraints
 
 Future Heists' Laundering phases append entries here. Format: `- <ID>: <one-line prohibition> — Source: <heist name>`
 
 - NC-001: NEVER weaken or bypass Omerta Law 2 (checkpoints non-negotiable) in any autonomous-mode pathway — Source: autonomous-pipeline-commands Heist (Recon Dossier)
+- NC-002: NEVER reproduce Gangsta-internal spec identifiers (FR-xxx, NFR-xxx, WP-xxx, where xxx is one or more digits) in project-facing artifacts outside `docs/gangsta/`, including source code, test files, code comments, and README files — Source: spec-id-leakage Heist
 
 ## How Entries Are Added
 

@@ -48,6 +48,15 @@ Run the full verification suite:
 
 Use `gangsta:sweep-verification` — every claim of passing must be backed by fresh command output.
 
+**Identifier Scan (Blocking Gate):** Scan all project files outside `docs/gangsta/` for Gangsta-internal spec identifiers using the pattern `\b(FR|NFR|WP)-\d+\b` (matches FR-001, NFR-042, WP-007, FR-1, etc.).
+
+```bash
+grep -rn --include="*.md" --include="*.ts" --include="*.js" --include="*.py" --include="*.go" --include="*.rb" --include="*.java" --include="*.txt" -E "\b(FR|NFR|WP)-[0-9]+" . --exclude-dir=docs/gangsta
+```
+
+- Any match is a **blocking defect**. Remove the identifier from the deliverable and re-run the scan before declaring the Heist clean.
+- Exception: if a match is a legitimate project identifier unrelated to Gangsta planning, record the matching string, the file path, and a one-sentence justification in this laundering checkpoint. The Don MUST acknowledge the exception as part of the checkpoint review sign-off before this gate is cleared.
+
 ### Step 3: Consigliere Final Review
 
 Invoke `gangsta:the-consigliere` for an architectural audit of the integrated code:
