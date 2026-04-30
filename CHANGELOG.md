@@ -4,6 +4,13 @@ All notable changes to Gangsta are documented here.
 
 This project adheres to [Keep a Changelog](https://keepachangelog.com/en/1.1.0/) and [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
+## [1.9.0](https://github.com/kucherenko/gangsta/compare/gangsta-v1.8.1...gangsta-v1.9.0) (2026-04-30)
+
+
+### ### Added
+
+* **spec-id-leakage:** prevent spec identifier leakage via NC-002, skill prevention guidance, and laundering scan gate ([#38](https://github.com/kucherenko/gangsta/issues/38)) ([04a6295](https://github.com/kucherenko/gangsta/commit/04a6295cafed44eb95442ed32f0515f4144cda45))
+
 ## [1.8.1](https://github.com/kucherenko/gangsta/compare/gangsta-v1.8.0...gangsta-v1.8.1) (2026-04-28)
 
 
