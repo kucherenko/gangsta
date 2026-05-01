@@ -8,11 +8,15 @@ The Constitution is layered ON TOP of Omerta. See [`skills/omerta/SKILL.md`](../
 
 Future Heists' Laundering phases append entries here. Format: `- <ID>: <one-line rule> — Source: <heist name>`
 
+- C-PI-001: When an SDK's TypeScript types lag behind its runtime API, use a targeted `(obj as any).method()` cast at the call site and document the gap in INSTALL.md under "Accepted Risks" — Source: pi-dev-extension Heist (insights/2026-05-01-sdk-type-lag-cast-pattern.md)
+
 ## Negative Constraints
 
 Future Heists' Laundering phases append entries here. Format: `- <ID>: <one-line prohibition> — Source: <heist name>`
 
 - NC-001: NEVER weaken or bypass Omerta Law 2 (checkpoints non-negotiable) in any autonomous-mode pathway — Source: autonomous-pipeline-commands Heist (Recon Dossier)
+- NC-002: NEVER include spec identifiers (FR-xxx, NFR-xxx, WP-xxx) in project-facing artifacts outside `docs/gangsta/` — Source: autonomous-pipeline-commands Heist (Recon Dossier)
+- NC-PI-001: NEVER infer an SDK's method signature by analogy with similar patterns — always verify the exact argument shape from documentation or type definitions before implementation — Source: pi-dev-extension Heist (fails/2026-05-01-wrong-registercommand-api-shape.md)
 
 ## How Entries Are Added
 
