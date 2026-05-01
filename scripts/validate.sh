@@ -71,6 +71,19 @@ else
   PASS=$((PASS + 1))
 fi
 
+echo ""
+echo "Checking pi.dev extension structure..."
+for pi_file in .pi/extensions/gangsta/index.ts \
+               .pi/extensions/gangsta/package.json; do
+  if [ ! -s "$pi_file" ]; then
+    echo "  FAIL: Missing or empty ${pi_file}"
+    FAIL=$((FAIL + 1))
+  else
+    echo "  OK:   ${pi_file}"
+    PASS=$((PASS + 1))
+  fi
+done
+
 # Summary
 echo ""
 echo "=================="
