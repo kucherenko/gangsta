@@ -92,6 +92,8 @@ estimated-total-budget: <tokens>
 
 ## Work Packages
 
+**Prevention Guidance (all Work Packages):** Do NOT reproduce Gangsta-internal spec identifiers (FR-xxx, NFR-xxx, WP-xxx, where xxx is one or more digits) in any deliverable — source code, test files, code comments, or documentation. These identifiers belong only in `docs/gangsta/`.
+
 ### WP-001: <Title>
 **Territory:** <Name>
 **Contract Clause:** <FR-NNN>

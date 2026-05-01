@@ -4,15 +4,6 @@ All notable changes to Gangsta are documented here.
 
 This project adheres to [Keep a Changelog](https://keepachangelog.com/en/1.1.0/) and [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
-## [Unreleased]
-
-### Added
-
-* **pi-dev:** native pi.dev coding agent extension with `before_agent_start` bootstrap hook injecting the full Gangsta hierarchy, 1% rule, and all 21 skill paths
-* **pi-dev:** three slash commands — `gangsta:heist`, `gangsta:go`, `gangsta:abort` — wired to framework command files
-* **pi-dev:** `.pi/INSTALL.md` setup guide with accepted risks documented
-* **skills/using-gangsta:** `references/pi-tools.md` Claude Code → pi.dev tool mapping table
-* **scripts/validate.sh:** pi.dev extension structure checks (32 tests total, up from 30)
 
 ## [1.8.1](https://github.com/kucherenko/gangsta/compare/gangsta-v1.8.0...gangsta-v1.8.1) (2026-04-28)
 
