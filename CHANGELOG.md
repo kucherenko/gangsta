@@ -5,6 +5,13 @@ All notable changes to Gangsta are documented here.
 This project adheres to [Keep a Changelog](https://keepachangelog.com/en/1.1.0/) and [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
 
+## [1.10.0](https://github.com/kucherenko/gangsta/compare/gangsta-v1.9.0...gangsta-v1.10.0) (2026-05-01)
+
+
+### ### Added
+
+* **pi-dev:** add native pi.dev coding agent extension ([#40](https://github.com/kucherenko/gangsta/issues/40)) ([1bf349e](https://github.com/kucherenko/gangsta/commit/1bf349e707df01697a7bb412b8ce9db7476e2fa3))
+
 ## [1.8.1](https://github.com/kucherenko/gangsta/compare/gangsta-v1.8.0...gangsta-v1.8.1) (2026-04-28)
 
 
