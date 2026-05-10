@@ -5,6 +5,13 @@ All notable changes to Gangsta are documented here.
 This project adheres to [Keep a Changelog](https://keepachangelog.com/en/1.1.0/) and [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
 
+## [1.10.2](https://github.com/kucherenko/gangsta/compare/gangsta-v1.10.1...gangsta-v1.10.2) (2026-05-10)
+
+
+### ### Fixed
+
+* **opencode:** remove invalid config hook mutations causing 400 on startup ([#46](https://github.com/kucherenko/gangsta/issues/46)) ([2d87d55](https://github.com/kucherenko/gangsta/commit/2d87d5500e22f9b30264ad300c09c46f856dc8e1)), closes [#43](https://github.com/kucherenko/gangsta/issues/43)
+
 ## [1.10.1](https://github.com/kucherenko/gangsta/compare/gangsta-v1.10.0...gangsta-v1.10.1) (2026-05-10)
 
 
