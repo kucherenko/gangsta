@@ -5,6 +5,13 @@ All notable changes to Gangsta are documented here.
 This project adheres to [Keep a Changelog](https://keepachangelog.com/en/1.1.0/) and [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
 
+## [1.10.1](https://github.com/kucherenko/gangsta/compare/gangsta-v1.10.0...gangsta-v1.10.1) (2026-05-10)
+
+
+### ### Fixed
+
+* **plugin:** use spec-compliant string array for commands field ([#44](https://github.com/kucherenko/gangsta/issues/44)) ([3f48404](https://github.com/kucherenko/gangsta/commit/3f48404854432c3424d5bc7cef9ffaad6e189ae0)), closes [#42](https://github.com/kucherenko/gangsta/issues/42)
+
 ## [1.10.0](https://github.com/kucherenko/gangsta/compare/gangsta-v1.9.0...gangsta-v1.10.0) (2026-05-01)
 
 
