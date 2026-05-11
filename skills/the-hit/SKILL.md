@@ -110,7 +110,7 @@ When a Worker fails:
 When all Crew Leads report territory completion:
 1. Underboss verifies: all Work Packages accepted, all tests passing
 2. Write the final checkpoint (status: completed, next-action: Proceed to Laundering)
-3. **Immediately invoke `gangsta:laundering` — do NOT ask the Don what to do next, do NOT pause, do NOT prompt for confirmation. Auto-advance is mandatory.**
+3. **Immediately invoke `gangsta:laundering` — do NOT ask the Don what to do next, do NOT pause, do NOT prompt for confirmation.** (This auto-advance is an authorized exception — documented in `using-gangsta` at the "Never auto-advance" rule, and in `the-sit-down` line 164.)
 
 ## Checkpoint
 

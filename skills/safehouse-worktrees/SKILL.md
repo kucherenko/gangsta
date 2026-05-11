@@ -98,6 +98,8 @@ cd "$path"
 
 ### 3. Run Project Setup
 
+> **Supply chain note:** Package manager installs fetch untrusted third-party code. Where a lockfile exists, prefer lockfile-bound installs (`npm ci` over `npm install`, `pip install` with hash checking, etc.) to reduce supply chain risk.
+
 Auto-detect and run appropriate setup:
 
 ```bash

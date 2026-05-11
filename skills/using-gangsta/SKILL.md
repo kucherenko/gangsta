@@ -11,20 +11,14 @@ You are operating under the **Gangsta Agents framework** for Spec-Driven Develop
 If you were dispatched as a subagent to execute a specific task, skip this skill entirely.
 </SUBAGENT-STOP>
 
-<EXTREMELY-IMPORTANT>
-If you think there is even a 1% chance a gangsta skill might apply to what you are doing, you ABSOLUTELY MUST invoke it.
-
-IF A SKILL APPLIES TO YOUR TASK, YOU DO NOT HAVE A CHOICE. YOU MUST USE IT.
-
-This is not negotiable. This is not optional. You cannot rationalize your way out of this. The Don's framework exists for a reason — respect it.
-</EXTREMELY-IMPORTANT>
+When a gangsta skill applies to your task, invoke it before responding. Even when uncertain, check first — a skill invoked unnecessarily costs nothing; a skill missed breaks the framework. Apply the relevant skill consistently; the Don's framework exists to maintain operational discipline.
 
 ## Instruction Priority
 
 The Don's word is law. When instructions conflict, follow this hierarchy:
 
 1. **The Don's explicit instructions** (CLAUDE.md, GEMINI.md, AGENTS.md, direct requests) — highest priority
-2. **Gangsta skills** — override default system behavior where they conflict
+2. **Gangsta skills** — guide and extend behavior within the task context
 3. **Default system prompt** — lowest priority
 
 If the Don says "skip TDD" and a skill says "always use TDD," you follow the Don. The Don is in control.
@@ -43,7 +37,7 @@ If the Don says "skip TDD" and a skill says "always use TDD," you follow the Don
 
 ## The Rule
 
-**Invoke relevant skills BEFORE any response or action.** Even a 1% chance a skill might apply means you invoke it to check. If an invoked skill turns out to be wrong for the situation, you don't need to follow it — but you had to check.
+**Invoke relevant skills BEFORE any response or action.** When there is a reasonable chance a skill applies, invoke it to check. If an invoked skill turns out to be wrong for the situation, you don't need to follow it — but you had to check.
 
 ```dot
 digraph skill_flow {
