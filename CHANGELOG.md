@@ -5,6 +5,13 @@ All notable changes to Gangsta are documented here.
 This project adheres to [Keep a Changelog](https://keepachangelog.com/en/1.1.0/) and [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
 
+## [1.10.3](https://github.com/kucherenko/gangsta/compare/gangsta-v1.10.2...gangsta-v1.10.3) (2026-05-11)
+
+
+### ### Fixed
+
+* **security:** resolve Snyk/Socket audit flags across five skills ([#48](https://github.com/kucherenko/gangsta/issues/48)) ([f414015](https://github.com/kucherenko/gangsta/commit/f414015c4019d6db1310a0410aa2e572efcc5f61))
+
 ## [1.10.2](https://github.com/kucherenko/gangsta/compare/gangsta-v1.10.1...gangsta-v1.10.2) (2026-05-10)
 
 
