@@ -1,0 +1,17 @@
+# Claude Code plugin install smoke test.
+#
+# Validates that `.claude-plugin/plugin.json` passes `claude plugin validate`
+# (the same validator that runs during `/plugin install`), then loads the
+# plugin via `--plugin-dir` and confirms commands are discovered.
+#
+# Auth-free: no ANTHROPIC_API_KEY needed for validate + load steps.
+FROM node:20-bookworm-slim
+
+RUN apt-get update \
+ && apt-get install -y --no-install-recommends git ca-certificates \
+ && rm -rf /var/lib/apt/lists/*
+
+RUN npm install -g @anthropic-ai/claude-code
+
+WORKDIR /plugin
+CMD ["bash", "-eu", "tests/install/run-claude-code.sh"]

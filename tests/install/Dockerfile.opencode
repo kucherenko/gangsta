@@ -1,0 +1,16 @@
+# OpenCode plugin install smoke test.
+#
+# OpenCode loads the plugin from a git URL at startup. We check the plugin
+# load path by writing a minimal opencode.json that references the mounted
+# source, then running `opencode run --print-logs` and grepping for plugin
+# load confirmation.
+FROM node:20-bookworm-slim
+
+RUN apt-get update \
+ && apt-get install -y --no-install-recommends git ca-certificates \
+ && rm -rf /var/lib/apt/lists/*
+
+RUN npm install -g opencode-ai
+
+WORKDIR /plugin
+CMD ["bash", "-eu", "tests/install/run-opencode.sh"]
