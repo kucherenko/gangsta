@@ -31,6 +31,12 @@ with open(manifest_path) as f:
     data = json.load(f)
 
 errors = []
+
+# Claude Code's runtime validator explicitly rejects $schema as an
+# "Unrecognized key" even though it is valid JSON meta-syntax.
+if "$schema" in data:
+    errors.append("'$schema' key is not allowed — Claude Code's manifest validator rejects it with 'Unrecognized key: $schema'")
+
 path_fields = ("skills", "commands", "agents", "outputStyles")
 for field in path_fields:
     value = data.get(field)
