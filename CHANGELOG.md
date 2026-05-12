@@ -5,6 +5,13 @@ All notable changes to Gangsta are documented here.
 This project adheres to [Keep a Changelog](https://keepachangelog.com/en/1.1.0/) and [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
 
+## [1.11.1](https://github.com/kucherenko/gangsta/compare/gangsta-v1.11.0...gangsta-v1.11.1) (2026-05-12)
+
+
+### ### Fixed
+
+* **release:** auto-sync .claude-plugin versions via release-please extra-files ([#54](https://github.com/kucherenko/gangsta/issues/54)) ([3bd0ab5](https://github.com/kucherenko/gangsta/commit/3bd0ab5c9d77586ec73e9ec682d58d6dd6f50a9e))
+
 ## [1.11.0](https://github.com/kucherenko/gangsta/compare/gangsta-v1.10.4...gangsta-v1.11.0) (2026-05-12)
 
 
