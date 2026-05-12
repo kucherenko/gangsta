@@ -1,0 +1,13 @@
+# Codex install smoke test.
+#
+# Per .codex/INSTALL.md the install is just: clone repo, symlink skills/ into
+# ~/.agents/skills/gangsta. We follow the instructions verbatim and assert
+# the symlinks resolve.
+FROM debian:bookworm-slim
+
+RUN apt-get update \
+ && apt-get install -y --no-install-recommends git ca-certificates findutils \
+ && rm -rf /var/lib/apt/lists/*
+
+WORKDIR /plugin
+CMD ["bash", "-eu", "tests/install/run-codex.sh"]

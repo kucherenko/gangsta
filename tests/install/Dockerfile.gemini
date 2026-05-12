@@ -1,0 +1,15 @@
+# Gemini CLI extension install smoke test.
+#
+# The documented flow is `gemini extensions install <git-url>`. We bypass
+# the network by pointing it at the mounted local checkout, which Gemini
+# treats as a path-based extension when a gemini-extension.json is present.
+FROM node:20-bookworm-slim
+
+RUN apt-get update \
+ && apt-get install -y --no-install-recommends git ca-certificates \
+ && rm -rf /var/lib/apt/lists/*
+
+RUN npm install -g @google/gemini-cli
+
+WORKDIR /plugin
+CMD ["bash", "-eu", "tests/install/run-gemini.sh"]
