@@ -5,6 +5,13 @@ All notable changes to Gangsta are documented here.
 This project adheres to [Keep a Changelog](https://keepachangelog.com/en/1.1.0/) and [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
 
+## [1.11.2](https://github.com/kucherenko/gangsta/compare/gangsta-v1.11.1...gangsta-v1.11.2) (2026-05-12)
+
+
+### ### Fixed
+
+* **plugin:** remove $schema key rejected by Claude Code manifest validator ([#56](https://github.com/kucherenko/gangsta/issues/56)) ([b7131c8](https://github.com/kucherenko/gangsta/commit/b7131c843d1ad8e9733bab4b3348cb3ae311df07))
+
 ## [1.11.1](https://github.com/kucherenko/gangsta/compare/gangsta-v1.11.0...gangsta-v1.11.1) (2026-05-12)
 
 
