@@ -1,15 +1,17 @@
 #!/usr/bin/env bash
 # Inside-container test for OpenCode plugin install.
+# Installs via the documented git source (mirrors .opencode/INSTALL.md):
+#   "plugin": ["gangsta@git+https://github.com/kucherenko/gangsta.git"]
 set -euo pipefail
 
 echo "==> opencode --version"
 opencode --version || true
 
-# Point OpenCode at the local checkout (file:// avoids needing a clone).
+# Use the documented git source — same as users follow in INSTALL.md.
 mkdir -p "$HOME/.config/opencode"
 cat > "$HOME/.config/opencode/opencode.json" <<JSON
 {
-  "plugin": ["gangsta@file:///plugin"]
+  "plugin": ["gangsta@git+https://github.com/kucherenko/gangsta.git"]
 }
 JSON
 
@@ -18,11 +20,11 @@ cat "$HOME/.config/opencode/opencode.json"
 
 echo "==> opencode run --print-logs (load plugin and exit)"
 # `opencode run` with --print-logs surfaces plugin discovery output. We give
-# it a no-op prompt and a 60s timeout; the gangsta file:// plugin takes ~8-11s
-# to load and we need headroom for slower CI environments.
+# it a no-op prompt and a 90s timeout; the git-source plugin clone + load
+# takes longer than file:// — allow extra headroom for CI network latency.
 # Exit code 124 = timeout (expected, no API key).
 set +e
-timeout 60s opencode run --print-logs "hello" > /tmp/opencode.log 2>&1
+timeout 90s opencode run --print-logs "hello" > /tmp/opencode.log 2>&1
 rc=$?
 set -e
 
@@ -35,7 +37,7 @@ if grep -iqE 'gangsta.*(loaded|discovered|registered|plugin)' /tmp/opencode.log;
   echo "PASS: opencode discovered the gangsta plugin"
 elif grep -iqE 'plugin.*gangsta' /tmp/opencode.log; then
   echo "PASS: opencode references the gangsta plugin"
-elif grep -qiE 'gangsta@file:' /tmp/opencode.log; then
+elif grep -qiE 'gangsta@git\+' /tmp/opencode.log; then
   echo "PASS: opencode loaded gangsta plugin config"
 else
   echo "WARN: no explicit 'gangsta' load line — plugin may have loaded after timeout; checking for errors"
@@ -73,7 +75,7 @@ JSON
   # Update config: keep plugin, add model
   cat > "$HOME/.config/opencode/opencode.json" <<JSON
 {
-  "plugin": ["gangsta@file:///plugin"],
+  "plugin": ["gangsta@git+https://github.com/kucherenko/gangsta.git"],
   "model": "openrouter/$MODEL"
 }
 JSON
