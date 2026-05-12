@@ -23,6 +23,16 @@ fi
 python3 -m json.tool "$MANIFEST" > /dev/null
 echo "OK:   $MANIFEST parses as JSON"
 
+# Reject $schema — Claude Code runtime fails with "Unrecognized key: $schema".
+python3 - "$MANIFEST" <<'PY'
+import json, sys
+data = json.load(open(sys.argv[1]))
+if "$schema" in data:
+    print('FAIL: $schema key is present — Claude Code will reject the manifest with "Unrecognized key: \\"$schema\\""')
+    sys.exit(1)
+print("OK:   no $schema key")
+PY
+
 # Local path checks the schema cannot express (path existence, './' prefix).
 python3 - "$MANIFEST" "$REPO_ROOT" <<'PY'
 import json, os, sys
