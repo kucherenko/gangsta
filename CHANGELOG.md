@@ -5,6 +5,13 @@ All notable changes to Gangsta are documented here.
 This project adheres to [Keep a Changelog](https://keepachangelog.com/en/1.1.0/) and [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
 
+## [1.10.4](https://github.com/kucherenko/gangsta/compare/gangsta-v1.10.3...gangsta-v1.10.4) (2026-05-12)
+
+
+### ### Fixed
+
+* **plugin:** remove invalid commands field from manifest ([#50](https://github.com/kucherenko/gangsta/issues/50)) ([b344559](https://github.com/kucherenko/gangsta/commit/b3445593517aa403cd450ad785745fc2e8f92c79))
+
 ## [1.10.3](https://github.com/kucherenko/gangsta/compare/gangsta-v1.10.2...gangsta-v1.10.3) (2026-05-11)
 
 
