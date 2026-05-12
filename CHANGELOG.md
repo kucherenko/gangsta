@@ -5,6 +5,13 @@ All notable changes to Gangsta are documented here.
 This project adheres to [Keep a Changelog](https://keepachangelog.com/en/1.1.0/) and [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
 
+## [1.11.0](https://github.com/kucherenko/gangsta/compare/gangsta-v1.10.4...gangsta-v1.11.0) (2026-05-12)
+
+
+### ### Added
+
+* **ci:** restore explicit commands manifest entry and add per-agent install tests ([#52](https://github.com/kucherenko/gangsta/issues/52)) ([dbd42e5](https://github.com/kucherenko/gangsta/commit/dbd42e5282f1dcd5ce9dc6e414af5617ab18995a))
+
 ## [1.10.4](https://github.com/kucherenko/gangsta/compare/gangsta-v1.10.3...gangsta-v1.10.4) (2026-05-12)
 
 
