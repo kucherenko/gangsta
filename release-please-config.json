@@ -27,6 +27,16 @@
           "type": "json",
           "path": ".claude-plugin/marketplace.json",
           "jsonpath": "$.plugins[0].version"
+        },
+        {
+          "type": "json",
+          "path": "gemini-extension.json",
+          "jsonpath": "$.version"
+        },
+        {
+          "type": "json",
+          "path": ".pi/extensions/gangsta/package.json",
+          "jsonpath": "$.version"
         }
       ]
     }
