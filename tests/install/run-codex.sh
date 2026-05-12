@@ -26,26 +26,45 @@ fi
 echo "PASS: Codex install reachable; $count SKILL.md files discoverable"
 
 # ---------------------------------------------------------------------------
-# Phase 2: LLM skill query via Codex CLI + OpenRouter (optional)
+# Phase 2: LLM skill query via OpenRouter (optional)
 # ---------------------------------------------------------------------------
-# The Codex CLI (@openai/codex) supports OPENAI_BASE_URL + OPENAI_API_KEY for
-# custom endpoints. OpenRouter accepts these and routes to any free model.
-# The CLI is run from /plugin (CWD) so it picks up AGENTS.md, giving it the
-# full gangsta framework instructions as its system context.
+# @openai/codex uses OpenAI's WebSocket Responses API and does not honour
+# OPENAI_BASE_URL, so we cannot route it through OpenRouter. Instead we call
+# OpenRouter directly via Node.js (already in the image), passing the first
+# 8 KB of AGENTS.md as system context so the model can answer about gangsta.
 # Phase 2 is WARN-not-FAIL: free-tier rate limits are non-fatal.
 # ---------------------------------------------------------------------------
 if [ -n "${OPENROUTER_API_KEY:-}" ]; then
-  echo "==> Phase 2: LLM skill query via Codex CLI + OpenRouter"
+  echo "==> Phase 2: LLM skill query via OpenRouter (Node.js direct call)"
   MODEL="${OPENROUTER_MODEL:-meta-llama/llama-3.3-70b-instruct:free}"
 
   set +e
-  OPENAI_API_KEY="$OPENROUTER_API_KEY" \
-  OPENAI_BASE_URL="https://openrouter.ai/api/v1" \
-  timeout 90s codex \
-    --model "$MODEL" \
-    --approval-mode full-auto \
-    "What gangsta skills are available in this framework? List them by name." \
-    > /tmp/codex-llm.log 2>&1
+  node - <<NODEJS > /tmp/codex-llm.log 2>&1
+const https = require('https');
+const fs   = require('fs');
+const agents = fs.readFileSync('/plugin/AGENTS.md', 'utf8').slice(0, 8000);
+const body = JSON.stringify({
+  model: process.env.OPENROUTER_MODEL || 'meta-llama/llama-3.3-70b-instruct:free',
+  messages: [
+    { role: 'system', content: agents },
+    { role: 'user',   content: 'List all available gangsta skills by name.' }
+  ]
+});
+const opts = {
+  hostname: 'openrouter.ai', path: '/api/v1/chat/completions', method: 'POST',
+  headers: {
+    'Authorization': 'Bearer ' + process.env.OPENROUTER_API_KEY,
+    'Content-Type': 'application/json',
+    'Content-Length': Buffer.byteLength(body)
+  }
+};
+const req = https.request(opts, (res) => {
+  let d = ''; res.on('data', c => d += c); res.on('end', () => process.stdout.write(d));
+});
+req.on('error', e => { console.error(e.message); process.exit(1); });
+req.setTimeout(60000, () => { req.destroy(); console.error('timeout'); process.exit(1); });
+req.write(body); req.end();
+NODEJS
   llm_rc=$?
   set -e
 
@@ -55,10 +74,12 @@ if [ -n "${OPENROUTER_API_KEY:-}" ]; then
 
   if grep -qiE 'reconnaissance|grilling|sit.down|omerta|heist|laundering' /tmp/codex-llm.log; then
     echo "PASS: Codex LLM response references gangsta skills"
+  elif grep -qiE '"code":429|rate.limit|too many requests' /tmp/codex-llm.log; then
+    echo "WARN: OpenRouter rate-limited (429) — Phase 1 is the hard gate; LLM phase non-fatal"
   elif [ "$llm_rc" -ne 0 ]; then
     echo "WARN: Codex LLM query exited $llm_rc — Phase 1 is the hard gate; LLM phase non-fatal"
   else
-    echo "WARN: Codex LLM response did not mention expected skill names — check log above"
+    echo "WARN: LLM response did not mention expected skill names — check log above"
   fi
 else
   echo "==> Phase 2 skipped (OPENROUTER_API_KEY not set)"

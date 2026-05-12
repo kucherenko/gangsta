@@ -8,10 +8,14 @@ gemini --version || true
 echo "==> gemini extensions install /plugin (local path)"
 # Gemini supports installing from a local path. This goes through the same
 # manifest validation that the documented `git+https://...` install uses.
-if gemini extensions install /plugin 2>&1 | tee /tmp/gemini-install.log; then
+# --consent skips the extension security prompt; 'y' piped to stdin answers
+# the folder-trust prompt that --consent does not cover.
+printf 'y\n' | gemini extensions install /plugin --consent 2>&1 | tee /tmp/gemini-install.log
+install_rc=${PIPESTATUS[0]}
+if [ "$install_rc" -eq 0 ]; then
   echo "PASS: extension install completed"
 else
-  echo "FAIL: extension install rejected the manifest"
+  echo "FAIL: extension install rejected the manifest (exit $install_rc)"
   exit 1
 fi
 

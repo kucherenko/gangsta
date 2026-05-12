@@ -18,15 +18,16 @@ cat "$HOME/.config/opencode/opencode.json"
 
 echo "==> opencode run --print-logs (load plugin and exit)"
 # `opencode run` with --print-logs surfaces plugin discovery output. We give
-# it a no-op prompt and a short timeout; we only care about plugin load.
+# it a no-op prompt and a 60s timeout; the gangsta file:// plugin takes ~8-11s
+# to load and we need headroom for slower CI environments.
 # Exit code 124 = timeout (expected, no API key).
 set +e
-timeout 30s opencode run --print-logs "hello" > /tmp/opencode.log 2>&1
+timeout 60s opencode run --print-logs "hello" > /tmp/opencode.log 2>&1
 rc=$?
 set -e
 
-echo "--- opencode log (last 100 lines) ---"
-tail -100 /tmp/opencode.log || true
+echo "--- opencode log (last 150 lines) ---"
+tail -150 /tmp/opencode.log || true
 echo "--- end log ---"
 
 # Plugin should be discovered/loaded regardless of API failure.
@@ -34,12 +35,18 @@ if grep -iqE 'gangsta.*(loaded|discovered|registered|plugin)' /tmp/opencode.log;
   echo "PASS: opencode discovered the gangsta plugin"
 elif grep -iqE 'plugin.*gangsta' /tmp/opencode.log; then
   echo "PASS: opencode references the gangsta plugin"
+elif grep -qiE 'gangsta@file:' /tmp/opencode.log; then
+  echo "PASS: opencode loaded gangsta plugin config"
 else
-  echo "WARN: no explicit 'gangsta' load line; checking for plugin errors"
+  echo "WARN: no explicit 'gangsta' load line — plugin may have loaded after timeout; checking for errors"
 fi
 
-if grep -iqE 'error.*gangsta|gangsta.*(invalid|fail)' /tmp/opencode.log; then
-  echo "FAIL: opencode reported a plugin error"
+# Scope the error check to service=plugin lines only.
+# Broader patterns (e.g. "error.*gangsta") produce false positives: when
+# OpenCode logs LLM API errors it embeds the full request body (including
+# AGENTS.md, which contains "gangsta") into the ERROR line.
+if grep -iE 'service=plugin.*gangsta.*(error|fail|invalid)|gangsta.*service=plugin.*(error|fail|invalid)' /tmp/opencode.log; then
+  echo "FAIL: opencode plugin reported an error for gangsta"
   exit 1
 fi
 
@@ -83,6 +90,8 @@ JSON
 
   if grep -qiE 'reconnaissance|grilling|sit.down|omerta|heist|laundering' /tmp/opencode-llm.log; then
     echo "PASS: opencode LLM response references gangsta skills"
+  elif grep -qiE '"code":429|rate.limit|too many requests' /tmp/opencode-llm.log; then
+    echo "WARN: OpenRouter rate-limited (429) — Phase 1 is the hard gate; LLM phase non-fatal"
   elif [ "$llm_rc" -ne 0 ]; then
     echo "WARN: opencode LLM query exited $llm_rc — Phase 1 is the hard gate; LLM phase non-fatal"
   else

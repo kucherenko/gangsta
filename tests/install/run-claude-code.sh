@@ -38,25 +38,43 @@ echo "==> All Claude Code install checks passed (Phase 1)"
 # ---------------------------------------------------------------------------
 # Phase 2: LLM skill query via OpenRouter (only when API key is available)
 # ---------------------------------------------------------------------------
-# Claude Code proxies through OpenRouter by pointing ANTHROPIC_BASE_URL at the
-# Anthropic-compatible endpoint OpenRouter exposes at /api/v1.
-# ANTHROPIC_API_KEY is set to the OpenRouter key.
-# The model name is passed as-is; OpenRouter routes it.
-# Phase 2 is WARN-not-FAIL: free-tier rate limits or model-name validation
-# failures don't break the hard Phase 1 gate.
+# `claude -p` validates model names against known Claude identifiers and
+# rejects free OpenRouter models (e.g. meta-llama/*). We use Node.js (already
+# present in the image) to call the OpenRouter chat completions endpoint
+# directly, passing the first 8 KB of AGENTS.md as system context so the LLM
+# can answer about gangsta skills.
+# Phase 2 is WARN-not-FAIL: free-tier rate limits are non-fatal.
 # ---------------------------------------------------------------------------
 if [ -n "${OPENROUTER_API_KEY:-}" ]; then
-  echo "==> Phase 2: LLM skill query via OpenRouter"
+  echo "==> Phase 2: LLM skill query via OpenRouter (Node.js direct call)"
   MODEL="${OPENROUTER_MODEL:-meta-llama/llama-3.3-70b-instruct:free}"
   set +e
-  ANTHROPIC_BASE_URL=https://openrouter.ai/api/v1 \
-  ANTHROPIC_API_KEY="$OPENROUTER_API_KEY" \
-  timeout 90s claude -p \
-    --plugin-dir /plugin \
-    --model "$MODEL" \
-    --max-turns 1 \
-    "List all available gangsta skills in this framework" \
-    > /tmp/claude-llm.log 2>&1
+  node - <<NODEJS > /tmp/claude-llm.log 2>&1
+const https = require('https');
+const fs   = require('fs');
+const agents = fs.readFileSync('/plugin/AGENTS.md', 'utf8').slice(0, 8000);
+const body = JSON.stringify({
+  model: process.env.OPENROUTER_MODEL || 'meta-llama/llama-3.3-70b-instruct:free',
+  messages: [
+    { role: 'system', content: agents },
+    { role: 'user',   content: 'List all available gangsta skills by name.' }
+  ]
+});
+const opts = {
+  hostname: 'openrouter.ai', path: '/api/v1/chat/completions', method: 'POST',
+  headers: {
+    'Authorization': 'Bearer ' + process.env.OPENROUTER_API_KEY,
+    'Content-Type': 'application/json',
+    'Content-Length': Buffer.byteLength(body)
+  }
+};
+const req = https.request(opts, (res) => {
+  let d = ''; res.on('data', c => d += c); res.on('end', () => process.stdout.write(d));
+});
+req.on('error', e => { console.error(e.message); process.exit(1); });
+req.setTimeout(60000, () => { req.destroy(); console.error('timeout'); process.exit(1); });
+req.write(body); req.end();
+NODEJS
   llm_rc=$?
   set -e
 
@@ -66,6 +84,8 @@ if [ -n "${OPENROUTER_API_KEY:-}" ]; then
 
   if grep -qiE 'reconnaissance|grilling|sit.down|omerta|heist|laundering' /tmp/claude-llm.log; then
     echo "PASS: LLM response references gangsta skills"
+  elif grep -qiE '"code":429|rate.limit|too many requests' /tmp/claude-llm.log; then
+    echo "WARN: OpenRouter rate-limited (429) — Phase 1 is the hard gate; LLM phase non-fatal"
   elif [ "$llm_rc" -ne 0 ]; then
     echo "WARN: LLM query exited $llm_rc — Phase 1 is the hard gate; LLM phase non-fatal"
   else
