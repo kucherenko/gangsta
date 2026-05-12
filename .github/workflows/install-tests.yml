@@ -38,6 +38,7 @@ jobs:
           - opencode
           - codex
           - gemini
+          - skills
     steps:
       - uses: actions/checkout@v4
 
