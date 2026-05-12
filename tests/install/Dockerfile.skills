@@ -1,0 +1,14 @@
+# skills CLI install smoke test.
+#
+# Phase 1: Run `skills add /plugin --global -a cursor -a claude-code -y --copy`
+# and assert that SKILL.md files land in the expected agent skill directories.
+#
+# Phase 2 (optional, requires OPENROUTER_API_KEY at runtime): verify an LLM
+# can query the installed skills via OpenRouter.
+FROM node:20-bookworm-slim
+
+RUN npm install -g --no-fund --no-audit skills \
+ && rm -rf /var/lib/apt/lists/*
+
+WORKDIR /plugin
+CMD ["bash", "-eu", "tests/install/run-skills.sh"]

@@ -114,6 +114,36 @@ Five non-negotiable laws govern all operations:
 
 ## Installation
 
+### Universal (any agent)
+
+Install to all detected agents at once using the [skills CLI](https://github.com/vercel-labs/skills):
+
+```bash
+npx skills add kucherenko/gangsta
+```
+
+Install globally (available across all projects):
+
+```bash
+npx skills add kucherenko/gangsta --global
+```
+
+Install to a specific agent only:
+
+```bash
+npx skills add kucherenko/gangsta -a cursor
+npx skills add kucherenko/gangsta -a claude-code
+npx skills add kucherenko/gangsta -a opencode
+```
+
+### Cursor
+
+```bash
+npx skills add kucherenko/gangsta -a cursor --global
+```
+
+Skills are installed to `~/.cursor/skills/` (global) or `.agents/skills/` (project).
+
 ### Claude Code
 
 ```bash

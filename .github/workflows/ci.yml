@@ -48,6 +48,23 @@ jobs:
           fi
           echo "All skill directories have SKILL.md ✓"
 
+  manifest-check:
+    name: Validate Plugin Manifest
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+
+      - name: Install jsonschema
+        run: pip install --quiet jsonschema
+
+      - name: Run manifest validator
+        run: bash scripts/validate-manifest.sh
+
   changelog-check:
     name: Changelog Present
     runs-on: ubuntu-latest
