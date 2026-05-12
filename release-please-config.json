@@ -16,6 +16,18 @@
         {"type": "docs", "section": "### Documentation"},
         {"type": "perf", "section": "### Performance"},
         {"type": "build", "section": "### Build", "hidden": true}
+      ],
+      "extra-files": [
+        {
+          "type": "json",
+          "path": ".claude-plugin/plugin.json",
+          "jsonpath": "$.version"
+        },
+        {
+          "type": "json",
+          "path": ".claude-plugin/marketplace.json",
+          "jsonpath": "$.plugins[0].version"
+        }
       ]
     }
   }
