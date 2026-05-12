@@ -29,3 +29,16 @@ else
 fi
 
 echo "==> Gemini extension install check passed"
+
+# ---------------------------------------------------------------------------
+# Phase 2: LLM skill query — NOT SUPPORTED for Gemini CLI
+# ---------------------------------------------------------------------------
+# Gemini CLI is tightly coupled to the Google AI API (Gemini models only).
+# It does not support OPENAI_BASE_URL, ANTHROPIC_BASE_URL, or any OpenRouter
+# routing. There is no documented way to point it at a third-party provider.
+#
+# Phase 2 is therefore skipped unconditionally for this agent.
+# Phase 1 (manifest validation + extension install + list) remains the
+# coverage gate for Gemini.
+# ---------------------------------------------------------------------------
+echo "==> Phase 2 skipped (Gemini CLI does not support OpenRouter; Google AI API only)"
