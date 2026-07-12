@@ -83,39 +83,23 @@ status: pending-review
 
 ### Step 4: Present to Don
 
-**Autonomous Mode:** Do NOT present the proceed menu below and do NOT wait for human input. Invoke `gangsta:don-proxy` to review the Dossier. On APPROVE: auto-advance directly to the-Grilling (The Grilling is mandatory in autonomous mode — there is no skip-Grilling path). On REJECT: abort; write the verdict to `autonomous-log.md` and leave the heist directory in place. The proceed menu is for the default (gated) Heist only.
-
-Otherwise (default Heist):
-
-Save the Dossier file (Step 3), then present its contents to the Don in chat.
-
-**DO NOT include the proceed menu in the dossier file.** The menu is a chat message only — output it as plain text after presenting the dossier summary.
-
-**Required gate — The Sit-Down must not be skipped:**
-
-The Sit-Down (spec drafting and Contract signing) is a required phase. The Don may only choose whether The Grilling runs before it — but The Sit-Down itself must always run.
-
-If the Don requests to skip The Sit-Down, explain that the Contract is required before any implementation work begins and re-present the menu below.
-
-The proceed menu MUST use exactly this format — do not paraphrase, abbreviate, or add options:
+Present the Dossier to the Don for review. After presenting, always ask:
 
 ```
 How do you want to proceed?
 
-  1. Approve the dossier + run The Grilling → Multi-agent debate on architecture, then The Sit-Down
-  2. Approve the dossier + skip The Grilling → Proceed directly to The Sit-Down (spec drafting)
+  1. Approve the dossier + skip The Grilling → Proceed directly to The Sit-Down (spec drafting)
+  2. Approve the dossier + run The Grilling → Multi-agent debate on architecture, then The Sit-Down
   3. Adjust scope — Add/remove anything from the phases before we commit
   4. Request more intel — Deploy Associates to dig deeper into a specific area
 ```
 
 Wait for the Don's explicit choice before taking any action.
 
-- Choice 1 → Invoke `gangsta:the-grilling`, then `gangsta:the-sit-down`
-- Choice 2 → Invoke `gangsta:the-sit-down`
+- Choice 1 → Invoke `gangsta:the-sit-down`
+- Choice 2 → Invoke `gangsta:the-grilling`, then `gangsta:the-sit-down`
 - Choice 3 → Clarify scope changes, update the dossier, re-present
 - Choice 4 → Deploy targeted Associates, update the dossier, re-present
-
-Proceed with one of the choices above to maintain spec integrity (Omerta Law 5).
 
 ## Checkpoint
 
