@@ -8,10 +8,66 @@ Skills use Claude Code tool names as the canonical reference. When you encounter
 | Multiple `Task` calls (parallel) | Multiple `spawn_agent` calls |
 | Task returns result | `wait` |
 | Task completes automatically | `close_agent` to free slot |
-| `TodoWrite` (task tracking) | `update_plan` |
+| `TodoWrite` (task tracking) | `update_plan` — see [Displaying plan / todos](#displaying-plan--todos) |
 | `Skill` tool (invoke a skill) | Skills load natively — just follow the instructions |
 | `Read`, `Write`, `Edit` (files) | Use your native file tools |
 | `Bash` (run commands) | Use your native shell tools |
+| `question` / `ask_user` (ask the Don to choose) | No native tool — see [Asking the Don to choose](#asking-the-don-to-choose) |
+| Pause-and-prompt mid-task | End turn and wait — see [Interacting with the Don mid-task](#interacting-with-the-don-mid-task) |
+
+## Displaying plan / todos
+
+Codex exposes three surfaces for plan/todo display:
+
+| Surface | When to use |
+|---------|-------------|
+| `update_plan` tool | Mutate the in-TUI plan panel from a skill — add/update/complete items |
+| `/plan` slash command | Toggle plan mode for multi-step planning in the composer |
+| `/goal` slash command | Set a persistent objective whose progress renders above the composer while it runs |
+
+When a skill says "create a todowrite per item", call `update_plan` with the items. The plan panel reflects the changes without further action.
+
+## Asking the Don to choose
+
+Codex has **no structured `question`/`ask_user` tool** like OpenCode's `question` or Gemini's `ask_user`. When a skill requires the Don to select a variant, confirm a path, or answer a question:
+
+1. Emit the options as a **numbered list** in plain text.
+2. **End the turn immediately** — do not call `update_plan`, `spawn_agent`, or any other tool after the question.
+3. The Don's next message is the answer; their reply resumes the turn.
+
+Example:
+
+```
+Which approach should I take?
+
+1. Add a cache layer in the repo (smallest diff, fits YAGNI).
+2. Refactor to a worker pool (more code, scales later).
+3. Do nothing — output is actually fine.
+```
+
+Never block on a tool call waiting for input. The CLI does not expose one, and calling a tool after the question will keep the turn running instead of yielding to the Don.
+
+## Interacting with the Don mid-task
+
+Codex offers two interaction surfaces, depending on how the session runs:
+
+| Mode | How to interact |
+|------|-----------------|
+| Interactive `codex` | End the turn with a plain-text question; the Don's reply resumes the session |
+| Non-interactive `codex exec` | No mid-task input — skills that pause for the Don will fail; pre-supply choices in the prompt or run interactive |
+
+Sandbox and approval prompts are **separate from skill questions**. Codex renders an approval overlay when a tool needs permission. If a subagent in another thread needs approval, the overlay labels the source thread; press `o` to open that thread before you approve, reject, or answer.
+
+To inspect or steer running subagents in the interactive TUI:
+
+| Command | Purpose |
+|---------|---------|
+| `/agent` | Switch between active subagent threads and inspect their work |
+| `/status` | Show task ID, context usage, and rate limits |
+| `/compact` | Compact the current task's context if it is getting full |
+| `/fork` | Copy the current task into a new task or worktree before diverging |
+
+Subagents inherit the parent turn's permission mode and live runtime overrides (`/permissions`, `--yolo`), even if the agent's TOML file sets different defaults.
 
 ## Subagent dispatch requires multi-agent support
 

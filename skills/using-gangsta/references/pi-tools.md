@@ -7,7 +7,7 @@ Skills use Claude Code tool names as the canonical reference. When you encounter
 | `Skill` tool (invoke a skill) | `pi.registerCommand()` — expose skills as `/name` slash commands |
 | `Task` tool (dispatch subagent) | No native dispatch — use the LLM's native multi-step reasoning (see [Agent types](#agent-types)) |
 | Multiple `Task` calls (parallel) | Sequence multi-step reasoning; pi.dev has no parallel subagent dispatch |
-| `TodoWrite` (task tracking) | `pi.appendEntry()` to persist task state in session |
+| `TodoWrite` (task tracking) | `pi.appendEntry()` to persist task state — see [Displaying plan / todos](#displaying-plan--todos) |
 | `Read` (file reading) | `fs.readFileSync(path, 'utf8')` or `fs.promises.readFile(path, 'utf8')` |
 | `Write` (file creation) | `fs.writeFileSync(path, content)` or `fs.promises.writeFile(path, content)` |
 | `Edit` (file editing) | Read file with `fs.readFileSync`, replace content, write back with `fs.writeFileSync` |
@@ -16,6 +16,48 @@ Skills use Claude Code tool names as the canonical reference. When you encounter
 | `Glob` (search files by name) | `pi.exec("find", [dir, "-name", pattern])` or use Node.js `fs` recursive traversal |
 | `WebFetch` | `fetch(url)` (Node.js native) or `pi.exec("curl", ["-s", url])` |
 | `WebSearch` | `pi.exec("curl", [...])` against a search API endpoint |
+| `question` / `ask_user` (ask the Don to choose) | No native tool — see [Asking the Don to choose](#asking-the-don-to-choose) |
+| Pause-and-prompt mid-task | End turn and wait — see [Interacting with the Don mid-task](#interacting-with-the-don-mid-task) |
+
+## Displaying plan / todos
+
+pi.dev does not render a structured todo UI. Persist task state with `pi.appendEntry()`:
+
+```js
+pi.appendEntry("[ ] Map codebase");
+pi.appendEntry("[x] Map codebase  // completed");
+```
+
+Since there is no live todo panel, skills that need visible progress must call `pi.appendEntry()` after each item transitions state. Keep entries short — they double as the session log.
+
+## Asking the Don to choose
+
+pi.dev has **no structured `question`/`ask_user` tool**. When a skill requires the Don to select a variant, confirm a path, or answer a question:
+
+1. Emit the options as a **numbered list** in plain text via the chat response.
+2. **End the turn immediately** — do not call `pi.exec`, `pi.appendEntry`, or any other API after the question.
+3. The Don's next message is the answer; their reply resumes the turn.
+
+Example:
+
+```
+Which approach should I take?
+
+1. Add a cache layer in the repo (smallest diff, fits YAGNI).
+2. Refactor to a worker pool (more code, scales later).
+3. Do nothing — output is actually fine.
+```
+
+Never block on a tool call waiting for input. pi.dev does not expose one, and calling an API after the question will keep the turn running instead of yielding to the Don.
+
+## Interacting with the Don mid-task
+
+| Mode | How to interact |
+|------|-----------------|
+| Interactive pi.dev chat | End the turn with a plain-text question; the Don's reply resumes the session |
+| Registered slash command | `/gangsta-recon` etc. for entry-point invocation — not for mid-task questions |
+
+pi.dev has no native subagent dispatch, so there is no parallel work to manage while waiting for the Don. Interaction is purely the question → reply cycle.
 
 ## Agent types
 

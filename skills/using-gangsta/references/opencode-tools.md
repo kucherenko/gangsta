@@ -52,6 +52,28 @@ OpenCode supports background task execution for parallel work:
 
 Use these for skills like `gangsta:the-hit` that dispatch parallel Worker tasks.
 
+## Displaying plan / todos
+
+OpenCode renders the active `todowrite` list in the UI as the agent works. Skills that say "create a todowrite per item" should call `todowrite` with the structured items — the list updates live without further action.
+
+For long-running parallel work, `background_task` + `background_output` keep noisy output off the main thread while the todo list tracks overall progress.
+
+## Asking the Don to choose
+
+Use the `question` tool when a skill requires the Don to pick a variant, confirm a path, or answer a question. Every option object MUST have both `label` and `description` as non-null strings (see [Question tool schema](#question-tool-schema)).
+
+The `question` tool **yields the turn** — OpenCode waits for the Don's reply before resuming. Do not call other tools in the same message after `question`; the Don's answer is the next turn.
+
+## Interacting with the Don mid-task
+
+| Surface | When to use |
+|---------|-------------|
+| `question` tool | Ask the Don to choose, confirm, or answer — turn yields until reply |
+| Plain-text question at end of turn | Fallback when `question` is unavailable — emit numbered list, end turn, wait for next message |
+| `todowrite` status | Signal progress without blocking — `in_progress` / `completed` / `pending` |
+
+Avoid blocking on `background_output` for user input — background tasks are for async work, not Don interaction.
+
 ## Question tool schema
 
 When using the `question` tool to ask the Don, every option object MUST have both fields as non-null strings:
