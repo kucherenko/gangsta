@@ -52,38 +52,21 @@ export const GangstaPlugin = async ({ client, directory }) => {
         cfg.agents.paths.push(AGENTS_DIR);
       }
 
-      // Register commands path. If OpenCode does not honor cfg.command.paths,
-      // commands remain discoverable as plain markdown files under commands/
-      // and can be invoked manually via the platform's slash-command UI.
-      cfg.command = cfg.command || {};
-      cfg.command.paths = cfg.command.paths || [];
-      if (!cfg.command.paths.includes(COMMANDS_DIR)) {
-        cfg.command.paths.push(COMMANDS_DIR);
+      // Register commands. OpenCode's command.paths is a Record<name, path>,
+      // not an array. Map each command file under commands/ to its path.
+      if (fs.existsSync(COMMANDS_DIR)) {
+        cfg.command = cfg.command || {};
+        cfg.command.paths = cfg.command.paths || {};
+        for (const file of fs.readdirSync(COMMANDS_DIR)) {
+          if (!file.endsWith(".md")) continue;
+          const name = file.replace(/\.md$/, "");
+          if (!cfg.command.paths[name]) {
+            cfg.command.paths[name] = path.join(COMMANDS_DIR, file);
+          }
+        }
       }
     },
 
-    // Inject bootstrap into the first user message of each session.
-    // Using a user message instead of a system message avoids:
-    //   1. Token bloat from system messages repeated every turn
-    //   2. Multiple system messages breaking certain models
-    "experimental.chat.messages.transform": async (_input, output) => {
-      const bootstrap = getBootstrap();
-      if (!bootstrap || !output.messages.length) return;
-
-      const firstUser = output.messages.find((m) => m.info.role === "user");
-      if (!firstUser || !firstUser.parts.length) return;
-
-      // Only inject once per session
-      if (firstUser.parts.some((p) => p.type === "text" && p.text.includes("EXTREMELY_IMPORTANT"))) return;
-
-      const ref = firstUser.parts[0];
-      firstUser.parts.unshift({ ...ref, type: "text", text: bootstrap });
-    },
-  };
-};
-
-export const GangstaPlugin = async (_ctx) => {
-  return {
     // Inject bootstrap into the first user message of each session.
     // Using a user message instead of a system message avoids:
     //   1. Token bloat from system messages repeated every turn
