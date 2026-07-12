@@ -4,6 +4,82 @@ All notable changes to Gangsta are documented here.
 
 This project adheres to [Keep a Changelog](https://keepachangelog.com/en/1.1.0/) and [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
+## [1.8.1](https://github.com/kucherenko/gangsta/compare/gangsta-v1.8.0...gangsta-v1.8.1) (2026-04-28)
+
+
+### ### Fixed
+
+* **autonomous-mode:** replace vague cross-references with explicit don-proxy gates at every human question point ([#36](https://github.com/kucherenko/gangsta/issues/36)) ([7880d2d](https://github.com/kucherenko/gangsta/commit/7880d2d37e727abdeb8dc85bceb7d437f2b0c149))
+
+## [1.8.0](https://github.com/kucherenko/gangsta/compare/gangsta-v1.7.4...gangsta-v1.8.0) (2026-04-28)
+
+
+### ### Added
+
+* **skills:** autonomous-mode + don-proxy skills, constitution seed (PR1/2) ([#30](https://github.com/kucherenko/gangsta/issues/30)) ([#32](https://github.com/kucherenko/gangsta/issues/32)) ([eb694a5](https://github.com/kucherenko/gangsta/commit/eb694a53c22eaff2a35f9bc0097c9bc054b36ab0))
+
+## [1.7.4](https://github.com/kucherenko/gangsta/compare/gangsta-v1.7.3...gangsta-v1.7.4) (2026-04-27)
+
+
+### ### Fixed
+
+* **opencode:** add missing default export to GangstaPlugin ([ca2dfd7](https://github.com/kucherenko/gangsta/commit/ca2dfd74d384b7adfe904b0f265f8724340976fa))
+* **reconnaissance:** enforce The Sit-Down as a mandatory non-skippable gate ([#29](https://github.com/kucherenko/gangsta/issues/29)) ([fad5830](https://github.com/kucherenko/gangsta/commit/fad5830ba2f98e09d0c6699eabfe8fec5f4c26c2))
+
+
+### ### Documentation
+
+* **opencode:** remove manual bun add step — OpenCode auto-installs plugins ([ee897db](https://github.com/kucherenko/gangsta/commit/ee897dbfb1e8d72a5d2b1b41f72d5c90d4cedc5e))
+
+## [1.7.3](https://github.com/kucherenko/gangsta/compare/gangsta-v1.7.2...gangsta-v1.7.3) (2026-04-26)
+
+
+### ### Fixed
+
+* **opencode:** fix plugin export format — must be a function not an object ([#26](https://github.com/kucherenko/gangsta/issues/26)) ([864d670](https://github.com/kucherenko/gangsta/commit/864d670367635f0f1c1f22b9143b33fae336b80d))
+
+## [1.7.2](https://github.com/kucherenko/gangsta/compare/gangsta-v1.7.1...gangsta-v1.7.2) (2026-04-26)
+
+
+### ### Documentation
+
+* **opencode:** rewrite INSTALL.md with git-based install, tool mapping, agents ([#24](https://github.com/kucherenko/gangsta/issues/24)) ([315306a](https://github.com/kucherenko/gangsta/commit/315306ac0176de537154167a653ee471e4172fc1))
+
+## [1.7.1](https://github.com/kucherenko/gangsta/compare/gangsta-v1.7.0...gangsta-v1.7.1) (2026-04-25)
+
+
+### ### Fixed
+
+* **reconnaissance:** keep proceed menu in chat only, not in dossier file ([#22](https://github.com/kucherenko/gangsta/issues/22)) ([6bb5cda](https://github.com/kucherenko/gangsta/commit/6bb5cda69406cf404fa2de335e51502ff3f415ae))
+
+## [1.7.0](https://github.com/kucherenko/gangsta/compare/gangsta-v1.6.0...gangsta-v1.7.0) (2026-04-24)
+
+
+### ### Added
+
+* **the-hit:** auto-advance to laundering on completion ([#20](https://github.com/kucherenko/gangsta/issues/20)) ([4d04849](https://github.com/kucherenko/gangsta/commit/4d048497e368bbd8ab8fb818636c0c9054fd2055))
+
+## [1.6.0](https://github.com/kucherenko/gangsta/compare/gangsta-v1.5.0...gangsta-v1.6.0) (2026-04-24)
+
+
+### ### Added
+
+* sit-down approach proposals ([#18](https://github.com/kucherenko/gangsta/issues/18)) ([505e6ca](https://github.com/kucherenko/gangsta/commit/505e6ca0900d00491c9ee0622b668f7147c0da21))
+
+## [1.5.0](https://github.com/kucherenko/gangsta/compare/gangsta-v1.4.0...gangsta-v1.5.0) (2026-04-24)
+
+
+### ### Added
+
+* **the-sit-down:** add 2-3 approach proposals before contract drafting ([#16](https://github.com/kucherenko/gangsta/issues/16)) ([27beba4](https://github.com/kucherenko/gangsta/commit/27beba42145f7a16c27ed8cb0c50c343b12e648b))
+
+## [1.4.0](https://github.com/kucherenko/gangsta/compare/gangsta-v1.3.0...gangsta-v1.4.0) (2026-04-24)
+
+
+### ### Added
+
+* **reconnaissance:** add explicit numbered proceed menu after dossier presentation ([#14](https://github.com/kucherenko/gangsta/issues/14)) ([ada7958](https://github.com/kucherenko/gangsta/commit/ada7958cea3216db07c4f0f0ba373d9d377bcab0))
+
 ## [1.3.0](https://github.com/kucherenko/gangsta/compare/gangsta-v1.2.5...gangsta-v1.3.0) (2026-04-23)
 
 
