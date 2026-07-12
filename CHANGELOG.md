@@ -5,6 +5,13 @@ All notable changes to Gangsta are documented here.
 This project adheres to [Keep a Changelog](https://keepachangelog.com/en/1.1.0/) and [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
 
+## [1.11.4](https://github.com/kucherenko/gangsta/compare/gangsta-v1.11.3...gangsta-v1.11.4) (2026-07-12)
+
+
+### ### Fixed
+
+* **plugin:** remove stale commands array referencing deleted autonomous-mode files ([b7c5426](https://github.com/kucherenko/gangsta/commit/b7c5426c2cac18caa68a915d413b15630db556a7))
+
 ## [1.11.3](https://github.com/kucherenko/gangsta/compare/gangsta-v1.11.2...gangsta-v1.11.3) (2026-07-12)
 
 
