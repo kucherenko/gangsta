@@ -5,6 +5,14 @@ All notable changes to Gangsta are documented here.
 This project adheres to [Keep a Changelog](https://keepachangelog.com/en/1.1.0/) and [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
 
+## [Unreleased]
+
+### Removed
+
+- **autonomous-mode:** removed `gangsta:autonomous-mode` skill, `gangsta:don-proxy` skill, and the `/gangsta:heist`, `/gangsta:go`, `/gangsta:abort` commands. The Heist pipeline is gated-by-design — the Don approves every phase gate. Also generalizes the Grilling to a single pass (no rounds, idea grilled first).
+- **don-proxy:** removed the `don-proxy` role and the Sit-Down Dual-Veto. The Consigliere remains the sole advisory authority on Contract signing.
+
+
 ## [1.11.1](https://github.com/kucherenko/gangsta/compare/gangsta-v1.11.0...gangsta-v1.11.1) (2026-05-12)
 
 

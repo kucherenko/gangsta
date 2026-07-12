@@ -76,7 +76,7 @@ The specification is the absolute source of truth.
 - If a bug is found during The Hit:
   1. Worker escalates to Crew Lead
   2. Crew Lead escalates to Underboss
-  3. Underboss may invoke a mini-Grilling (single-round) to revise the Contract
+  3. Underboss may invoke a mini-Grilling (single-pass) to revise the Contract
   4. Only after Contract revision does implementation proceed
 
 ## Omerta Compliance Checklist

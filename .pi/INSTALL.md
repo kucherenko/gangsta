@@ -21,33 +21,16 @@ No `npm install` or compilation step is required. pi loads TypeScript directly v
 
 ## Usage
 
-After installation, the following slash commands are available in pi:
-
-| Command | Description |
-|---------|-------------|
-| `/gangsta:heist` | Begin a new Heist — the full spec-driven development pipeline |
-| `/gangsta:go` | Resume a paused Heist phase |
-| `/gangsta:abort` | Abort the current Heist operation |
+After installation, the Gangsta bootstrap system prompt is appended to every pi.dev session. The framework skills auto-load via the `skill` tool when the agent identifies matching intent (building, fixing, debugging, reviewing). No slash commands are required — the agent invokes skills directly based on your request.
 
 ### Quick Start
 
 1. Open your project in pi.dev
-2. Type `/gangsta:heist` to begin a new Heist
-3. Describe what you want to build — the Don (you) approves each phase gate
+2. Describe what you want to build — e.g., "I want to build a new feature"
+3. The Gangsta framework bootstraps The Don — an orchestrator that analyzes your intent and routes to the appropriate skill, starting a Heist: a 6-phase operational cycle (Reconnaissance → The Grilling → The Sit-Down → Resource Development → The Hit → Laundering)
+4. You are the Don — you approve each phase gate
 
 ## Known Risks
-
-### Path Resolution under jiti (Severity: MEDIUM)
-
-Command files use `__dirname` to locate resources relative to the extension source. Under jiti, `__dirname` may resolve to a temporary cache directory rather than the actual source file location, causing file reads to fail.
-
-**Workaround:** Always invoke pi from the project root directory where `.pi/extensions/gangsta/` resides.
-
-### Notification Channel Behavior (Severity: LOW)
-
-Command output is delivered via `ctx.ui.notify()`. Depending on the pi.dev version, this may render as a UI toast notification rather than injecting content directly into the agent conversation thread. If this occurs, the output may not be visible in the agent context.
-
-**Workaround:** Verify rendering behavior after install by running a test command and confirming the output appears in the conversation.
 
 ### Bootstrap Prompt Drift (Severity: MEDIUM)
 

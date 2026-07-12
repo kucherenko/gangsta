@@ -1,82 +1,72 @@
 ---
 name: the-grilling
-description: Use when adversarial brainstorming is needed after reconnaissance — runs a multi-agent debate with proposer, devils-advocate, and synthesizer subagents, with the don participating each round, bounded by hard round limits to prevent infinite loops
+description: Use when adversarial brainstorming is needed after reconnaissance — the Proposer, Devils-Advocate, and Synthesizer each run ONE pass (no rounds); the Don is grilled on the IDEA first, one question at a time, then the proposal is attacked
 ---
 
 # The Grilling: Adversarial Brainstorming
 
 ## Overview
 
-The Grilling is a structured Multi-Agent Debate (MAD) protocol. Before any plan is set in stone, agents engage in adversarial brainstorming to explore solutions, test feasibility, and enumerate options exhaustively. The Don participates every round.
+The Grilling is a single-pass Multi-Agent Debate. The Proposer proposes, the Devils-Advocate attacks (idea first, then proposal), the Synthesizer revises. There are NO rounds — each agent runs exactly once. The Don is interrogated **one question at a time**, never a list. The IDEA is grilled before the proposal.
 
 ## Trigger
 
 Invoked after the Don approves the Reconnaissance Dossier (Reconnaissance complete).
 
-**Autonomous Mode:** When invoked under `gangsta:autonomous-mode`, see § Per-Phase Interaction Schemas → the-Grilling in that skill. Otherwise this skill operates as written.
+## HARD RULES (non-negotiable)
 
-## Round Limits (HARD RULES)
+1. **No rounds.** Each agent — Proposer, Devils-Advocate, Synthesizer — runs exactly ONCE. Do not loop back. There is no Round 2.
+2. **Idea first.** The Devils-Advocate attacks the Don's objective (the IDEA) before attacking the proposal. The Don is grilled on the idea — framing, assumptions, scope, analogues from the Recon Dossier — before any architecture is proposed.
+3. **One question at a time.** Every interaction with the Don asks exactly ONE question. Wait for the answer before asking the next. This overrides any subagent output that bundles questions. See Don Interrogation Protocol below.
+4. **No lists of questions.** A message to the Don that contains 2+ distinct questions is a violation, even if they are numbered. Ask the most critical question first; only after it is answered, decide whether the next question is still needed.
 
-| Limit | Value | Rule |
-|-------|-------|------|
-| Minimum rounds | 2 | No Premature Consensus — 1-round agreement is suspicious |
-| Default maximum | 5 | Standard debate ceiling |
-| Hard ceiling | 7 | Don can extend from 5 to 7 if debate is productive |
-| Early exit | After round 2 | Don can declare consensus at any point after round 2 |
+## The Protocol (single pass)
 
-**These limits are non-negotiable.** If round 7 is reached without Nash Equilibrium, the debate ENDS and the Synthesizer produces a "Best Available Consensus."
+### Phase A — Grill the IDEA
 
-## The Protocol
+Before any proposal is built, the orchestrating agent grills the Don on the objective itself, drawing on the Recon Dossier (especially analogues, prior art, and the Constraint & Risk Survey in greenfield mode).
 
-### Round 1
+1. The orchestrating agent reads the Recon Dossier and extracts every unresolved assumption, scope ambiguity, and analogue-comparison decision that the Don must make.
+2. Prioritize these questions: most critical to the idea's validity first (problem framing → hidden assumptions → scope → analogue choices).
+3. Ask the Don **one question at a time**. After each answer, decide whether the next planned question is still relevant — the Don's answer may resolve it, may obsolete it, or may surface a new, more urgent question.
+4. Continue until no critical idea-level question remains. The Don may also say "the idea is settled, move to architecture."
 
-1. **Proposer** (subagent) — Reads the Reconnaissance Dossier and proposes an architectural solution. The proposal must include:
-   - Architecture overview
-   - Key technical decisions with rationale
-   - File structure changes
-   - Potential risks (Inverse Reasoning requirement)
+**Idea Verdict (orchestrating agent):**
+- **REJECT** — the objective as stated is flawed; the Don must redefine it. Halt and ask the Don to restate the objective or abort.
+- **CHALLENGE** — the objective needs the refinements captured above. Incorporate them and proceed to Phase B.
+- **SOUND** — the objective is valid. Proceed to Phase B.
 
-2. **Devils-Advocate** (subagent) — Attacks in two layers:
-   - **Initial Idea Critique** — Challenge the Don's objective itself: problem framing, hidden assumptions, simpler alternatives, scope concerns. Renders an Idea Verdict before touching the proposal.
-   - **Proposal Attack** — Find architectural flaws, identify security gaps, check against Constitution Negative Constraints, enumerate potential regressions, assess scalability concerns.
+If REJECT: stop. Surface the verdict and the reasons to the Don. Do not dispatch the Proposer. The Don may revise the objective (return to Reconnaissance) or abort.
 
-3. **Don** — Asked for opinion, **one question at a time**:
+### Phase B — Proposer (single pass)
 
-   **Autonomous Mode:** Do NOT ask the human Don. Invoke `gangsta:don-proxy` to provide the per-round position statement (agrees/disagrees with the attack, any additional concerns, any override of the proposal). Pass don-proxy's response to the Synthesizer as the Don's input for this round.
+Dispatch the Proposer subagent ONCE. It reads the Recon Dossier and the refined objective (with the Don's idea-level answers integrated) and produces one proposal. See `proposer-prompt.md`.
 
-   Otherwise (default Heist): Present the summary and concerns, then ask one question first: "Do you agree with the Devil's-Advocate's attack?" Wait for the answer. Then ask: "Any concerns they missed?" Wait. Then: "Do you want to override any part of the proposal?" Wait. Collect all answers before passing to the Synthesizer.
+### Phase C — Devils-Advocate (single pass)
 
-4. **Synthesizer** (subagent) — Incorporates:
-   - Valid attacks from the Devils-Advocate
-   - Don's feedback and concerns
-   - Defends valid elements of the original proposal
-   - Produces a revised solution
+Dispatch the Devils-Advocate subagent ONCE. It attacks the proposal — architectural flaws, security, constitution violations, regressions, scalability. Idea-level concerns raised in Phase A are already on record; the Devils-Advocate revisits them only if the proposal materially changes the objective's scope. See `devils-advocate-prompt.md`.
 
-### Rounds 2..N
+### Phase D — Don weighs in (one question at a time)
 
-Same cycle: Devils-Advocate attacks → Don weighs in → Synthesizer revises.
+Present the Devils-Advocate's attack summary to the Don. Then ask:
 
-### Termination Conditions
+1. **First question:** "Do you agree with the Devil's-Advocate's attack?" — wait for the answer.
+2. Decide the next question from the Don's answer. Only if needed, ask: "Any concerns they missed?" — wait.
+3. Only if needed, ask: "Do you want to override any part of the proposal?" — wait.
 
-The Grilling ends when ANY of these is true:
+Each question is asked only if the prior answer did not already settle it. Collect all Don answers.
 
-1. **Nash Equilibrium** — The Devils-Advocate cannot raise a NEW valid objection AND the Don has no remaining concerns
-2. **Don declares consensus** — After round 2, the Don can say "I'm satisfied, proceed"
-3. **Round limit reached** — At round 5 (or 7 if extended), the Synthesizer produces Best Available Consensus
+### Phase E — Synthesizer (single pass)
 
-### At Round 5 (Default Maximum)
+Dispatch the Synthesizer subagent ONCE. It incorporates the valid attacks and the Don's feedback, defends the valid elements of the proposal, and produces the final revised solution. See `synthesizer-prompt.md`.
 
-**Autonomous Mode:** Do NOT ask the human Don. Invoke `gangsta:don-proxy` to decide: accept current consensus (auto-advance to the-Sit-Down), extend the debate up to 2 more rounds (bounded by the `--rounds` flag from `/gangsta:heist`), or reject the proposal (abort). Proceed based on don-proxy's decision without pausing for human input.
+The Synthesizer's output IS the final consensus. There is no second attack pass.
 
-Otherwise (default Heist): Ask the Don:
-> "We've completed 5 rounds of The Grilling. [Summarize current state]. Do you want to:
-> 1. Accept the current consensus and proceed
-> 2. Extend the debate (up to 2 more rounds)
-> 3. Kill this proposal and start over"
+### Termination
 
-### Best Available Consensus (Forced Termination)
+The Grilling ends after Phase E. There is no Nash-Equilibrium check, no round limit, no early-exit at round 2 — because there are no rounds. The single pass is the whole debate.
 
-If the hard ceiling is reached:
+**Exception — Best Available Consensus:** If the Synthesizer finds that the Devils-Advocate raised a CRITICAL objection that the Don and the proposal cannot resolve in a single synthesis pass, the Synthesizer produces a Best Available Consensus with documented unresolved objections instead:
 
 ```markdown
 ## Best Available Consensus
@@ -103,9 +93,12 @@ This rule overrides any template or subagent output that bundles multiple questi
 1. Identify all questions a subagent raises for the Don
 2. Prioritize them by importance (most critical decision first)
 3. Present the first question, wait for the Don's response
-4. Present the next question, wait again
-5. Repeat until all questions are answered
-6. Collect all Don responses and pass them to the next subagent as a batch
+4. After the answer, re-evaluate: is the next planned question still needed? Skip it if the answer already settled it.
+5. Present the next still-needed question, wait again
+6. Repeat until no remaining question is needed
+7. Collect all Don responses and pass them to the next subagent as a batch
+
+**Anti-pattern — the bundled list:** Never present a numbered list of questions to the Don in a single message. Even if a subagent outputs a "Questions for the Don" list, the orchestrating agent asks them sequentially, one per message, and skips any that became irrelevant.
 
 ### Question Tool Schema (HARD RULE)
 
@@ -128,25 +121,16 @@ Good: { label: "No",  description: "I reject the attack — the proposal stands"
 Violating this schema causes the tool call to fail with a validation error.
 
 This applies to:
-- Round 1 and 2..N Step 3 (Don weighs in)
-- The Round 5 extension decision (remains a single choice — one decision, not multiple questions)
+- Phase A idea grilling (each idea-level question)
+- Phase D Don weighs in
+- Best Available Consensus decision
 - Any questions the Synthesizer or Proposer raise for the Don
 
 **Why:** The Don gives better answers to one question than to three asked simultaneously. Bundled questions force mental juggling and produce lower-quality decisions.
 
-## Repetition Detection
+## Repetition Detection (single-pass note)
 
-If the Devils-Advocate repeats a previously-addressed objection:
-1. The Synthesizer flags it: "This objection was addressed in Round N"
-2. It counts as a no-new-attack round
-3. This accelerates toward Nash Equilibrium
-
-## Stronzate Detection
-
-If the Devils-Advocate's attacks are consistently weak or off-topic:
-1. The Synthesizer flags it: "Attacks in this round lack specificity"
-2. The Don is informed that the debate may have reached natural consensus
-3. The Don can declare early exit
+In single-pass mode, repetition between the Phase A idea grilling and the Phase C Devils-Advocate attack is expected and acceptable — both are interrogating the idea from different angles. The Synthesizer flags genuine duplication so the final consensus doesn't double-count the same concern.
 
 ## Subagent Prompts
 
@@ -160,7 +144,7 @@ The Proposer, Devils-Advocate, and Synthesizer are dispatched as subagents using
 When calling the Task tool to dispatch each subagent:
 
 1. Read the prompt file for that agent from the skill's directory
-2. Fill in template placeholders (dossier content, previous round output, Don's responses, etc.)
+2. Fill in template placeholders (dossier content, Don's idea-grilling answers, Devils-Advocate output, Don feedback, etc.)
 3. Set `subagent_type` to the named Gangsta agent — `"proposer"`, `"devils-advocate"`, or `"synthesizer"` as appropriate. Do NOT use `"general"` or `"general-purpose"` — these are not valid in a Gangsta installation.
 4. Include the full filled prompt as the `prompt` parameter
 
@@ -171,10 +155,11 @@ When calling the Task tool to dispatch each subagent:
 The Grilling does NOT produce a standalone transcript file. Instead, the orchestrating agent produces a **Grilling Conclusions** summary at the end of the debate. This summary is passed directly to the next phase (The Sit-Down) for inclusion in the Contract.
 
 The Grilling Conclusions must contain:
+- **Idea Verdict:** REJECT / CHALLENGE / SOUND, with the Don's idea-level answers captured in Phase A
 - **Key Decisions:** Each architectural/design decision reached, with rationale
-- **Rejected Alternatives:** Each option that was considered and discarded, with the reason
-- **Unresolved Objections:** Any risks acknowledged but accepted (from Best Available Consensus)
-- **Termination Reason:** Nash Equilibrium / Don declared / Round limit
+- **Rejected Alternatives:** Each option that was considered and discarded, with the reason (including analogues from the Recon Dossier that were NOT followed)
+- **Unresolved Objections:** Any risks acknowledged but accepted (from Best Available Consensus, if fired)
+- **Termination Reason:** Single-pass complete / Best Available Consensus
 
 The orchestrating agent holds this summary in context — it is NOT saved as a separate file.
 
@@ -196,3 +181,6 @@ note: Grilling Conclusions passed in-context to The Sit-Down for inclusion in th
 - [ ] Introduction Rule: Proposer, Devils-Advocate, and Synthesizer do not communicate directly — all mediated through this skill
 - [ ] Rule of Truth: All attacks and proposals must cite Recon Dossier, Constitution, or specific technical facts
 - [ ] Rule of Availability: Transcript and checkpoint saved after completion
+- [ ] No-Rounds Rule: Each agent runs exactly once — no cyclic re-attack loop
+- [ ] Idea-First Rule: Phase A grills the idea before Phase B proposes architecture
+- [ ] One-Question-At-A-Time Rule: No bundled question lists reach the Don

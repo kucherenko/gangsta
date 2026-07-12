@@ -24,7 +24,7 @@ When you start a session, the framework bootstraps The Don — an orchestrator t
 | Phase | Skill | What Happens | Gate |
 |-------|-------|-------------|------|
 | 1. **Reconnaissance** | `gangsta:reconnaissance` | Intel gathering on codebase and requirements | Dossier |
-| 2. **The Grilling** | `gangsta:the-grilling` | Adversarial brainstorming via Multi-Agent Debate (Proposer vs Devils-Advocate, with you weighing in each round) | Consensus |
+| 2. **The Grilling** | `gangsta:the-grilling` | Adversarial brainstorming via single-pass Multi-Agent Debate (idea grilled first, then Proposer vs Devils-Advocate, with you weighing in) | Consensus |
 | 3. **The Sit-Down** | `gangsta:the-sit-down` | Formal spec drafting. No code allowed. | Contract |
 | 4. **Resource Development** | `gangsta:resource-development` | Task decomposition into Work Packages and Execution Plan | Execution Plan |
 | 5. **Execution** | `gangsta:the-hit` | Parallel execution by Worker subagents with TDD enforcement | Completion |
@@ -34,42 +34,12 @@ Every phase gate requires your approval. You are the Don.
 
 → [Full Heist Pipeline documentation](docs/heist-pipeline.md)
 
-### Autonomous Mode
-
-The default Heist pauses for Don approval at every phase gate. **Autonomous Mode** is an opt-in fast path that delegates per-phase gating to a `don-proxy` surrogate while preserving the Don's terminal authority.
-
-| Aspect | Default Heist | Autonomous Mode |
-|--------|---------------|-----------------|
-| Per-phase approval | Don at each gate | `gangsta:don-proxy` |
-| Sit-Down sign-off | Don signs Contract | don-proxy signs as `pending-don-confirmation` |
-| Sit-Down review | Consigliere advisory | **Dual-Veto** — Consigliere AND don-proxy, either REJECT is terminal |
-| Terminal authority | Don | Don, via `/gangsta:go` (sign), `/gangsta:abort` (reject), Consigliere veto |
-| Constitutional Floor | N/A | Mandatory rejection of artifacts violating Omerta or Negative Constraints |
-
-**Slash commands:**
-
-| Command | Purpose |
-|---------|---------|
-| `/gangsta:heist <feature>` | Run Phases 1–4 (Reconnaissance → Grilling → Sit-Down → Resource-Development) autonomously. Produces don-proxy-signed Contract and Plan in `pending-don-confirmation` state. |
-| `/gangsta:go [feature]` | Don signing event. Flips `pending-don-confirmation` → `confirmed`, then runs Phases 5–6 (the Hit + Laundering). Resolves the most recent Heist via `docs/gangsta/.last-heist` when `feature` is omitted. |
-| `/gangsta:abort <feature>` | Rejects a pending Heist. Relocates `docs/gangsta/<feature>/` to `docs/gangsta/.aborted/<feature>-<timestamp>/` with an abort marker. Excluded from future ledger reads. |
-
-**Flags on `/gangsta:heist`:**
-- `--retries <1-10>` (default `3`) — per-phase retry budget before escalation
-- `--rounds <1-7>` (default `3`) — Grilling rounds; `--rounds=1` is the minimum-cost fast path
-- `--best-effort <bool>` (default `true`) — continue past non-terminal failures with deviation reports
-
-**Lifecycle states for autonomous artifacts:** `pending-don-confirmation` → `confirmed` (via `/gangsta:go`) or `rejected` (via `/gangsta:abort`). Constitutional Floor REJECTs are terminal in any phase and cannot be retried regardless of `--best-effort`.
-
-> **Note:** Autonomous Mode is positioned as a structured fast path, not a token-cost reduction. Mandatory adversarial Grilling is preserved — there is no flag to bypass it.
-
 ### The Gangsta Agents Family Hierarchy
 
 | Role | Function |
 |------|----------|
 | **Don** (You) | Supreme authority. Approves all phase gates. |
 | **Consigliere** | Impartial advisor. Security and architecture auditor. |
-| **Don-Proxy** | Surrogate Don for autonomous mode. Bounded by the Constitutional Floor. |
 | **Underboss** | COO. Task decomposition, resource allocation. |
 | **Crew Lead** | Domain crew lead. Manages Workers per territory. |
 | **Worker** | Stateless code executor. TDD enforced. |

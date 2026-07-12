@@ -7,9 +7,6 @@ Don (You) — Supreme authority. Approves all phase gates.
   │
   ├── Consigliere — Impartial advisor. Outside chain of command.
   │
-  ├── Don-Proxy — Surrogate Don for autonomous mode. Outside chain of command.
-  │               Bounded by the Constitutional Floor.
-  │
   ├── Underboss — COO. Task decomposition, phase tracking, escalation.
   │   │
   │   ├── Crew Lead — Domain crew lead. Manages Workers per territory.
@@ -26,7 +23,6 @@ Don (You) — Supreme authority. Approves all phase gates.
 |------|-------|-----------------|
 | **Don** | _(you)_ | Approves all phase gates. Supreme authority. |
 | **Consigliere** | `the-consigliere` | Spec integrity review, security audit, truth checks. Does NOT write code. |
-| **Don-Proxy** | `don-proxy` | Surrogate Don for autonomous mode. Issues per-phase verdicts under the Constitutional Floor. Co-equal with Consigliere in the Sit-Down Dual-Veto. Invoked only by `gangsta:autonomous-mode`. |
 | **Underboss** | `the-underboss` | Decomposes Contract into Work Packages. Allocates territories. Tracks phases. Handles escalations. |
 | **Crew Lead** | `the-capo` | Commands a territory. Dispatches Workers. Reviews Reports. Reports to Underboss. |
 | **Worker** | _(subagent)_ | Stateless implementation. One Work Package. TDD enforced. Returns a Report. |
@@ -71,23 +67,6 @@ The Consigliere operates outside the chain of command. Neither the Underboss nor
 - <Source references for all findings>
 ```
 
-## The Don-Proxy
-
-The Don-Proxy is the surrogate decision authority that stands in for the human Don during autonomous Heist execution. It is invoked exclusively by `gangsta:autonomous-mode` (which is itself invoked only via `/gangsta:heist` and `/gangsta:go`). It is never active under the gated/default Heist pipeline.
-
-The Don-Proxy is a **separate skill** from the Consigliere. They are co-equal authorities — neither is subordinate to the other, neither is an extension of the other.
-
-| Skill | Speaks For | Lens |
-|-------|-----------|------|
-| `gangsta:don-proxy` | The Don's preferences, risk-tolerance, strategic intent | Boldness, decisiveness, strategic fit (above the Constitutional Floor) |
-| `gangsta:the-consigliere` | Spec integrity, architecture, security correctness | Contradiction, ambiguity, completeness, Constitution alignment |
-
-**Sit-Down Dual-Veto.** In the Sit-Down (Phase 3) under autonomous mode, both authorities vote on the Contract independently. The two vetoes are **symmetric** with no precedence: either REJECT is terminal. There is no tie-break, no escalation, no re-vote. The two skills do NOT consult each other before voting; they vote from their distinct mandates.
-
-**Constitutional Floor.** Don-Proxy authority is bounded — not by the Consigliere — but by a non-negotiable Floor sourced from `skills/omerta/SKILL.md`, `docs/gangsta/constitution.md`, and `AGENTS.md`. The Floor applies in **all six phases**, not only the Sit-Down. A Floor REJECT is terminal in any phase regardless of `--best-effort`. Boldness operates only above the Floor.
-
-**Provisional signatures.** Every signature the Don-Proxy issues carries `status: pending-don-confirmation` until the human Don ratifies via `/gangsta:go` (flips to `confirmed`) or repudiates via `/gangsta:abort` (relocates to `.aborted/`).
-
 ## The Underboss
 
 The Underboss is the COO — the operational buffer between the Don and the crews. The Don only deals with strategic decisions and phase gates.
@@ -125,7 +104,7 @@ The Underboss is the COO — the operational buffer between the Don and the crew
 **Escalation protocol:**
 1. Retry once — same Work Package, fresh Worker
 2. Analyze failure — ambiguous Contract? Work Package too large?
-3. Mini-Grilling — single-round Devils-Advocate + Synthesizer if Contract needs revision
+3. Mini-Grilling — single-pass Devils-Advocate + Synthesizer if Contract needs revision
 4. Escalate to Don — if beyond operational scope
 
 ## The Crew Lead

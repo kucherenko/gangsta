@@ -92,8 +92,6 @@ Do NOT remove:
 
 ### Step 6: Ledger Update
 
-**Autonomous Mode:** When invoked under `gangsta:autonomous-mode`, see § Per-Phase Interaction Schemas → Laundering in that skill. Ledger entries written under autonomous mode use frontmatter `signed-by: don-proxy`, `status: pending-don-confirmation`, `heist: <feature>`; the human Don's later `/gangsta:go` flips status to `confirmed`, and `/gangsta:abort` relocates the entry. Otherwise this skill operates as written.
-
 Invoke `gangsta:the-ledger` to record the Heist's lessons:
 
 **Insights** — For each notable solution or pattern discovered:

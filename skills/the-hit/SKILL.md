@@ -100,17 +100,15 @@ Crew Leads report territory status to the Underboss. The Underboss synthesizes f
 When a Worker fails:
 1. **Crew Lead retries** — Fresh Worker, same Work Package
 2. **Crew Lead escalates to Underboss** — If retry fails or Contract is ambiguous
-3. **Underboss mini-Grilling** — Single-round: Devils-Advocate attacks the proposed fix, Don weighs in, Synthesizer produces revised Contract clause
+3. **Underboss mini-Grilling** — Single-pass: Devils-Advocate attacks the proposed fix, Don weighs in, Synthesizer produces revised Contract clause
 4. **Underboss escalates to Don** — If beyond operational scope
-
-**Autonomous Mode:** When invoked under `gangsta:autonomous-mode`, see § Per-Phase Interaction Schemas → the-Hit in that skill. Under autonomous mode, the mini-Grilling escalation produces a deviation report only and cannot mutate the signed Contract. Otherwise this skill operates as written.
 
 ### Step 8: Completion
 
 When all Crew Leads report territory completion:
 1. Underboss verifies: all Work Packages accepted, all tests passing
 2. Write the final checkpoint (status: completed, next-action: Proceed to Laundering)
-3. **Immediately invoke `gangsta:laundering` — do NOT ask the Don what to do next, do NOT pause, do NOT prompt for confirmation.** (This auto-advance is an authorized exception — documented in `using-gangsta` at the "Never auto-advance" rule, and in `the-sit-down` line 164.)
+3. **Immediately invoke `gangsta:laundering` — do NOT ask the Don what to do next, do NOT pause, do NOT prompt for confirmation.** (This auto-advance is an authorized exception — documented in `using-gangsta` at the "Never auto-advance" rule, and in `the-sit-down`.)
 
 ## Checkpoint
 
