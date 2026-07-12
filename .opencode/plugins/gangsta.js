@@ -13,6 +13,7 @@ const __dirname = path.dirname(fileURLToPath(import.meta.url));
 const ROOT = path.resolve(__dirname, "../..");
 const SKILLS_DIR = path.join(ROOT, "skills");
 const AGENTS_DIR = path.join(ROOT, "agents");
+const COMMANDS_DIR = path.join(ROOT, "commands");
 
 const extractBody = (content) => content.replace(/^---[\s\S]*?---\n/, "");
 
@@ -49,6 +50,15 @@ export const GangstaPlugin = async ({ client, directory }) => {
       cfg.agents.paths = cfg.agents.paths || [];
       if (!cfg.agents.paths.includes(AGENTS_DIR)) {
         cfg.agents.paths.push(AGENTS_DIR);
+      }
+
+      // Register commands path. If OpenCode does not honor cfg.command.paths,
+      // commands remain discoverable as plain markdown files under commands/
+      // and can be invoked manually via the platform's slash-command UI.
+      cfg.command = cfg.command || {};
+      cfg.command.paths = cfg.command.paths || [];
+      if (!cfg.command.paths.includes(COMMANDS_DIR)) {
+        cfg.command.paths.push(COMMANDS_DIR);
       }
     },
 

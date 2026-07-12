@@ -17,8 +17,8 @@
     "tdd"
   ],
   "commands": [
-    "./commands/heist.md",
-    "./commands/go.md",
-    "./commands/abort.md"
+    { "name": "heist", "path": "commands/heist.md" },
+    { "name": "go", "path": "commands/go.md" },
+    { "name": "abort", "path": "commands/abort.md" }
   ]
 }
