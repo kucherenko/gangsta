@@ -1,12 +1,16 @@
 # Codex install smoke test.
 #
-# Per .codex/INSTALL.md the install is just: clone repo, symlink skills/ into
-# ~/.agents/skills/gangsta. We follow the instructions verbatim and assert
-# the symlinks resolve.
-FROM debian:bookworm-slim
+# Phase 1: Per .codex/INSTALL.md the install is just: clone repo, symlink
+# skills/ into ~/.agents/skills/gangsta. We assert the symlinks resolve.
+#
+# Phase 2 (optional, requires OPENROUTER_API_KEY at runtime): run the Codex
+# CLI with OPENAI_BASE_URL pointed at OpenRouter and ask about gangsta skills.
+# The Codex CLI picks up AGENTS.md from /plugin (CWD) as its instructions.
+FROM node:20-bookworm-slim
 
 RUN apt-get update \
  && apt-get install -y --no-install-recommends git ca-certificates findutils \
+ && npm install -g --no-fund --no-audit @openai/codex \
  && rm -rf /var/lib/apt/lists/*
 
 WORKDIR /plugin
