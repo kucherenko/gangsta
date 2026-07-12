@@ -168,7 +168,7 @@ status: pending-review
 
 Save the Dossier file (Step 3), then present its contents to the Don in chat.
 
-**DO NOT include the proceed menu in the dossier file.** The menu is a chat message only — output it as plain text after presenting the dossier summary.
+**DO NOT include the proceed menu in the dossier file.** The menu is a chat message only — present it to the Don after the dossier summary. Present it through the platform's native interactive selection tool (OpenCode `question`, Claude Code `AskUserQuestion`); only fall back to the plain-text numbered list when no such tool exists.
 
 **Required gate — The Sit-Down must not be skipped:**
 
@@ -176,7 +176,7 @@ The Sit-Down (spec drafting and Contract signing) is a required phase. The Don m
 
 If the Don requests to skip The Sit-Down, explain that the Contract is required before any implementation work begins and re-present the menu below.
 
-The proceed menu MUST use exactly this format — do not paraphrase, abbreviate, or add options:
+The proceed menu MUST use exactly this option set — do not paraphrase, abbreviate, or add options:
 
 ```
 How do you want to proceed?
@@ -186,6 +186,12 @@ How do you want to proceed?
   3. Adjust scope — Add/remove anything from the phases before we commit
   4. Request more intel — Deploy Associates to dig deeper into a specific area
 ```
+
+**Presentation — use the platform's native selection tool, not plain text:**
+
+- In OpenCode, present these four options via the `question` tool (interactive select/choose UI). Do NOT dump the numbered list as plain text and wait — route it through the selection tool so the Don clicks a variant.
+- In Claude Code, use the `AskUserQuestion` tool with the same four options.
+- Only fall back to the plain-text numbered menu above when no interactive selection tool is available on the current platform.
 
 Wait for the Don's explicit choice before taking any action.
 

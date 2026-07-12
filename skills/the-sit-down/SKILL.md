@@ -78,6 +78,8 @@ Rules:
 
 Present all approaches then ask: **"Which approach do you want to proceed with, or would you like adjustments?"**
 
+Present this choice through the platform's native interactive selection tool (OpenCode `question`, Claude Code `AskUserQuestion`) — do not just dump the list as plain text and wait. Fall back to plain text only when no such tool exists.
+
 **Wait for the Don's explicit selection before writing anything.**
 
 - Don selects / approves → proceed to Step 3
