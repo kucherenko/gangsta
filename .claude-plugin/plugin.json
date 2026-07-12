@@ -15,10 +15,5 @@
     "multi-agent",
     "governance",
     "tdd"
-  ],
-  "commands": [
-    "./commands/heist.md",
-    "./commands/go.md",
-    "./commands/abort.md"
   ]
 }
