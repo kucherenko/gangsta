@@ -127,6 +127,8 @@ estimated-total-budget: <tokens>
 Otherwise (default Heist): Present to the Don:
 > "Execution Plan ready. <N> Work Packages across <N> territories. Estimated budget: <tokens>. Ready to execute The Hit?"
 
+**Autonomous Mode:** When invoked under `gangsta:autonomous-mode`, see § Per-Phase Interaction Schemas → Resource-Development in that skill. Otherwise this skill operates as written.
+
 ## Checkpoint
 
 ```yaml

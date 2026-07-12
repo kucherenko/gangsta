@@ -155,6 +155,8 @@ The Consigliere returns a verdict: APPROVE, APPROVE WITH CONCERNS, or REJECT.
 
 If REJECTED: Underboss revises based on Consigliere feedback. Re-review.
 
+**Autonomous Mode:** When invoked under `gangsta:autonomous-mode`, see § Per-Phase Interaction Schemas → the-Sit-Down in that skill. Otherwise this skill operates as written.
+
 ### Step 5: Don Signs the Contract
 
 ### Step 5: Don Signs the Contract

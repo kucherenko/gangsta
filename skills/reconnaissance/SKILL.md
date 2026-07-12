@@ -83,6 +83,8 @@ status: pending-review
 
 ### Step 4: Present to Don
 
+**Autonomous Mode:** When invoked under `gangsta:autonomous-mode`, see § Per-Phase Interaction Schemas → Reconnaissance in that skill. Otherwise this skill operates as written.
+
 Save the Dossier file (Step 3), then present its contents to the Don in chat.
 
 **DO NOT include the proceed menu in the dossier file.** The menu is a chat message only — output it as plain text after presenting the dossier summary.
