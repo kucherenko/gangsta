@@ -5,6 +5,13 @@ All notable changes to Gangsta are documented here.
 This project adheres to [Keep a Changelog](https://keepachangelog.com/en/1.1.0/) and [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
 
+## [1.11.3](https://github.com/kucherenko/gangsta/compare/gangsta-v1.11.2...gangsta-v1.11.3) (2026-07-12)
+
+
+### ### Documentation
+
+* **skills:** document plan, variant, and mid-task interaction controls for all platform tool mappings ([438f661](https://github.com/kucherenko/gangsta/commit/438f661a76b4e4026f298b992821e952fc5b635e))
+
 ## [1.11.2](https://github.com/kucherenko/gangsta/compare/gangsta-v1.11.1...gangsta-v1.11.2) (2026-05-12)
 
 
