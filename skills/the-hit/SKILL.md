@@ -33,6 +33,13 @@ Each Crew Lead (invoke `gangsta:the-capo`) processes their Work Packages:
    - Applicable Negative Constraints
    - Territory conventions
    - Prevention reminder: Workers MUST NOT reproduce Gangsta-internal spec identifiers (FR-xxx, NFR-xxx, WP-xxx, where xxx is one or more digits) in source code, tests, comments, or documentation. This is prevention guidance, not a gate.
+   - **Technical-debt prevention brief (Laundering gate):** Laundering will block the Heist on five technical-debt checks. Workers must build today to pass those checks tomorrow:
+     1. **Copy/paste:** do not clone build_setup in 5+ lines across files. If two call sites share logic, extract a helper or parameterize the variation. The duplicate will be caught by jscpd (min-lines 5, min-tokens 35) in Laundering.
+     2. **Long files:** target ≤ 300 source lines per file. Hard block at 500. If a Work Package forces a long file, the Contract must name it and the Don must pre-approve — otherwise split by responsibility.
+     3. **Test coverage:** write tests for every new public function and every modified branch. Laundering compares against the pre-Heist coverage baseline; coverage on modified code may not drop. If the project has a coverage threshold in its config, the run must meet it.
+     4. **Clean architecture:** imports flow downward through layers (domain → application → infrastructure → delivery); no business logic in controllers, route handlers, DB adapters, or network clients; one responsibility per file.
+     5. **Clean code:** remove dead code before reporting; functions ≤ 50 lines (blank/comment excluded); nesting ≤ 4 levels via early returns; no magic numbers in production paths; identifiers must name themselves.
+   - Worker Report must self-report against these five points. See Step 4.
 
 2. Workers work in parallel within their territory (up to the allocated Worker count)
 
@@ -44,7 +51,8 @@ Every Worker MUST follow `gangsta:drill-tdd` — the full Red-Green-Refactor cyc
 2. **Run test** — Verify it fails for the right reason
 3. **Write minimal implementation** — Just enough to pass the test
 4. **Run test** — Verify it passes
-5. **Report** — Return Report to Crew Lead
+5. **Refactor against the technical-debt brief** — during the Refactor phase, verify against the five Laundering-gate items: no copy/paste with existing code, file under the long-file threshold, tests cover the new code, imports flow downward, no dead code / long functions / deep nesting / magic numbers / unnamed identifiers. Laundering will block the Heist on any of these.
+6. **Report** — Return Report to Crew Lead
 
 A Worker that writes implementation before tests has its Report REJECTED.
 
@@ -62,11 +70,17 @@ Each Worker returns a Report:
 - Test passes: YES/NO
 **Changes:**
 - <file path>: <created/modified>
+**Technical-Debt Self-Check:**
+- Copy/paste: NONE | <file pair + reason if duplicated>
+- Long files (longest created/modified): <N> lines
+- Test coverage: <new/modified public functions and branches covered — list any uncovered>
+- Clean architecture: <layer of each modified file + direction of any new import>
+- Clean code: <functions >50 lines? nesting >4? magic numbers? dead code? — list any>
 **Test Output:**
 ```
 <actual test output>
 ```
-**Notes:** <issues, concerns, deviations>
+**Notes:** <issues, concerns, deviations, technical-debt risks for Laundering>
 ```
 
 ### Step 5: Crew Lead Reviews Reports
@@ -76,6 +90,7 @@ The Crew Lead reviews each Report (invoke `gangsta:the-capo`):
 - TDD cycle followed?
 - Tests passing?
 - Convention compliance?
+- **Technical-debt self-check present and plausible?** A Worker that reports NONE for every box without justification is suspect — flag for audit. The self-check is the early-warning system; Laundering enforces the gate.
 
 Accept, reject with feedback, or escalate.
 
@@ -134,4 +149,5 @@ artifacts:
 - [ ] Rule of Truth: Reports include actual test output, not claims
 - [ ] Rule of Budget: Token usage tracked per Worker dispatch
 - [ ] Spec is Law: Every implementation traces to a Contract clause via Work Package
+- [ ] Technical-Debt Brief: Every Worker dispatch includes the five-point Laundering-gate brief; every Report includes a Technical-Debt Self-Check
 - [ ] Rule of Availability: Checkpoint updated after each batch
