@@ -76,9 +76,7 @@ Rules:
 - At least one conservative/safe option and one bolder option
 - No code. No pseudocode. Architecture and rationale only.
 
-**Autonomous Mode:** Do NOT ask the human Don for approach selection. Invoke `gangsta:don-proxy` to select the approach. Proceed to Step 3 with don-proxy's selection without waiting for human input. On REJECT (don-proxy finds no approach above the Constitutional Floor): abort.
-
-Otherwise (default Heist): Present all approaches then ask: **"Which approach do you want to proceed with, or would you like adjustments?"**
+Present all approaches then ask: **"Which approach do you want to proceed with, or would you like adjustments?"**
 
 **Wait for the Don's explicit selection before writing anything.**
 
@@ -157,7 +155,7 @@ The Consigliere returns a verdict: APPROVE, APPROVE WITH CONCERNS, or REJECT.
 
 If REJECTED: Underboss revises based on Consigliere feedback. Re-review.
 
-**Autonomous Mode:** When invoked under `gangsta:autonomous-mode`, see § Per-Phase Interaction Schemas → the-Sit-Down in that skill. Otherwise this skill operates as written.
+### Step 5: Don Signs the Contract
 
 ### Step 5: Don Signs the Contract
 
