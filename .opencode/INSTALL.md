@@ -14,6 +14,12 @@ Add gangsta to `~/.config/opencode/opencode.json`:
 }
 ```
 
+Then install the plugin package by running:
+
+```bash
+cd ~/.config/opencode && bun add gangsta@git+https://github.com/kucherenko/gangsta.git
+```
+
 Restart OpenCode. Skills and agents will be available immediately.
 
 Verify by asking:
@@ -21,7 +27,7 @@ Verify by asking:
 
 ## Pinning a Version
 
-Update `opencode.json` with the desired tag and restart OpenCode:
+Update `opencode.json` and re-run `bun add` with the tag:
 
 ```json
 {
@@ -29,15 +35,19 @@ Update `opencode.json` with the desired tag and restart OpenCode:
 }
 ```
 
+```bash
+cd ~/.config/opencode && bun add gangsta@git+https://github.com/kucherenko/gangsta.git#gangsta-v1.7.0
+```
+
 ## Updating
 
-Update `opencode.json` to the latest (or remove the tag to track HEAD) and restart OpenCode:
+Re-run `bun add` to pull the latest version:
 
-```json
-{
-  "plugin": ["gangsta@git+https://github.com/kucherenko/gangsta.git"]
-}
+```bash
+cd ~/.config/opencode && bun add gangsta@git+https://github.com/kucherenko/gangsta.git
 ```
+
+Then restart OpenCode.
 
 ## Migrating from the Old Clone-Based Install
 
@@ -58,7 +68,7 @@ Remove from `opencode.json`:
 }
 ```
 
-Then add the plugin line to `opencode.json` and restart OpenCode as described in the Installation section above.
+Then follow the installation steps above.
 
 ## Agents
 
