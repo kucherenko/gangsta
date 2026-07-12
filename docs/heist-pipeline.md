@@ -11,8 +11,6 @@ When the Don wants to build something, The Heist begins — a 6-phase operationa
 | 5. The Hit | `the-hit` | Execution Plan approved | Implemented code + Reports | Don approves completion |
 | 6. Laundering | `laundering` | Hit complete | Clean, verified code | Don declares Heist complete |
 
-> **Autonomous Mode variant.** Under `gangsta:autonomous-mode` (invoked via `/gangsta:heist` and `/gangsta:go`), the per-phase gate is filled by `gangsta:don-proxy` instead of pausing for the human Don. Phases 1–4 run end-to-end on `/gangsta:heist`; Phases 5–6 run on `/gangsta:go` after the Don signs. See [Autonomous Mode Variant](#autonomous-mode-variant) below for per-phase deltas. The default gated pipeline documented here remains unchanged when these commands are not invoked.
-
 ---
 
 ## Phase 1: Reconnaissance
@@ -71,34 +69,25 @@ Don approves → proceed to The Grilling
 
 **Skill:** `the-grilling` | **Trigger:** Don approves the Reconnaissance Dossier
 
-A structured Multi-Agent Debate (MAD). Three subagents argue the solution before any plan is committed. The Don participates every round.
+A single-pass Multi-Agent Debate. The Don is grilled on the IDEA first, one question at a time; then the Proposer, Devils-Advocate, and Synthesizer each run exactly ONCE. There are no rounds.
 
-### Round Structure
+### Pass Structure
 
-1. **Proposer** — Reads the Dossier, proposes an architectural solution with rationale, file changes, and identified risks.
+1. **Phase A — Grill the IDEA** — The orchestrating agent extracts unresolved assumptions, scope ambiguities, and analogue-comparison decisions (in greenfield mode) from the Recon Dossier, then grills the Don one question at a time, most critical first. Produces an Idea Verdict: REJECT / CHALLENGE / SOUND.
 
-2. **Devils-Advocate** — Attacks the proposal: architectural flaws, security gaps, Constitution violations, regressions, scalability concerns.
+2. **Phase B — Proposer** (single pass) — Reads the Dossier and the Don's refined objective, proposes an architectural solution with rationale, file changes, and identified risks.
 
-3. **Don** — Asked one question at a time (never bundled). Weighs in on the attack and the proposal.
+3. **Phase C — Devils-Advocate** (single pass) — Attacks the proposal: architectural flaws, security gaps, Constitution violations, regressions, scalability concerns. Idea-level concerns from Phase A are on record; revisited only if the proposal materially changes scope.
 
-4. **Synthesizer** — Incorporates valid attacks and Don feedback. Produces a revised solution.
+4. **Phase D — Don weighs in** — Asked one question at a time (never bundled). Weighs in on the attack and the proposal.
 
-Rounds 2–N repeat the same cycle: Devils-Advocate attacks → Don weighs in → Synthesizer revises.
+5. **Phase E — Synthesizer** (single pass) — Incorporates valid attacks and Don feedback. Produces the final revised solution. There is no second attack pass.
 
-### Round Limits (Non-Negotiable)
+### Termination
 
-| Limit | Value |
-|-------|-------|
-| Minimum rounds | 2 |
-| Default maximum | 5 |
-| Hard ceiling | 7 (Don can extend from 5) |
-| Early exit | After round 2 if Don declares consensus |
+The Grilling ends after Phase E. No rounds, no Nash-Equilibrium check, no round limit — the single pass IS the whole debate.
 
-### Termination Conditions
-
-- **Nash Equilibrium** — Devils-Advocate raises no new valid objection AND Don has no remaining concerns
-- **Don declares consensus** — After round 2, Don can end the debate
-- **Round limit reached** — Synthesizer produces Best Available Consensus with documented unresolved objections
+**Exception — Best Available Consensus:** If the Synthesizer finds a CRITICAL objection that cannot be resolved in a single pass, it produces a Best Available Consensus with documented unresolved objections instead.
 
 ### Output
 
@@ -106,10 +95,11 @@ Grilling Conclusions (held in-context, not saved to file). Passed directly to Th
 
 ```
 Grilling Conclusions contain:
+  - Idea Verdict (with the Don's Phase A answers)
   - Key Decisions (each decision + rationale)
-  - Rejected Alternatives (each option + why discarded)
-  - Unresolved Objections (risks acknowledged but accepted)
-  - Termination Reason
+  - Rejected Alternatives (each option + why discarded, including analogues not followed in greenfield mode)
+  - Unresolved Objections (risks acknowledged but accepted, from Best Available Consensus if fired)
+  - Termination Reason (single-pass complete / Best Available Consensus)
 ```
 
 ### Gate
@@ -344,57 +334,3 @@ The loot is refined into production-ready form. Integration, verification, clean
 ### Gate
 
 Don declares Heist complete
-
----
-
-## Autonomous Mode Variant
-
-`gangsta:autonomous-mode` runs the same 6 phases with `gangsta:don-proxy` substituting for the human Don at every gate. It is invoked exclusively via two slash commands and is bounded by a non-overridable Constitutional Floor (Omerta laws + Negative Constraints in `docs/gangsta/constitution.md`).
-
-### Command Boundaries
-
-| Command | Phases Executed | Output State |
-|---------|-----------------|--------------|
-| `/gangsta:heist <feature>` | 1–4 (Recon → Grilling → Sit-Down → Resource-Development) | Contract + Plan signed `signed-by: don-proxy`, `status: pending-don-confirmation` |
-| `/gangsta:go [feature]` | 5–6 (the Hit + Laundering) after flipping to `signed-by: don, confirmed: <ts>` | Confirmed Contract + Plan; integrated, verified code |
-| `/gangsta:abort <feature>` | None — relocates Heist to `docs/gangsta/.aborted/<feature>-<timestamp>/` | Excluded from active ledger reads |
-
-### Per-Phase Deltas
-
-| Phase | don-proxy Invocation | Auto-Advance | Termination |
-|-------|---------------------|--------------|-------------|
-| 1. Reconnaissance | Once, post-Dossier | To Grilling on non-REJECT | Halts on Constitutional Floor REJECT or material incompleteness |
-| 2. The Grilling | Per round + at consensus | To Sit-Down on non-REJECT | Halts on consensus baking in a Floor violation |
-| 3. The Sit-Down | Twice (approach selection + Contract) | To Resource-Development on **dual non-REJECT** | **Dual-Veto:** either Consigliere or don-proxy REJECT is terminal; symmetric, no precedence, no tie-break |
-| 4. Resource Development | Once, post-Plan | `/gangsta:heist` exits; the Hit does NOT auto-start | Halts on Plan that forces a Floor violation |
-| 5. The Hit | At Worker-failure mini-Grilling only | To Laundering as in default | Mini-Grilling produces a **deviation report only** — signed Contract is byte-identical before and after; Contract amendment requires fresh Sit-Down |
-| 6. Laundering | Once, at final declaration | `/gangsta:go` exits | Ledger entries written `signed-by: don-proxy`, `status: pending-don-confirmation` |
-
-### Lifecycle States
-
-Autonomous-mode artifacts (Contract, Plan, ledger entries) carry one of three frontmatter states:
-
-1. `pending-don-confirmation` — written by `/gangsta:heist` and Laundering under `/gangsta:go`. Visible to active reads but flagged as unconfirmed.
-2. `confirmed` — flipped by `/gangsta:go` at signing: `signed-by: don`, `confirmed: <ISO-8601 UTC>`. The flip is atomic across the Contract and every matched ledger entry.
-3. `rejected` — relocated by `/gangsta:abort` together with the heist directory to `docs/gangsta/.aborted/<feature>-<timestamp>/`. Subsequent ledger reads exclude entries whose `heist:` resolves under `.aborted/`.
-
-### State Files
-
-- `docs/gangsta/.last-heist` — single-line pointer to the most recent autonomous heist directory. Read by `/gangsta:go` when invoked without a feature argument. Cleared by `/gangsta:abort` if it points at the aborted feature.
-- `docs/gangsta/<feature>/autonomous-log.md` — progressive per-phase decision log written incrementally during `/gangsta:heist` and `/gangsta:go`. Records timestamp, phase, actor, verdict, citation, and artifact pointers.
-
-### Resolution Rules (`/gangsta:go`, `/gangsta:abort`)
-
-Both commands resolve the target Heist by **exact directory match only** under `docs/gangsta/<feature>/`. No fuzzy match, no Levenshtein distance, no auto-correct, no closest-suggestion. Resolution failure is a hard error; suggesting alternatives is forbidden.
-
-### Constitutional Floor
-
-A Constitutional Floor REJECT in any phase is terminal: the heist halts, the verdict is written to `autonomous-log.md`, and the heist directory is left in place for Don inspection. Resumption requires a fresh `/gangsta:heist` invocation. Mid-flight retry of a Constitutional-Floor REJECT is **not** permitted regardless of `--best-effort`.
-
-The Floor sources are `skills/omerta/SKILL.md`, `docs/gangsta/constitution.md` (active Negative Constraints), and `AGENTS.md` (binding contributor constraints).
-
-### Reference
-
-- `skills/autonomous-mode/SKILL.md` — orchestrator
-- `skills/don-proxy/SKILL.md` — surrogate authority and Constitutional Floor enforcement
-- `commands/heist.md`, `commands/go.md`, `commands/abort.md` — command specifications

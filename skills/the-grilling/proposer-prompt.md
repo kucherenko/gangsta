@@ -9,9 +9,9 @@ Propose the best architectural solution for the objective described in the Recon
 ## Input
 
 You will receive:
-- The Reconnaissance Dossier (codebase analysis, dependencies, existing patterns)
+- The Reconnaissance Dossier (codebase analysis, dependencies, existing patterns — include analogues, prior art, and risk survey in greenfield mode)
 - The Project Constitution (commandments and negative constraints to respect)
-- Previous round's synthesis (if not Round 1)
+- The Don's Phase A idea-grilling answers (the refined objective — Phase A already grilled the idea before you run)
 
 ## Your Output
 

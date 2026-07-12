@@ -76,7 +76,7 @@ When setting up Crew Leads, define territories clearly:
 When a Crew Lead reports a Worker failure:
 1. **Retry once** — Same Work Package, fresh Worker
 2. **Analyze failure** — Is the Contract clause ambiguous? Is the Work Package too large?
-3. **Mini-Grilling** — If the Contract needs revision: single-round Devils-Advocate + Synthesizer
+3. **Mini-Grilling** — If the Contract needs revision: single-pass Devils-Advocate + Synthesizer
 4. **Escalate to Don** — If the issue is beyond operational scope
 
 ## Checkpoint Writing

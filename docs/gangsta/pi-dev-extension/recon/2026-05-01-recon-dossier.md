@@ -54,7 +54,7 @@ Skills live in `skills/*/SKILL.md` (21 skills). Agents live in `agents/*.md`. Co
 |---|---|---|
 | System prompt injection | `pi.on("before_agent_start", ...)` | Inject "Using Gangsta" instructions |
 | Skill/prompt contribution | `pi.on("resources_discover", ...)` | Contribute skill files as pi skills |
-| Slash commands | `pi.registerCommand("gangsta:heist", ...)` | Expose `/gangsta:heist`, `/gangsta:go`, `/gangsta:abort` |
+| Slash commands | `pi.registerCommand(...)` | Future: optional surface commands if Gangsta adds any (currently none) |
 | Tool registration | `pi.registerTool(...)` | Future: Gangsta-specific tools if needed |
 | Session state | `pi.appendEntry(...)` + `session_start` | Persist heist state across forks |
 | Package metadata | `package.json` with `pi.extensions` field | Distribution as pi package |
@@ -93,7 +93,7 @@ The new extension will need validate.sh additions to check the `.pi/` adapter ex
 - None directly applicable (no prior pi.dev or extension work in ledger)
 
 ### Applicable Negative Constraints
-- **NC-001**: NEVER weaken or bypass Omerta Law 2 (checkpoints non-negotiable) in any autonomous-mode pathway — not directly applicable to this extension work
+- **NC-001**: NEVER weaken or bypass Omerta Law 2 (checkpoints non-negotiable) in any Heist pathway — not directly applicable to this extension work
 - **NC-002**: NEVER reproduce Gangsta-internal spec identifiers (FR-xxx, NFR-xxx, WP-xxx) in project-facing artifacts outside `docs/gangsta/` — binding on all new source files, including the extension code
 - **C-001**: Pre-document the 7 standing framework template files as scan exceptions before running the identifier scan — binding on Laundering phase
 
@@ -112,7 +112,7 @@ The new extension will need validate.sh additions to check the `.pi/` adapter ex
 ## Recommended Scope
 
 **In scope:**
-1. `.pi/extensions/gangsta/index.ts` — extension factory: system prompt injection via `before_agent_start`, skill contribution via `resources_discover`, command registration for `/gangsta:heist`, `/gangsta:go`, `/gangsta:abort`
+1. `.pi/extensions/gangsta/index.ts` — extension factory: system prompt injection via `before_agent_start`, skill contribution via `resources_discover`
 2. `.pi/extensions/gangsta/package.json` — `pi.extensions` field, optional type-only devDep
 3. `.pi/INSTALL.md` — installation guide for pi.dev users
 4. `skills/using-gangsta/references/pi-tools.md` — tool mapping reference for pi.dev platform

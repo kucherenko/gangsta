@@ -62,7 +62,7 @@ Zero runtime dependencies (framework invariant). Skill changes are pure markdown
 
 ### Applicable Negative Constraints
 - NC-001: NEVER weaken or bypass Omerta Law 2 (checkpoints non-negotiable) in any
-  autonomous-mode pathway — no overlap with this Heist.
+  Heist pathway — no overlap with this Heist.
 
 ## Risks and Unknowns
 

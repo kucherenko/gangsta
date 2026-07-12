@@ -48,3 +48,8 @@ NC-PI-001: NEVER infer an SDK's method signature by analogy with similar pattern
 Always verify the exact argument shape from documentation or type definitions before
 implementation. When types are unavailable, add an explicit comment citing the source
 of truth for the expected shape.
+
+> **Note:** The `/gangsta:heist`, `/gangsta:go`, `/gangsta:abort` commands and the
+> `registerCommand` calls that powered them were later removed when autonomous mode was
+> deprecated. The cognitive lesson above (NC-003 in the Constitution) remains valid
+> regardless of which specific API call triggered the failure.

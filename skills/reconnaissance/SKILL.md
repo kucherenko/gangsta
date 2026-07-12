@@ -28,6 +28,87 @@ Dispatch Associate subagents in parallel to gather intel.
 
 **Subagent type:** Use `subagent_type: "associate"` for all Associate dispatches. Do NOT use `"general"` or `"general-purpose"` — these are not valid in a Gangsta installation.
 
+#### Greenfield Mode (empty or near-empty workspace)
+
+Before dispatching the standard survey, count the files in the working directory (excluding `.git`, `docs/gangsta/`, and other meta directories).
+
+**Trigger:** the workspace contains fewer than 5 source files OR no recognizable project manifest (`package.json`, `requirements.txt`, `go.mod`, `Cargo.toml`, `pyproject.toml`, etc.).
+
+When the trigger fires, the reconnaissance objective shifts from "survey the existing code" to "sharpen the IDEA". The standard codebase survey is still run (to capture what little exists), but it is no longer the center. Instead, deploy these associates in parallel:
+
+| Associate Task | What to Investigate |
+|---------------|-------------------|
+| Idea Framing | Restate the Don's objective in the Don's own words. Identify the problem being solved, who has it, and what evidence (if any) the Don offered. Surface hidden assumptions. |
+| Analogues | Search the internet for existing tools, libraries, products, or papers that solve the same or adjacent problems. For each analogue: name, what it does, what it gets right, what it gets wrong, license/hosting model. Use the `webfetch` tool. Produce at least 3 analogues; if fewer than 3 exist, say so and explain why the space is sparse. |
+| Prior Art & Patterns | Search the internet for relevant prior art: protocols, data formats, algorithms, design patterns, prior attempts, postmortems. Cite sources (URLs). |
+| Constraint & Risk Survey | Enumerate known constraints for the domain: performance ceilings, security concerns, regulatory, accessibility, platform limits. Cite sources. |
+| Codebase Structure | (Standard survey — what little exists in the workspace.) |
+| Ledger Search | (Standard survey.) |
+| Constitution | (Standard survey.) |
+
+The Dossier's `Codebase Overview` section becomes a thin note describing the empty/near-empty state. The bulk of the Dossier moves to new sections — see the Greenfield Dossier Format below.
+
+**Greenfield Dossier Format** (replaces the standard format when greenfield mode fires):
+
+```markdown
+---
+heist: <heist-name>
+date: YYYY-MM-DD
+status: pending-review
+mode: greenfield
+---
+
+# Reconnaissance Dossier: <Heist Name>
+
+## Objective
+<What the Don wants to build — restated in Don's words, plus interpreted objective>
+
+## Workspace State
+<One paragraph: what currently exists. If empty, say "empty workspace — greenfield".>
+
+## Idea Framing
+- Problem: <the actual problem>
+- Who has it: <audience>
+- Evidence: <what the Don offered; if none, say "no evidence offered — to be grilled">
+- Hidden assumptions:
+  - <assumption> — risk if wrong: HIGH/MEDIUM/LOW
+
+## Analogues
+| Name | What it does | Strengths | Weaknesses | License/Hosting |
+|------|--------------|-----------|-----------|-----------------|
+| ... | ... | ... | ... | ... |
+
+## Prior Art & Patterns
+- <pattern / protocol / algorithm> — <URL> — relevance: <how it applies>
+
+## Constraint & Risk Survey
+- <constraint> — source: <URL>
+
+## Existing Test Coverage
+<Near-empty in greenfield mode — note what, if anything, exists.>
+
+## Dependencies
+<Near-empty in greenfield mode — list any the Don named.>
+
+## Relevant Ledger Entries
+### Applicable Insights
+- <insight reference + summary>
+### Applicable Negative Constraints
+- NEVER <constraint> — Source: fails/YYYY-MM-DD-<topic>.md
+
+## Risks and Unknowns
+<Domain risks surfaced by the Constraint & Risk Survey; unknowns the analogues search could not resolve.>
+
+## Recommended Scope
+<Suggested boundaries — since there is no codebase to constrain scope, scope is the IDEA's own bounds: which analogue features to adopt, which to reject, which sub-problems are in/out.>
+```
+
+The Don reviews this dossier the same way. The proceed menu (Step 4) is unchanged.
+
+#### Standard Mode (existing codebase)
+
+When the workspace contains a real codebase (5+ source files OR a recognizable project manifest), run the standard survey below.
+
 | Associate Task | What to Survey |
 |---------------|---------------|
 | Codebase Structure | File tree, key directories, framework detection, entry points |
@@ -41,9 +122,11 @@ Dispatch Associate subagents in parallel to gather intel.
 
 Compile Associate reports into a structured Reconnaissance Dossier.
 
-## Dossier Format
+## Dossier Format (Standard Mode)
 
 Save to: `docs/gangsta/<heist-name>/recon/YYYY-MM-DD-recon-dossier.md`
+
+In greenfield mode, use the Greenfield Dossier Format defined above instead.
 
 ```markdown
 ---
@@ -82,10 +165,6 @@ status: pending-review
 ```
 
 ### Step 4: Present to Don
-
-**Autonomous Mode:** Do NOT present the proceed menu below and do NOT wait for human input. Invoke `gangsta:don-proxy` to review the Dossier. On APPROVE: auto-advance directly to the-Grilling (The Grilling is mandatory in autonomous mode — there is no skip-Grilling path). On REJECT: abort; write the verdict to `autonomous-log.md` and leave the heist directory in place. The proceed menu is for the default (gated) Heist only.
-
-Otherwise (default Heist):
 
 Save the Dossier file (Step 3), then present its contents to the Don in chat.
 
@@ -135,6 +214,7 @@ artifacts:
 ## Omerta Compliance
 - [ ] Introduction Rule: Associates dispatched by Underboss, reports collected by Underboss
 - [ ] Rule of Availability: Dossier and checkpoint saved to files
-- [ ] Rule of Truth: All dossier claims cite specific files, line numbers, or Ledger entries
+- [ ] Rule of Truth: All dossier claims cite specific files, line numbers, Ledger entries, OR URLs (greenfield mode). Uncited analogue/prior-art claims are invalid.
 - [ ] Spec is Law: Proceed menu presented exactly as specified — no options added, removed, or paraphrased
 - [ ] Mandatory Gate: The Sit-Down is never skipped — no path leads directly to The Hit or Resource Development
+- [ ] Greenfield Mode: Internet searches (analogues, prior art) require URL citations in the Dossier; fabricated analogues violate Rule of Truth

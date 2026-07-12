@@ -6,7 +6,15 @@ This project adheres to [Keep a Changelog](https://keepachangelog.com/en/1.1.0/)
 
 ## [Unreleased]
 
-### Added
+## [Unreleased]
+
+### Removed
+
+- **autonomous-mode:** removed `gangsta:autonomous-mode` skill, `gangsta:don-proxy` skill, and the `/gangsta:heist`, `/gangsta:go`, `/gangsta:abort` commands. The Heist pipeline is gated-by-design — the Don approves every phase gate. Also generalizes the Grilling to a single pass (no rounds, idea grilled first).
+- **don-proxy:** removed the `don-proxy` role and the Sit-Down Dual-Veto. The Consigliere remains the sole advisory authority on Contract signing.
+
+
+## [1.11.1](https://github.com/kucherenko/gangsta/compare/gangsta-v1.11.0...gangsta-v1.11.1) (2026-05-12)
 
 * **pi-dev:** native pi.dev coding agent extension with `before_agent_start` bootstrap hook injecting the full Gangsta hierarchy, 1% rule, and all 21 skill paths
 * **pi-dev:** three slash commands — `gangsta:heist`, `gangsta:go`, `gangsta:abort` — wired to framework command files
