@@ -1,6 +1,6 @@
 {
   "name": "gangsta-pi-extension",
-  "version": "1.11.4",
+  "version": "1.11.5",
   "description": "Gangsta Agents framework integration for pi.dev",
   "main": "index.ts",
   "pi": {

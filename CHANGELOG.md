@@ -5,6 +5,14 @@ All notable changes to Gangsta are documented here.
 This project adheres to [Keep a Changelog](https://keepachangelog.com/en/1.1.0/) and [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
 
+## [1.11.5](https://github.com/kucherenko/gangsta/compare/gangsta-v1.11.4...gangsta-v1.11.5) (2026-07-12)
+
+
+### ### Fixed
+
+* **plugin:** remove duplicate GangstaPlugin export and fix command.paths schema ([38de595](https://github.com/kucherenko/gangsta/commit/38de5958a46e917dd9725cfdae4464130f0f9d1d))
+* **skills:** present choice menus via native selection tool, not plain text ([68ccb61](https://github.com/kucherenko/gangsta/commit/68ccb612d4d981dcbd86b718d95bf89e744b08ae))
+
 ## [1.11.4](https://github.com/kucherenko/gangsta/compare/gangsta-v1.11.3...gangsta-v1.11.4) (2026-07-12)
 
 
