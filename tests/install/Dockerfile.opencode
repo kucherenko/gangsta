@@ -1,11 +1,9 @@
 # OpenCode plugin install smoke test.
 #
-# Installs gangsta via the documented git source (INSTALL.md):
-#   "plugin": ["gangsta@git+https://github.com/kucherenko/gangsta.git"]
-#
-# OpenCode clones the plugin from GitHub at startup. We write a minimal
-# opencode.json with that source, run `opencode run --print-logs`, and grep
-# for plugin load confirmation.
+# OpenCode loads the plugin from a git URL at startup. We check the plugin
+# load path by writing a minimal opencode.json that references the mounted
+# source, then running `opencode run --print-logs` and grepping for plugin
+# load confirmation.
 FROM node:20-bookworm-slim
 
 RUN apt-get update \

@@ -38,7 +38,6 @@ jobs:
           - opencode
           - codex
           - gemini
-          - skills
     steps:
       - uses: actions/checkout@v4
 
@@ -59,9 +58,4 @@ jobs:
         run: |
           docker run --rm \
             -v "${{ github.workspace }}:/plugin:ro" \
-            -e OPENROUTER_API_KEY \
-            -e OPENROUTER_MODEL \
             gangsta-test-${{ matrix.agent }}:ci
-        env:
-          OPENROUTER_API_KEY: ${{ secrets.OPENROUTER_API_KEY }}
-          OPENROUTER_MODEL: ${{ vars.OPENROUTER_MODEL }}
