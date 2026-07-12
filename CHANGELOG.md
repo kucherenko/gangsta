@@ -4,23 +4,69 @@ All notable changes to Gangsta are documented here.
 
 This project adheres to [Keep a Changelog](https://keepachangelog.com/en/1.1.0/) and [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
-## [Unreleased]
 
-## [Unreleased]
+## [1.11.3](https://github.com/kucherenko/gangsta/compare/gangsta-v1.11.2...gangsta-v1.11.3) (2026-07-12)
 
-### Removed
 
-- **autonomous-mode:** removed `gangsta:autonomous-mode` skill, `gangsta:don-proxy` skill, and the `/gangsta:heist`, `/gangsta:go`, `/gangsta:abort` commands. The Heist pipeline is gated-by-design — the Don approves every phase gate. Also generalizes the Grilling to a single pass (no rounds, idea grilled first).
-- **don-proxy:** removed the `don-proxy` role and the Sit-Down Dual-Veto. The Consigliere remains the sole advisory authority on Contract signing.
+### ### Documentation
 
+* **skills:** document plan, variant, and mid-task interaction controls for all platform tool mappings ([438f661](https://github.com/kucherenko/gangsta/commit/438f661a76b4e4026f298b992821e952fc5b635e))
+
+## [1.11.2](https://github.com/kucherenko/gangsta/compare/gangsta-v1.11.1...gangsta-v1.11.2) (2026-05-12)
+
+
+### ### Fixed
+
+* **plugin:** remove $schema key rejected by Claude Code manifest validator ([#56](https://github.com/kucherenko/gangsta/issues/56)) ([b7131c8](https://github.com/kucherenko/gangsta/commit/b7131c843d1ad8e9733bab4b3348cb3ae311df07))
 
 ## [1.11.1](https://github.com/kucherenko/gangsta/compare/gangsta-v1.11.0...gangsta-v1.11.1) (2026-05-12)
 
-* **pi-dev:** native pi.dev coding agent extension with `before_agent_start` bootstrap hook injecting the full Gangsta hierarchy, 1% rule, and all 21 skill paths
-* **pi-dev:** three slash commands — `gangsta:heist`, `gangsta:go`, `gangsta:abort` — wired to framework command files
-* **pi-dev:** `.pi/INSTALL.md` setup guide with accepted risks documented
-* **skills/using-gangsta:** `references/pi-tools.md` Claude Code → pi.dev tool mapping table
-* **scripts/validate.sh:** pi.dev extension structure checks (32 tests total, up from 30)
+
+### ### Fixed
+
+* **release:** auto-sync .claude-plugin versions via release-please extra-files ([#54](https://github.com/kucherenko/gangsta/issues/54)) ([3bd0ab5](https://github.com/kucherenko/gangsta/commit/3bd0ab5c9d77586ec73e9ec682d58d6dd6f50a9e))
+
+## [1.11.0](https://github.com/kucherenko/gangsta/compare/gangsta-v1.10.4...gangsta-v1.11.0) (2026-05-12)
+
+
+### ### Added
+
+* **ci:** restore explicit commands manifest entry and add per-agent install tests ([#52](https://github.com/kucherenko/gangsta/issues/52)) ([dbd42e5](https://github.com/kucherenko/gangsta/commit/dbd42e5282f1dcd5ce9dc6e414af5617ab18995a))
+
+## [1.10.4](https://github.com/kucherenko/gangsta/compare/gangsta-v1.10.3...gangsta-v1.10.4) (2026-05-12)
+
+
+### ### Fixed
+
+* **plugin:** remove invalid commands field from manifest ([#50](https://github.com/kucherenko/gangsta/issues/50)) ([b344559](https://github.com/kucherenko/gangsta/commit/b3445593517aa403cd450ad785745fc2e8f92c79))
+
+## [1.10.3](https://github.com/kucherenko/gangsta/compare/gangsta-v1.10.2...gangsta-v1.10.3) (2026-05-11)
+
+
+### ### Fixed
+
+* **security:** resolve Snyk/Socket audit flags across five skills ([#48](https://github.com/kucherenko/gangsta/issues/48)) ([f414015](https://github.com/kucherenko/gangsta/commit/f414015c4019d6db1310a0410aa2e572efcc5f61))
+
+## [1.10.2](https://github.com/kucherenko/gangsta/compare/gangsta-v1.10.1...gangsta-v1.10.2) (2026-05-10)
+
+
+### ### Fixed
+
+* **opencode:** remove invalid config hook mutations causing 400 on startup ([#46](https://github.com/kucherenko/gangsta/issues/46)) ([2d87d55](https://github.com/kucherenko/gangsta/commit/2d87d5500e22f9b30264ad300c09c46f856dc8e1)), closes [#43](https://github.com/kucherenko/gangsta/issues/43)
+
+## [1.10.1](https://github.com/kucherenko/gangsta/compare/gangsta-v1.10.0...gangsta-v1.10.1) (2026-05-10)
+
+
+### ### Fixed
+
+* **plugin:** use spec-compliant string array for commands field ([#44](https://github.com/kucherenko/gangsta/issues/44)) ([3f48404](https://github.com/kucherenko/gangsta/commit/3f48404854432c3424d5bc7cef9ffaad6e189ae0)), closes [#42](https://github.com/kucherenko/gangsta/issues/42)
+
+## [1.10.0](https://github.com/kucherenko/gangsta/compare/gangsta-v1.9.0...gangsta-v1.10.0) (2026-05-01)
+
+
+### ### Added
+
+* **pi-dev:** add native pi.dev coding agent extension ([#40](https://github.com/kucherenko/gangsta/issues/40)) ([1bf349e](https://github.com/kucherenko/gangsta/commit/1bf349e707df01697a7bb412b8ce9db7476e2fa3))
 
 ## [1.8.1](https://github.com/kucherenko/gangsta/compare/gangsta-v1.8.0...gangsta-v1.8.1) (2026-04-28)
 
