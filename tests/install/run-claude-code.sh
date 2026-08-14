@@ -33,6 +33,28 @@ if grep -qiE 'invalid|validation error|failed to' /tmp/init.log; then
   exit 1
 fi
 
+echo "==> SessionStart hook emits a valid Claude Code envelope"
+# --init-only stays silent when a hook's JSON fails schema validation, so assert
+# the envelope directly: hookSpecificOutput needs hookEventName as discriminator
+# or Claude Code drops additionalContext and the bootstrap never loads.
+if CLAUDE_PLUGIN_ROOT=/plugin ./hooks/run-hook.cmd session-start > /tmp/session-start.json 2>/tmp/session-start.err; then
+  node -e '
+    const o = JSON.parse(require("fs").readFileSync("/tmp/session-start.json", "utf8"));
+    const h = o.hookSpecificOutput;
+    if (!h) throw new Error("missing hookSpecificOutput");
+    if (h.hookEventName !== "SessionStart") throw new Error(`hookEventName is ${JSON.stringify(h.hookEventName)}, expected "SessionStart"`);
+    if (!h.additionalContext) throw new Error("additionalContext is empty");
+  ' && echo "PASS: SessionStart envelope carries hookEventName and additionalContext" || {
+    echo "FAIL: SessionStart envelope rejected"
+    cat /tmp/session-start.json
+    exit 1
+  }
+else
+  echo "FAIL: SessionStart hook exited non-zero"
+  cat /tmp/session-start.err
+  exit 1
+fi
+
 echo "==> All Claude Code install checks passed (Phase 1)"
 
 # ---------------------------------------------------------------------------

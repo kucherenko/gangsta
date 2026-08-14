@@ -26,8 +26,9 @@ ESCAPED=$(printf '%s' "$BOOTSTRAP" | python3 -c 'import sys,json; print(json.dum
 
 # Detect platform and output in correct format
 if [ -n "${CLAUDE_PLUGIN_ROOT:-}" ]; then
-  # Claude Code
-  printf '{"hookSpecificOutput":{"additionalContext":%s}}' "$ESCAPED"
+  # Claude Code — hookSpecificOutput requires hookEventName as its discriminator;
+  # without it the envelope fails validation and additionalContext is discarded.
+  printf '{"hookSpecificOutput":{"hookEventName":"SessionStart","additionalContext":%s}}' "$ESCAPED"
 elif [ -n "${CURSOR_PLUGIN_ROOT:-}" ]; then
   # Cursor
   printf '{"additional_context":%s}' "$ESCAPED"
