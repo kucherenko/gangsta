@@ -21,8 +21,19 @@ BOOTSTRAP="<EXTREMELY_IMPORTANT>
 ${CONTENT}
 </EXTREMELY_IMPORTANT>"
 
-# Escape for JSON
-ESCAPED=$(printf '%s' "$BOOTSTRAP" | python3 -c 'import sys,json; print(json.dumps(sys.stdin.read()))')
+# Escape for JSON (awk only — python3/jq are not guaranteed on minimal hosts)
+ESCAPED=$(printf '%s' "$BOOTSTRAP" | awk '
+BEGIN { ORS = ""; print "\"" }
+NR > 1 { print "\\n" }
+{
+  gsub(/\\/, "\\\\")
+  gsub(/"/, "\\\"")
+  gsub(/\t/, "\\t")
+  gsub(/\r/, "\\r")
+  print
+}
+END { print "\"" }
+')
 
 # Detect platform and output in correct format
 if [ -n "${CLAUDE_PLUGIN_ROOT:-}" ]; then
