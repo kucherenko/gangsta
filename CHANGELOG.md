@@ -5,6 +5,13 @@ All notable changes to Gangsta are documented here.
 This project adheres to [Keep a Changelog](https://keepachangelog.com/en/1.1.0/) and [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
 
+## [1.11.6](https://github.com/kucherenko/gangsta/compare/gangsta-v1.11.5...gangsta-v1.11.6) (2026-08-14)
+
+
+### ### Fixed
+
+* **hooks:** add required hookEventName to Claude Code SessionStart output ([#63](https://github.com/kucherenko/gangsta/issues/63)) ([8f26b34](https://github.com/kucherenko/gangsta/commit/8f26b34296c180756553f5a51d634a8008a3b308))
+
 ## [1.11.5](https://github.com/kucherenko/gangsta/compare/gangsta-v1.11.4...gangsta-v1.11.5) (2026-07-12)
 
 
