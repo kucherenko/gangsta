@@ -130,7 +130,13 @@ copilot plugin install gangsta@gangsta-marketplace
 
 ### OpenCode
 
-Tell OpenCode:
+OpenCode 2.x:
+
+```bash
+opencode plugin add gangsta@git+https://github.com/kucherenko/gangsta.git
+```
+
+OpenCode 1.x, or for the full guide (pinning, updating, migrating from 1.x), tell OpenCode:
 
 ```
 Fetch and follow instructions from https://raw.githubusercontent.com/kucherenko/gangsta/refs/heads/master/.opencode/INSTALL.md

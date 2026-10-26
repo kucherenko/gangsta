@@ -44,6 +44,19 @@ for pi_file in .pi/extensions/gangsta/index.ts \
   fi
 done
 
+# Check OpenCode plugin (V1 + V2 contract, skill/agent registration)
+echo ""
+echo "Checking OpenCode plugin..."
+if command -v node >/dev/null 2>&1; then
+  if node scripts/check-opencode-plugin.mjs; then
+    PASS=$((PASS + 1))
+  else
+    FAIL=$((FAIL + 1))
+  fi
+else
+  echo "  SKIP: node not found"
+fi
+
 # Summary
 echo ""
 echo "=================="

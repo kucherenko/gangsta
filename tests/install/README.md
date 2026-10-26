@@ -13,7 +13,8 @@ that happen again.
 | Agent | Image | Auth required | Status |
 |---|---|---|---|
 | Claude Code | `Dockerfile.claude-code` | No (validate + `--init-only`) | Tested |
-| OpenCode | `Dockerfile.opencode` | No (plugin-load only) | Tested |
+| OpenCode 2.x | `Dockerfile.opencode` | No (plugin active + agents/skills registered) | Tested |
+| OpenCode 1.x | `Dockerfile.opencode-v1` | No (plugin-load only) | Tested |
 | Codex | `Dockerfile.codex` | No (filesystem-only install) | Tested |
 | Gemini CLI | `Dockerfile.gemini` | No (extension install only) | Tested |
 | skills CLI | `Dockerfile.skills` | No (local path install) | Tested |
@@ -36,7 +37,7 @@ From the repo root:
 
 ```bash
 # All agents
-for agent in claude-code opencode codex gemini skills; do
+for agent in claude-code opencode opencode-v1 codex gemini skills; do
   docker build -t gangsta-test-$agent -f tests/install/Dockerfile.$agent tests/install
   docker run --rm -v "$PWD":/plugin:ro gangsta-test-$agent
 done
