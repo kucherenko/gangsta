@@ -5,6 +5,13 @@ All notable changes to Gangsta are documented here.
 This project adheres to [Keep a Changelog](https://keepachangelog.com/en/1.1.0/) and [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
 
+## [1.12.0](https://github.com/kucherenko/gangsta/compare/gangsta-v1.11.6...gangsta-v1.12.0) (2026-10-26)
+
+
+### ### Added
+
+* **opencode:** support OpenCode 2.x plugin API alongside 1.x ([#67](https://github.com/kucherenko/gangsta/issues/67)) ([1d3c305](https://github.com/kucherenko/gangsta/commit/1d3c3058eaf2461648515a0c6cb77e4587e4b6bd)), closes [#66](https://github.com/kucherenko/gangsta/issues/66)
+
 ## [1.11.6](https://github.com/kucherenko/gangsta/compare/gangsta-v1.11.5...gangsta-v1.11.6) (2026-08-14)
 
 
