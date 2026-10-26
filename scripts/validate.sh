@@ -44,6 +44,15 @@ for pi_file in .pi/extensions/gangsta/index.ts \
   fi
 done
 
+# Check Antigravity plugin (plugin.json, rules/AGENTS.md includes and size cap, agy validator)
+echo ""
+echo "Checking Antigravity plugin..."
+if bash scripts/check-antigravity-plugin.sh; then
+  PASS=$((PASS + 1))
+else
+  FAIL=$((FAIL + 1))
+fi
+
 # Check OpenCode plugin (V1 + V2 contract, skill/agent registration)
 echo ""
 echo "Checking OpenCode plugin..."

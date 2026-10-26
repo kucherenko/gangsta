@@ -514,12 +514,14 @@ Session Start → Platform Hook fires → session-start script reads the-don/SKI
 
 | Platform | Plugin Entry | Bootstrap Mechanism | Install Method |
 |----------|-------------|---------------------|----------------|
-| OpenCode | `.opencode/plugins/gangsta.js` | `config` hook + `chat.messages.transform` | `opencode.json` plugin config |
+| OpenCode 2.x | `.opencode/plugins/gangsta.js` (`default.setup`) | skill/agent transforms + `session` `context` hook | `opencode plugin add` / `plugins` config |
+| OpenCode 1.x | `.opencode/plugins/gangsta.js` (`default.server`) | `config` hook + `chat.messages.transform` | `opencode.json` `plugin` config |
 | Claude Code | `.claude-plugin/plugin.json` | `SessionStart` hook → `session-start` script | `/plugin install` |
 | Cursor | `.cursor-plugin/plugin.json` | `sessionStart` hook → `session-start` script | `/add-plugin` |
 | Codex | Manual symlink | Native skill discovery at startup | `git clone` + symlink |
 | Gemini CLI | `gemini-extension.json` | `GEMINI.md` with `@` references | `gemini extensions install` |
 | Copilot CLI | Plugin marketplace | Hook injection | `copilot plugin install` |
+| Antigravity CLI | `plugin.json` (repo root) | `rules/AGENTS.md` always-on rule with `@[...]()` includes | `agy plugin install` |
 
 ### OpenCode Plugin (Primary)
 

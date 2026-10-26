@@ -156,6 +156,14 @@ Fetch and follow instructions from https://raw.githubusercontent.com/kucherenko/
 gemini extensions install https://github.com/kucherenko/gangsta
 ```
 
+### Antigravity CLI
+
+```bash
+agy plugin install https://github.com/kucherenko/gangsta
+```
+
+Installs the skills, the six subagents, and an always-on rule that loads the Gangsta bootstrap. Verify with `agy plugin list` and `agy agents`.
+
 ## Verify Installation
 
 Start a new session and say:
