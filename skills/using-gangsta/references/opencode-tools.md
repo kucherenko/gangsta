@@ -2,31 +2,34 @@
 
 Skills use Claude Code tool names as the canonical reference. When you encounter these in a skill, use the OpenCode equivalent:
 
-| Skill references | OpenCode equivalent |
-|-----------------|---------------------|
-| `Skill` tool (invoke a skill) | `skill` |
-| `Task` tool (dispatch subagent) | `task` (see [Agent types](#agent-types)) |
-| Multiple `Task` calls (parallel) | Multiple `task` calls in one message |
-| `TodoWrite` (task tracking) | `todowrite` |
-| `Read` (file reading) | `read` |
-| `Write` (file creation) | `write` |
-| `Edit` (file editing) | `edit` |
-| `Bash` (run commands) | `bash` |
-| `Grep` (search file content) | `grep` |
-| `Glob` (search files by name) | `glob` |
-| `WebFetch` | `webfetch` |
-| `WebSearch` | `websearch_web_search_exa` |
+| Skill references | OpenCode 2.x | OpenCode 1.x |
+|-----------------|--------------|--------------|
+| `Skill` tool (invoke a skill) | `skill` | `skill` |
+| `Task` tool (dispatch subagent) | `subagent` (see [Agent types](#agent-types)) | `task` (see [Agent types](#agent-types)) |
+| Multiple `Task` calls (parallel) | Multiple `subagent` calls in one message | Multiple `task` calls in one message |
+| `TodoWrite` (task tracking) | `todowrite` | `todowrite` |
+| `Read` (file reading) | `read` | `read` |
+| `Write` (file creation) | `write` | `write` |
+| `Edit` (file editing) | `edit` | `edit` |
+| `Bash` (run commands) | `shell` | `bash` |
+| `Grep` (search file content) | `grep` | `grep` |
+| `Glob` (search files by name) | `glob` | `glob` |
+| `WebFetch` | `webfetch` | `webfetch` |
+| `WebSearch` | `websearch` | `websearch_web_search_exa` |
+| `AskUserQuestion` (ask the Don) | `question` | `question` |
+
+Check which generation you are running in by looking at your tool list: OpenCode 2.x exposes `subagent` and `shell`; OpenCode 1.x exposes `task` and `bash`.
 
 ## Agent types
 
-OpenCode's `task` tool accepts a `subagent_type` parameter. The value must exactly match a registered agent name — either a built-in or a custom agent defined in `~/.config/opencode/agents/` or `.opencode/agents/`.
+The subagent tool takes the agent name as a parameter: `agent` on OpenCode 2.x (`subagent` tool), `subagent_type` on OpenCode 1.x (`task` tool). The value must exactly match a registered agent name — a built-in, a custom agent from `~/.config/opencode/agents/` or `.opencode/agents/`, or one registered by the Gangsta plugin.
 
 ### Gangsta custom agents
 
-The Gangsta framework ships with named agents. **Always use these specific names** when dispatching within Gangsta skills:
+The Gangsta plugin registers these named subagents. **Always use these specific names** when dispatching within Gangsta skills:
 
-| `subagent_type` | When to use |
-|-----------------|-------------|
+| Agent name | When to use |
+|------------|-------------|
 | `"associate"` | Reconnaissance intel work — codebase scanning, dependency audits, documentation retrieval |
 | `"soldier"` | Stateless code execution — implementing a single work package with TDD |
 | `"the-inspector"` | Independent code review — reviewing diffs against requirements |
@@ -42,7 +45,7 @@ OpenCode also ships with `"general"` (full tool access) and `"explore"` (read-on
 
 ## Background tasks
 
-OpenCode supports background task execution for parallel work:
+OpenCode 1.x supports background task execution for parallel work (OpenCode 2.x runs parallel `subagent` calls in one message instead):
 
 | Tool | Purpose |
 |------|---------|
@@ -95,6 +98,8 @@ Good: { label: "No",  description: "I reject this — do not proceed" }
 Omitting or nulling `description` causes a schema validation error at runtime.
 
 ## Additional OpenCode tools
+
+Available on OpenCode 1.x; on 2.x use them only if they appear in your tool list.
 
 | Tool | Purpose |
 |------|---------|

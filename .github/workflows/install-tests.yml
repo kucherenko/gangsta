@@ -36,6 +36,7 @@ jobs:
         agent:
           - claude-code
           - opencode
+          - opencode-v1
           - codex
           - gemini
           - skills
