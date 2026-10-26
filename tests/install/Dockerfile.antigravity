@@ -1,0 +1,17 @@
+# Antigravity CLI plugin install smoke test.
+#
+# Installs the Antigravity CLI (`agy`) with Google's installer, validates the
+# plugin manifest at the repo root (plugin.json + skills/ + agents/ + rules/),
+# installs the mounted checkout as a plugin from a local path, and asserts
+# that the plugin, its skills, agents and rule are listed.
+FROM node:20-bookworm-slim
+
+RUN apt-get update \
+ && apt-get install -y --no-install-recommends git ca-certificates curl bash \
+ && rm -rf /var/lib/apt/lists/*
+
+RUN curl -fsSL https://antigravity.google/cli/install.sh | bash
+ENV PATH="/root/.local/bin:${PATH}"
+
+WORKDIR /plugin
+CMD ["bash", "-eu", "tests/install/run-antigravity.sh"]

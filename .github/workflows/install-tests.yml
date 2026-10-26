@@ -40,6 +40,7 @@ jobs:
           - codex
           - gemini
           - skills
+          - antigravity
     steps:
       - uses: actions/checkout@v4
 

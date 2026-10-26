@@ -18,6 +18,7 @@ that happen again.
 | Codex | `Dockerfile.codex` | No (filesystem-only install) | Tested |
 | Gemini CLI | `Dockerfile.gemini` | No (extension install only) | Tested |
 | skills CLI | `Dockerfile.skills` | No (local path install) | Tested |
+| Antigravity CLI | `Dockerfile.antigravity` | No (validate + install + list) | Tested |
 | GitHub Copilot CLI | — | Yes (GH auth required) | Not covered — see below |
 
 **Copilot is an honest gap.** Copilot plugin install needs an
@@ -37,7 +38,7 @@ From the repo root:
 
 ```bash
 # All agents
-for agent in claude-code opencode opencode-v1 codex gemini skills; do
+for agent in claude-code opencode opencode-v1 codex gemini skills antigravity; do
   docker build -t gangsta-test-$agent -f tests/install/Dockerfile.$agent tests/install
   docker run --rm -v "$PWD":/plugin:ro gangsta-test-$agent
 done

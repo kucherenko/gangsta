@@ -33,6 +33,8 @@ If the Don says "skip TDD" and a skill says "always use TDD," you follow the Don
 
 **In Gemini CLI:** Use the `activate_skill` tool. Gemini loads skill metadata at session start and activates the full content on demand.
 
+**In Antigravity CLI:** There is no skill tool. Antigravity lists skill names and descriptions at session start; `read_file` the skill's `SKILL.md` and follow it.
+
 **In other environments:** Check your platform's documentation for how skills are loaded.
 
 ## The Rule
@@ -218,5 +220,6 @@ Skills use Claude Code tool names as the canonical reference. Non-Claude Code pl
 - `references/copilot-tools.md` — Copilot CLI
 - `references/codex-tools.md` — Codex
 - `references/gemini-tools.md` — Gemini CLI
+- `references/antigravity-tools.md` — Antigravity CLI
 
-Gemini CLI users get the tool mapping loaded automatically via GEMINI.md. Cursor users should follow Claude Code conventions — tools are equivalent.
+Gemini CLI users get the tool mapping loaded automatically via GEMINI.md; Antigravity CLI users get it via the plugin's always-on rule. Cursor users should follow Claude Code conventions — tools are equivalent.
