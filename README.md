@@ -118,7 +118,7 @@ Skills are installed to `~/.cursor/skills/` (global) or `.agents/skills/` (proje
 
 ```bash
 /plugin marketplace add kucherenko/gangsta
-/plugin install gangsta@gangsta
+/plugin install gangsta@gangsta-marketplace
 ```
 
 ### GitHub Copilot
