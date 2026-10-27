@@ -5,6 +5,13 @@ All notable changes to Gangsta are documented here.
 This project adheres to [Keep a Changelog](https://keepachangelog.com/en/1.1.0/) and [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
 
+## [1.13.1](https://github.com/kucherenko/gangsta/compare/gangsta-v1.13.0...gangsta-v1.13.1) (2026-10-27)
+
+
+### ### Documentation
+
+* use gangsta-marketplace in Claude Code install command ([#71](https://github.com/kucherenko/gangsta/issues/71)) ([910fc42](https://github.com/kucherenko/gangsta/commit/910fc42b0a5009e87900e4802227d4706d58309d))
+
 ## [1.13.0](https://github.com/kucherenko/gangsta/compare/gangsta-v1.12.0...gangsta-v1.13.0) (2026-10-26)
 
 
