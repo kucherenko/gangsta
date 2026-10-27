@@ -5,6 +5,13 @@ All notable changes to Gangsta are documented here.
 This project adheres to [Keep a Changelog](https://keepachangelog.com/en/1.1.0/) and [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
 
+## [1.13.0](https://github.com/kucherenko/gangsta/compare/gangsta-v1.12.0...gangsta-v1.13.0) (2026-10-26)
+
+
+### ### Added
+
+* **antigravity:** add Antigravity CLI plugin support ([#69](https://github.com/kucherenko/gangsta/issues/69)) ([3f1e853](https://github.com/kucherenko/gangsta/commit/3f1e853ce1d3821395293b42603bc37d26df74a0)), closes [#58](https://github.com/kucherenko/gangsta/issues/58)
+
 ## [1.12.0](https://github.com/kucherenko/gangsta/compare/gangsta-v1.11.6...gangsta-v1.12.0) (2026-10-26)
 
 
