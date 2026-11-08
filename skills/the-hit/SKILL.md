@@ -52,7 +52,8 @@ Every Worker MUST follow `gangsta:drill-tdd` — the full Red-Green-Refactor cyc
 3. **Write minimal implementation** — Just enough to pass the test
 4. **Run test** — Verify it passes
 5. **Refactor against the technical-debt brief** — during the Refactor phase, verify against the five Laundering-gate items: no copy/paste with existing code, file under the long-file threshold, tests cover the new code, imports flow downward, no dead code / long functions / deep nesting / magic numbers / unnamed identifiers. Laundering will block the Heist on any of these.
-6. **Report** — Return Report to Crew Lead
+6. **Stop background work** — Wait for or stop every background command the Worker started; nothing may still run when the Report is sent
+7. **Report** — Return Report to Crew Lead
 
 A Worker that writes implementation before tests has its Report REJECTED.
 
@@ -70,6 +71,7 @@ Each Worker returns a Report:
 - Test passes: YES/NO
 **Changes:**
 - <file path>: <created/modified>
+**Background Work:** none running | stopped: <task ID or PID — what it was>
 **Technical-Debt Self-Check:**
 - Copy/paste: NONE | <file pair + reason if duplicated>
 - Long files (longest created/modified): <N> lines
@@ -90,6 +92,7 @@ The Crew Lead reviews each Report (invoke `gangsta:the-capo`):
 - TDD cycle followed?
 - Tests passing?
 - Convention compliance?
+- **Nothing left running?** If the platform still shows the Worker as running after its Report arrives (Claude Code: the notification says the agent "is waiting on its own background work"), the Worker left background work behind. Do not wait for it: stop the leftover processes it lists (your platform's task-stop tool, or `kill <pid>`) and record it in the review.
 - **Technical-debt self-check present and plausible?** A Worker that reports NONE for every box without justification is suspect — flag for audit. The self-check is the early-warning system; Laundering enforces the gate.
 
 Accept, reject with feedback, or escalate.

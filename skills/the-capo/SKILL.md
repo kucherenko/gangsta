@@ -43,14 +43,17 @@ For each Work Package assigned to this territory:
    **Status:** success | failure | blocked
    **Changes:** <List of files created/modified>
    **Tests:** <Test results — pass/fail with output>
+   **Background Work:** none running | stopped: <what>
    **Notes:** <Any issues encountered>
    ```
+   A Worker whose Report has arrived but who still shows as running (Claude Code: "is waiting on its own background work") left background work behind. Do not wait for it — stop the leftover processes it lists (your platform's task-stop tool, or `kill <pid>`).
 
 4. **Review Report** — Verify against the Contract:
    - Do the changes satisfy the acceptance criteria?
    - Do tests pass?
    - Does the code follow territory conventions?
    - Are there any Omerta violations?
+   - Is anything the Worker started still running?
 
 5. **Accept or Reject:**
    - **Accept** — Mark Work Package complete, report to Underboss

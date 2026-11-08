@@ -194,6 +194,7 @@ Soldiers are stateless units optimized for code generation and unit testing. The
 - Write failing test first (TDD enforced)
 - Implement minimal code to pass the test
 - Return a Tribute (status + code changes + test results)
+- Leave no background process running when they return the Tribute
 - Cannot communicate with other Soldiers directly (Introduction Rule)
 
 ### Associates: Specialized Tools and API Proxies
